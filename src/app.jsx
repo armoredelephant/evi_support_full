@@ -7,9 +7,7 @@ class App extends React.Component {
         return (
             <div>
                 <Navbar />,
-                <div class="col-md-6">
-                    "Hello there!"
-                </div>
+                
             </div>
         );
     }
