@@ -3,7 +3,7 @@ import React from 'react';
 class EviLogo extends React.Component {
     render() {
         return (
-            <a href="#" class="navbar-brand">
+            <a href="#" className="navbar-brand">
                 Brand
             </a>
         );
