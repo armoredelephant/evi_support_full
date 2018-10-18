@@ -7,7 +7,7 @@
     "build": "webpack",
     "start:dev": "webpack-dev-server"
   },
-  "author": "Robby Mitchell <robjmitch@gmail.com> (http://robjmitch.com)",
+  "author": "Keith Alleman",
   "license": "MIT",
   "description": "",
   "dependencies": {
