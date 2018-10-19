@@ -1,12 +1,16 @@
 import React from 'react';
 
-class HomeList extends React.Component {
+import ListIcon from './ListIcon';
+
+class HomeListItem extends React.Component {
     render() {
-        <a className="list-group-item list-group-item-action">
-            {this.props.category}
-        </a>
+        return (
+            <a className="list-group-item list-group-item-action">
+                <ListIcon iconName={this.props.iconName}/>
+                {this.props.category}
+            </a>
+        );
     }
 }
 
-export default HomeList;
-// refactor to where I can call on <HomeList category="Setup Videos" />
+export default HomeListItem;
