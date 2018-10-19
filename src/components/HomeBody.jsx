@@ -8,12 +8,10 @@ import HomeListItem from './HomeListItems';
 
 class HomeBody extends React.Component {
     render() {
-        // here is your problem
-        // render is a function and without anything returned, you get nothing.
         return (
             <div className="row justify-content-around">
-                <HomeListItem category="Setup Videos" />
-                <HomeListItem category="Troubleshooting Guides" />
+                <HomeListItem category="Setup Videos" iconName="fa-video"/>
+                <HomeListItem category="Troubleshooting Guides" iconName="fa-file" />
                 <HomeListItem category="Down Detector" />
                 <HomeListItem category="Submit Cherwell Request" />
             </div>
