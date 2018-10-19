@@ -1,5 +1,7 @@
 import React from 'react';
 
+import HomeList from './HomeListItems';
+
 /*
     The purpose of this component is to build the list items for the category links
 */
