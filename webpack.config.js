@@ -27,7 +27,8 @@ module.exports = {
         exclude: /node_modules/, 
         loader: "babel-loader",
         options: {
-          presets: ['env', 'react']
+          presets: ['env', 'react'],
+          plugins: ["transform-class-properties"]
         }  
       },
     //   {test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader"},
@@ -49,6 +50,8 @@ module.exports = {
     ]
   },
   resolve: {
+    // You can add a resolve for '.scss' here so you don't have to
+    // specify file extensions in your components.
     extensions: ['.js', '.jsx']
   }
 };
