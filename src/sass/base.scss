@@ -6,8 +6,72 @@
 
 // <img src="img" alt="eviCore Healthcare Logo">
 
+/*
+    VARIABLES
+*/
+
+
+
+/*
+    MAPS
+*/
+
 $colors: (
     primary-blue: #002855,
-    primary-yellow: #c99700
+    primary-yellow: #c99700,
+    border-blue: #001935
 );
 
+/*
+    FUNCTIONS
+*/
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+/*
+    STUFF
+*/
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: "Arial";
+    margin: 0;
+
+    #main-body {
+        margin-top: 70px;
+
+        .home-list-items {
+            width: 100%;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            padding: 1em 1em;
+            background-color: color(primary-blue);
+            border: 1px solid color(border-blue);
+
+            #font-icons {
+                // color:
+                margin-right: 1em;
+            }
+        }
+    }
+
+    
+
+
+}
+
+nav {
+
+    #evi-logo {
+        height: 50px;
+        padding-right: 2em;
+    }
+
+
+}

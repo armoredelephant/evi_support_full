@@ -13,7 +13,7 @@ class App extends React.Component {
                 <div className="container">
                     <Navbar />
                     <Route path="/Landing" component={HomeBody} />
-                    <Route path="/fake" component={FakePage} />
+                    <Route path="#" component={FakePage} />
                     <HomeFooter />
                 </div>
             </Router>
