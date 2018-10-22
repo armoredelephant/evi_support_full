@@ -42,8 +42,15 @@ body {
     font-family: "Arial";
     margin: 0;
 
+    .algolia-autocomplete {
+        position: relative;
+        display: inline-block;
+        direction: ltr;
+    }
+
     #main-body {
         margin-top: 70px;
+        height: 500px;
 
         .home-list-items {
             width: 100%;
@@ -66,12 +73,12 @@ body {
 
 }
 
-nav {
+header {
 
     #evi-logo {
         height: 50px;
         padding-right: 2em;
     }
-
-
 }
+
+

@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
+import HomeHeader from './components/HomeHeader';
 import HomeBody from './components/HomeBody';
 import HomeFooter from './components/HomeFooter';
+import SideNavBar from './components/SideNavBar';
 import FakePage from './components/FakePage';
 
 class App extends React.Component {
@@ -11,7 +12,9 @@ class App extends React.Component {
         return (
             <Router>
                 <div className="container">
-                    <Navbar />
+                    <HomeHeader />
+                    {/* <SideNavBar /> */}
+                    <SideNavBar />
                     <Route path="/Landing" component={HomeBody} />
                     <Route path="#" component={FakePage} />
                     <HomeFooter />
