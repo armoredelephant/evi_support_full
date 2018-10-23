@@ -79,7 +79,6 @@ body {
         }
 
         .main-body {
-            flex-flow: row wrap;
             margin-top: 70px;
             height: 120px;
     
@@ -89,7 +88,6 @@ body {
                 display: grid;
                 grid-template-columns: .8fr min-content 2fr;
                 grid-column: 3;
-                flex: 1 100%;
                 font-size: 20px;
                 color: white;
                 text-align: left;
