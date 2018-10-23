@@ -16,4 +16,3 @@ class HomeListItem extends React.Component {
 
 export default HomeListItem;
 // refactor to where I can call on <HomeList category="Setup Videos" />
-
