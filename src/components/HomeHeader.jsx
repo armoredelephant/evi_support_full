@@ -1,11 +1,12 @@
 import React from 'react';
 
 import LogoLink from './LogoLink';
+import SideNavBar from './SideNavBar';
 
 class HomeHeader extends React.Component {
     render() {
         return (
-            <header className="navbar justify-content-between fixed-top navbar-expand-lg navbar-light bg-light">
+            <header className="main-header">
                 <LogoLink />
             </header>
         )

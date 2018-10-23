@@ -14,7 +14,6 @@ class App extends React.Component {
                 <div className="container">
                     <HomeHeader />
                     {/* <SideNavBar /> */}
-                    <SideNavBar />
                     <Route path="/Landing" component={HomeBody} />
                     <Route path="#" component={FakePage} />
                     <HomeFooter />
