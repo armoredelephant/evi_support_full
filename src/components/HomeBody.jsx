@@ -9,14 +9,28 @@ import HomeListItem from './HomeListItems';
 class HomeBody extends React.Component {
     render() {
         return (
-            <div className="row justify-content-around">
+            <div className="main-body" id="main-body">
                 <HomeListItem category="Setup Videos" iconName="fa-video"/>
-                <HomeListItem category="Troubleshooting Guides" iconName="fa-file" />
+                <HomeListItem category="Guides" iconName="fa-file" />
                 <HomeListItem category="Down Detector" />
-                <HomeListItem category="Submit Cherwell Request" />
+                <HomeListItem category="Cherwell Request" />
             </div>
         );
     }
 }
 
 export default HomeBody;
+
+// basically:
+
+/**
+ * <div id="main-body">
+ *  <a>
+ *     <i><i>
+ *      words
+ *  <a> x4
+ *  <a>
+ *  <a>
+ *  <a>
+ * <div>
+ */

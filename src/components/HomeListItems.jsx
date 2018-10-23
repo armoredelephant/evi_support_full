@@ -6,7 +6,7 @@ import ListIcon from './ListIcon';
 class HomeListItem extends React.Component {
     render() {
         return (
-            <Link to="/fake" className="list-group-item list-group-item-action">
+            <Link to="#" className="home-list-items">
                 <ListIcon iconName={this.props.iconName}/>
                 {this.props.category}
             </Link> 
@@ -15,3 +15,4 @@ class HomeListItem extends React.Component {
 }
 
 export default HomeListItem;
+// refactor to where I can call on <HomeList category="Setup Videos" />

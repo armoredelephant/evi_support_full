@@ -1,4 +1,4 @@
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
 /* BLUE #002855 */
 /* YELLOW #c99700 */
@@ -6,8 +6,119 @@
 
 // <img src="img" alt="eviCore Healthcare Logo">
 
+/*
+    VARIABLES
+*/
+
+
+
+/*
+    MAPS
+*/
+
 $colors: (
     primary-blue: #002855,
-    primary-yellow: #c99700
+    primary-yellow: #c99700,
+    border-blue: #001935
 );
+
+/*
+    FUNCTIONS
+*/
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+/*
+    STUFF
+*/
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: "Arial";
+    margin: 0;
+
+    .container {
+        display: grid;
+        grid-template-rows: 50px 550px 67px;
+        /* 
+        grid-template-columns: 100px auto;
+        grid-template-rows: 50px auto 50px;
+        grid-template-areas: 
+            "header header"
+            "sidebar body"
+            "footer footer"; 
+        */
+
+        header {
+            grid-column-start: 2;
+            display: grid;
+            position: fixed; // or sticky?
+            z-index: 999;
+            width: 100%;
+            background-color: rgb(238, 238, 238);
+
+            .header-logo {
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                .page-title {
+                    color: color(primary-blue);
+                }
+
+                #evi-logo {
+                    height: 70px;
+                    padding-top: 2px;
+                }
+            }
+        }
+
+        .main-body {
+            flex-flow: row wrap;
+            margin-top: 70px;
+            height: 120px;
+    
+            .home-list-items {
+                align-items: center;
+                height: 30px;
+                display: grid;
+                grid-template-columns: .8fr min-content 2fr;
+                grid-column: 3;
+                flex: 1 100%;
+                font-size: 20px;
+                color: white;
+                text-align: left;
+                text-decoration: none;
+                padding: 50px 1em;
+                background-color: color(primary-blue);
+                border: 1px solid color(border-blue);
+    
+                #font-icons {
+                    color: color(primary-yellow);
+                    grid-column: 2;
+                    margin-right: 1em;
+                }
+            }
+        }
+
+        .main-footer {
+            background-color: rgb(238, 238, 238);
+            color: color(primary-blue);
+            font-weight: 700;
+            text-align: center;
+            padding-top: 20px;
+            grid-row-start: 3;
+        }
+    }
+
+}
+
+
+
+
 
