@@ -19,7 +19,9 @@
 $colors: (
     primary-blue: #002855,
     primary-yellow: #c99700,
-    border-blue: #001935
+    border-blue: #001935,
+    nav-footer: #EFEFEF,
+    body: #F8F8F8
 );
 
 /*
@@ -34,6 +36,10 @@ $colors: (
     STUFF
 */
 
+* {
+    box-sizing: border-box;
+}
+
 body, html {
     height: 100%;
 }
@@ -44,7 +50,7 @@ body {
 
     .container {
         display: grid;
-        grid-template-rows: 50px 550px 67px;
+        grid-template-rows: 180px 736px 87px;
         /* 
         grid-template-columns: 100px auto;
         grid-template-rows: 50px auto 50px;
@@ -54,69 +60,92 @@ body {
             "footer footer"; 
         */
 
-        header {
-            grid-column-start: 2;
-            display: grid;
-            position: fixed; // or sticky?
-            z-index: 999;
-            width: 100%;
-            background-color: rgb(238, 238, 238);
+            .header-wrapper {
+                display: block;
+                height: 180px;
+                grid-column-start: 1;
+                // position: relative; // or sticky?
+                z-index: 999;
+                width: 100%;
+                background-color: color(nav-footer);
 
-            .header-logo {
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+                .mobile-header {
+                    display: block;
+                    position: relative;
+                    height: 70px;
+                    box-sizing: border-box;
+
+                    .mobile-header-inner {
+                        margin: 0 auto;
+                        padding: 1em 10px 0 10px;
+                        position: relative;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        .header-logo {
+                            height: 51px;
+                        }
+                    }
+                }
 
                 .page-title {
+                    font-weight: 700;
+                    margin: 10 auto 0 auto;
+                    text-align: center;
                     color: color(primary-blue);
                 }
 
-                #evi-logo {
-                    height: 70px;
-                    padding-top: 2px;
+                .search-container {
+                    display: flex;
+                    justify-content: center;
+                    height: 65px;
+
+                    .search {
+                        display: block;
+                        position: relative;
+                        padding-top: 12px;
+                        width: 300px;
+                        height: 40px;
+
+                        .placeicons {
+                            font-family: fontawesome;
+                        }
+
+                        .query-search {
+                            width: 100%;
+                            height: 30px;
+                            border: 1px solid #f8f8f8;
+                            border-radius: 1em;
+                            text-align: left;
+                            padding-left: 22%;
+                        }
+
+                    }
+
                 }
             }
-        }
-
-        .main-body {
-            margin-top: 70px;
-            height: 120px;
-    
-            .home-list-items {
-                align-items: center;
-                height: 30px;
-                display: grid;
-                grid-template-columns: .8fr min-content 2fr;
-                grid-column: 3;
-                font-size: 20px;
-                color: white;
-                text-align: left;
-                text-decoration: none;
-                padding: 50px 1em;
-                background-color: color(primary-blue);
-                border: 1px solid color(border-blue);
-    
-                #font-icons {
-                    color: color(primary-yellow);
-                    grid-column: 2;
-                    margin-right: 1em;
-                }
-            }
-        }
-
-        .main-footer {
-            background-color: rgb(238, 238, 238);
-            color: color(primary-blue);
-            font-weight: 700;
-            text-align: center;
-            padding-top: 20px;
-            grid-row-start: 3;
-        }
     }
-
 }
 
+// input {
+//     max-width: 100%;
+//     font: inherit;
+//     margin: 0;
 
+//     text-rendering: auto;
+//     letter-spacing: normal;
+//     word-spacing: normal;
+//     text-transform: none;
+//     text-indent: 0px;
+//     display: inline-block;
+//     text-align: start;
+// }
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
 
 
 
