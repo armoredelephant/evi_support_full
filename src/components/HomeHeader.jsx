@@ -1,14 +1,16 @@
 import React from 'react';
 
 import LogoLink from './LogoLink';
-import SideNavBar from './SideNavBar';
+import HomeSearchBar from './HomeSearchBar';
 
 class HomeHeader extends React.Component {
     render() {
         return (
-            <header className="main-header">
+            <div className="header-wrapper">
                 <LogoLink />
-            </header>
+                <h1 className="page-title">Help Center</h1>
+                <HomeSearchBar />
+            </div>
         )
     }
 }

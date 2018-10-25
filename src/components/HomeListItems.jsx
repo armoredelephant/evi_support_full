@@ -8,7 +8,7 @@ class HomeListItem extends React.Component {
         return (
             <Link to="#" className="home-list-items">
                 <ListIcon iconName={this.props.iconName}/>
-                {this.props.category}
+                <p>{this.props.category}</p>
             </Link> 
         );
     }
