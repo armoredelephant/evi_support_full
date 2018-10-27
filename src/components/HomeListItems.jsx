@@ -6,9 +6,13 @@ import ListIcon from './ListIcon';
 class HomeListItem extends React.Component {
     render() {
         return (
-            <Link to="#" className="home-list-items">
-                <ListIcon iconName={this.props.iconName}/>
-                <p>{this.props.category}</p>
+            <Link to="#" className="category-link">
+                <li className="flex-item category-items" id={this.props.categoryID}>
+                    <ListIcon iconName={this.props.iconName}/>
+                    <h2>{this.props.category}</h2>
+                    <hr />
+                    <h3>{this.props.categoryDescription}</h3>
+                </li>
             </Link> 
         );
     }
