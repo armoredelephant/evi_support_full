@@ -6,11 +6,11 @@ import HomeSearchBar from './HomeSearchBar';
 class HomeHeader extends React.Component {
     render() {
         return (
-            <section className="header-wrapper">
+            <div className="header-wrapper">
                 <LogoLink />
                 <h1 className="page-title">Help Center</h1>
                 <HomeSearchBar />
-            </section>
+            </div>
         )
     }
 }
