@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import './sass/base.scss'
+
 import HomeHeader from './components/HomeHeader';
 import HomeBody from './components/HomeBody';
 import HomeFooter from './components/HomeFooter';

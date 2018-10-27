@@ -10,8 +10,6 @@
     VARIABLES
 */
 
-
-
 /*
     MAPS
 */
@@ -41,8 +39,9 @@ $colors: (
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
+#root, body, html {
+    min-height: 100%;
+    height: 100vh;
 }
 
 body {
@@ -51,21 +50,14 @@ body {
 
     .container {
         display: grid;
-        grid-template-rows: 180px 1220px 87px;
-        /* 
-        grid-template-columns: 100px auto;
-        grid-template-rows: 50px auto 50px;
-        grid-template-areas: 
-            "header header"
-            "sidebar body"
-            "footer footer"; 
-        */
+        grid-template-rows: 187px auto 10%;
+        height: 100%;
 
             .header-wrapper {
                 display: block;
-                height: 180px;
+                height: 187px;
                 grid-column-start: 1;
-                // position: relative; // or sticky?
+                position: relative;
                 z-index: 999;
                 width: 100%;
                 background-color: color(nav-footer);
@@ -119,7 +111,7 @@ body {
                             border: 1px solid #f8f8f8;
                             border-radius: .5em;
                             text-align: left;
-                            padding-left: 22%;
+                            padding-left: 26%;
                             box-shadow: 2px 3px 2px rgba(119, 119, 119, 0.05);
                         }
 
@@ -128,94 +120,86 @@ body {
                 }
             }
 
-            .main-body-wrapper {
+            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-                margin-top: 50px;
+                // margin: 30px auto;
 
-                .flex-container {
-                    list-style: none;
-                    display: flex;
-                    flex-flow: row wrap;
-                    justify-content: center;
-                    width: 100%;
-                    margin: 0;
-                    padding: 0;
-                    // margin-block-start: 1em;
-                    // margin-block-end: 1em;
-                    // margin-inline-start: 0px;
-                    // margin-inline-end: 0px;
-                    // align-content: center;
+                .main-body-wrapper {
+                    margin: 30px auto;
 
-                    .category-link {
-                        color: color(primary-blue);
-                        background-color: transparent;
-                        text-decoration: none;
-                        font-weight: 400;
-                        text-size-adjust: 100%;
+                    .flex-container {
+                        list-style: none;
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: center;
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
 
-                        .flex-item {
-                            background: color(category-box);
-                            box-shadow: 0px 7px 20px rgba(119, 119, 119, 0.30);
-                            border-radius: 5px;
-                            font-weight: 700;
-                            margin: 10px;
-                            padding: 35px 5px 5px 5px;
-                            text-align: center;
-
-                            h2 {
-                                color: color(primary-yellow);
+                        .category-link {
+                            color: color(primary-blue);
+                            background-color: transparent;
+                            text-decoration: none;
+                            font-weight: 400;
+                            text-size-adjust: 100%;
+    
+                            .flex-item {
+                                background: color(category-box);
+                                box-shadow: 0px 7px 20px rgba(119, 119, 119, 0.30);
+                                border-radius: 5px;
+                                font-weight: 700;
+                                margin: 10px;
+                                padding: 35px 5px 5px 5px;
+                                text-align: center;
+    
+                                h2 {
+                                    color: color(primary-yellow);
+                                }
+    
+                                h3 {
+                                    font-size: 13px;
+                                    font-weight: 300;
+                                    letter-spacing: 1.2px;
+                                }
+    
                             }
-
-                            h3 {
-                                font-size: 13px;
-                                font-weight: 300;
-                                letter-spacing: 1.2px;
+    
+                            .category-items {
+                                width: 240px;
+                                height: 260px;
                             }
-
-                        }
-
-                        .category-items {
-                            width: 240px;
-                            height: 260px;
-                        }
-
-                        #font-icons {
-                            padding-top: 15px;
-                            font-size: 50px;
-                        }
-
-                        hr {
-                            max-width: 44px;
-                            color: #C8C8C8;
+    
+                            #font-icons {
+                                padding-top: 15px;
+                                font-size: 50px;
+                            }
+    
+                            hr {
+                                max-width: 44px;
+                                color: #C8C8C8;
+                            }
                         }
                     }
                 }
+
             }
 
             .main-footer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: color(nav-footer);
                 color: color(primary-blue);
                 text-align: center;
-                padding-top: 15px;
             }
     }
 }
-
-// input {
-//     max-width: 100%;
-//     font: inherit;
-//     margin: 0;
-
-//     text-rendering: auto;
-//     letter-spacing: normal;
-//     word-spacing: normal;
-//     text-transform: none;
-//     text-indent: 0px;
-//     display: inline-block;
-//     text-align: start;
-// }
 
 textarea:focus,
 input:focus {
     outline: none;
 }
+
