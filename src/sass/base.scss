@@ -5,6 +5,16 @@
 // gray rgb(238, 238, 238)
 
 // <img src="img" alt="eviCore Healthcare Logo">
+/*
+    Queries
+*/
+
+@media (min-width: 992px) {
+    section {
+        max-width: 992px;
+    }
+}
+
 
 /*
     VARIABLES
@@ -122,12 +132,13 @@ body {
 
             main {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
 
                 // margin: 30px auto;
 
-                .main-body-wrapper {
+                .main-section-wrapper {
                     margin: 30px auto;
 
                     .flex-container {
@@ -194,6 +205,12 @@ body {
                 background-color: color(nav-footer);
                 color: color(primary-blue);
                 text-align: center;
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 16px;
+                    letter-spacing: 1.2px;
+                }
             }
     }
 }
