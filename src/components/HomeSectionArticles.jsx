@@ -5,7 +5,7 @@ import HomeArticle from './HomeArticle';
 class SectionArticles extends React.Component {
     render() {
         return (
-            <section className="home-section-wrapper">
+            <section className="main-section-wrapper">
                 <ul className="flex-container">
                     <HomeArticle />
                 </ul>
