@@ -6,7 +6,7 @@ class SectionListItems extends React.Component {
     render() {
         return (
             <section className="main-section-wrapper" id="main-section-wrapper">
-                <ul className="flex-container">
+                <ul className="flex-container home-list-container">
                     <HomeListItem 
                         category="Videos" 
                         iconName="fa-video"

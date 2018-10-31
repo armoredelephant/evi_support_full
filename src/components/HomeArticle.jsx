@@ -7,7 +7,7 @@ class HomeArticle extends React.Component {
         return (
             <Link to="#" className="article-link">
                 <li className="flex-item frequent-article">
-
+                    <h3>{this.props.article}</h3>
                 </li>
             </Link>
         );
