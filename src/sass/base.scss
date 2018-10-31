@@ -15,6 +15,15 @@
     }
 }
 
+@media (max-width: 576px) {
+    #home-article-container {
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        padding-left: 53px;
+    }
+}
+
 
 /*
     VARIABLES
@@ -141,8 +150,30 @@ body {
                 .main-section-wrapper {
                     margin: 30px auto;
 
-                    .flex-container {
+                    .section-title {
+                        text-align: center;
+                    }
+
+                    .most-viewed-hr {
+                        max-width: 105px;
+                        color: #C8C8C8;
+                    }
+
+                    .home-list-container {
                         list-style: none;
+                    }
+
+                    .home-article-container {
+                        flex-direction: column;
+
+                        .article-link {
+                            text-decoration: none;
+                            border-bottom: 1px solid #000;
+                        }
+
+                    }
+
+                    .flex-container {
                         display: flex;
                         flex-flow: row wrap;
                         justify-content: center;
@@ -218,5 +249,10 @@ body {
 textarea:focus,
 input:focus {
     outline: none;
+}
+
+.article-link:visited,
+.article-link:active {
+    color: color(primary-blue);
 }
 
