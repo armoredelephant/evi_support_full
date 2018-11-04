@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import ListIcon from './ListIcon';
+import ListIcon from './HomeListIcon';
 
 class HomeListItem extends React.Component {
     render() {
