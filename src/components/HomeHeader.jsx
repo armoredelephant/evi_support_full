@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LogoLink from './LogoLink';
+import LogoLink from './HomeLogoLink';
 import HomeSearchBar from './HomeSearchBar';
 
 class HomeHeader extends React.Component {
