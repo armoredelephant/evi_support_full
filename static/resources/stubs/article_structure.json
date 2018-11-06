@@ -1,0 +1,45 @@
+{
+    "Power Issues": {
+        "categories": [
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Monitor Issues": {
+        "categories": [
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    }
+}
