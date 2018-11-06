@@ -1,5 +1,7 @@
 // @import '~bootstrap/scss/bootstrap';
 
+// Refactor: 3 class deep.
+
 /* BLUE #002855 */
 /* YELLOW #c99700 */
 // gray rgb(238, 238, 238)
@@ -185,11 +187,18 @@ body {
                     }
 
                     .home-article-container {
-                        // list-style: none;
+                        list-style: none;
                         flex-direction: column;
                         margin: 50px 0;
 
                         .article-link {
+
+                            &:visited,
+                            &:active,
+                            &:hover {
+                                color: color(primary-blue);
+                                text-decoration: underline;
+                            }
                             text-decoration: none;
                         }
 
@@ -274,8 +283,4 @@ input:focus {
     outline: none;
 }
 
-.article-link:visited,
-.article-link:active {
-    color: color(primary-blue);
-}
 
