@@ -1,48 +1,33 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import Axios from 'axsios'
+import { isNullOrUndefined } from 'util';
 
+// we want this to take in articleID based on the category it was clicked from?
 
-class Articles extends React.Component {
-    constructor() {
-        super()
+class Article extends React.Component {
+    constructor(props) {
+        super(props)
         this.state = {
-            articles: null
+            article: null
         }
     }
 
-    componentDidMount() {
-        axios.get('/resources/stubs/article_structure.json').then( response => {
-            this.setState(
-                {
-                    articles: response.data
-                }
-            )
-        });
-    }
+
+
+// <Link> from article page will pass a prop 
+
+
+    // props.match.params.title is passed through as the title 
 
     render() {
-        if (!this.state.articles) {
-            return null;
-        } 
+        if (!this.state.article) {
+            return null
+        }
 
-        const { articles } = this.state;
+        const { article } = this.state
 
         return (
-            <div>
-                {/* ['Power Issues', 'Monitor Issues'] */}
-                {Object.keys(articles).map( article => (
-                    <div key={article}>
-                        {articles[article].categories.map( (category, index) => (
-                            <React.Fragment key={index}>
-                                {category.title}
-                                {category.description}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                ))}
-            </div>
+
         );
     }
 }
-
-export default Articles;

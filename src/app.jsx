@@ -7,7 +7,7 @@ import HomeHeader from './components/HomeHeader';
 import HomeBody from './components/HomeBody';
 import HomeFooter from './components/HomeFooter';
 import SideNavBar from './components/SideNavBar';
-import Articles from './components/Articles';
+import ArticlesLanding from './components/ArticlesLanding';
 import FakePage from './components/FakePage';
 
 class App extends React.Component {
@@ -16,8 +16,8 @@ class App extends React.Component {
             <Router>
                 <div className="container">
                     <HomeHeader />
-                    <Route path="/Landing" component={HomeBody} />
-                    {/* <Route path="/Article" /> */}
+                    <Route exact path="/" component={HomeBody} />
+                    <Route path="/Articles/:id" component={Articles} />
                     {/* <Route path="/Article/:article_name" component={Article} /> */}
                     <Route path="#" component={FakePage} />
                     <HomeFooter />
