@@ -6,7 +6,7 @@ import ListIcon from './HomeListIcon';
 class HomeListItem extends React.Component {
     render() {
         return (
-            <Link to="#" className="category-link">
+            <Link to="/Articles" className="category-link">
                 <li className="flex-item category-items" id={this.props.categoryID}>
                     <ListIcon iconName={this.props.iconName}/>
                     <h2>{this.props.category}</h2>

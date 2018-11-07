@@ -3,40 +3,24 @@
         "articles": [
             {
                 "id": 1,
-                "categories": [
-                    "Power Issues",
-                    "Monitor Issues"
-                ],
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
-                "id": 1,
-                "categories": [
-                    "Power Issues",
-                    "Monitor Issues"
-                ],
+                "id": 2,
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
-                "id": 1,
-                "categories": [
-                    "Power Issues",
-                    "Monitor Issues"
-                ],
+                "id": 3,
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
-                "id": 1,
-                "categories": [
-                    "Power Issues",
-                    "Monitor Issues"
-                ],
+                "id": 4,
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
@@ -44,3 +28,15 @@
         ]
     }
 }
+
+/*
+Igel
+Citrix App
+Phone
+Monitor
+Meraki
+Laptop/Desktop
+Docking Station?
+
+Hardware ID Page - Interactive
+*/
