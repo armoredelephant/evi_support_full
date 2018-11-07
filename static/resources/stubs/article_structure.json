@@ -1,41 +1,42 @@
 {
     "Power Issues": {
-        "categories": [
+        "articles": [
             {
+                "id": 1,
+                "categories": [
+                    "Power Issues",
+                    "Monitor Issues"
+                ],
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
+                "id": 1,
+                "categories": [
+                    "Power Issues",
+                    "Monitor Issues"
+                ],
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
+                "id": 1,
+                "categories": [
+                    "Power Issues",
+                    "Monitor Issues"
+                ],
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
             },
             {
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            }
-        ]
-    },
-    "Monitor Issues": {
-        "categories": [
-            {
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
+                "id": 1,
+                "categories": [
+                    "Power Issues",
+                    "Monitor Issues"
+                ],
                 "title": "Igel will not turn on",
                 "description": "Your igel will not turn on.",
                 "body": "this is the body."
