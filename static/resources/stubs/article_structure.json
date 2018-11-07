@@ -1,5 +1,5 @@
 {
-    "Power Issues": {
+    "Igel-Related": {
         "articles": [
             {
                 "id": 1,
@@ -26,7 +26,175 @@
                 "body": "this is the body."
             }
         ]
-    }
+    },
+    "Dockingstation-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Laptop/Desktop-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Meraki-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Monitor-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Phone-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
+    "Citrix-Related": {
+        "articles": [
+            {
+                "id": 1,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 2,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 3,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            },
+            {
+                "id": 4,
+                "title": "Igel will not turn on",
+                "description": "Your igel will not turn on.",
+                "body": "this is the body."
+            }
+        ]
+    },
 }
 
 /*
