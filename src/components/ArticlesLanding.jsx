@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 
 class ArticlesLanding extends React.Component {
     constructor() {
         super()
         this.state = {
-            articles: null
+            categoryList: null
         }
     }
 
@@ -14,28 +15,27 @@ class ArticlesLanding extends React.Component {
         axios.get('/resources/stubs/article_structure.json').then( response => {
             this.setState(
                 {
-                    articles: response.data
+                    categoryList: response.data
                 }
             )
         });
     }
 
     render() {
-        if (!this.state.articles) {
+        if (!this.state.categoryList) {
             return null;
         } 
 
-        const { articles } = this.state;
+        const { categoryList } = this.state;
 
         return (
             <div>
                 {/* ['Power Issues', 'Monitor Issues'] */}
-                {Object.keys(articles).map( article => (
-                    <div key={article}>
-                        {articles[article].categories.map( (category, index) => (
+                {Object.keys(categoryList).map(category => (
+                    <div key={category}>
+                        {categoryList[category].articles.map( (article, index) => (
                             <React.Fragment key={index}>
-                                {category.title}
-                                {category.description}
+                                <Link to={`/Articles/${category}/${article.id}`}>{article.title}</Link>
                             </React.Fragment>
                         ))}
                     </div>
