@@ -1,47 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 class ArticleLink extends React.Component {
     constructor() {
         super()
         this.state = {
-            articleCategories = null
+            currentArticle: null
         }
     }
-
+            
     componentDidMount() {
         axios.get('/resources/stubs/article_structure.json').then(response => {
-            this.setState(
-                {
-                    articleCategories = response.data
+            const currentArticle = response.data[this.props.match.params.category].articles.find(
+                article => {
+                    return article.id == this.props.match.params.articleId
                 }
             )
+            
+            this.setState({ currentArticle })
+            
         })
     }
 
     render() {
-        if (!this.state.articleCategories) {
+        if (!this.state.currentArticle) {
             return null
         }
 
-        const { articleCategories } = this.state
+        const { currentArticle } = this.state
 
         return (
             <div>
                 <ul>
-                    {Object.keys(articleCategories).map(category => (
-                        <li key={category.article.id}>
-                            <Link to={`/Articles/${category.articles.id}`} 
-                                className="article-link" 
-                                articleTitle={`${category.articles.title}`} 
-                                articleDescription={`${category.articles.description}`}>
+                    {/* {Object.keys(articleCategories).map(category => (
+                        <li key={articleCategories[category].articles.id}>
+                            <Link to={`"/Articles/${article}"`}>
                             </Link> 
                         </li>
-                    ))}
+                    ))} */}
                 </ul>
             </div>
         )
     }
 }
 
-export default HomeListItem;
+export default ArticleLink;
