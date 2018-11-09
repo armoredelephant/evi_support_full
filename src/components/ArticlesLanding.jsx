@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 
-class ArticlesLanding extends React.Component {
+class ArticlesLanding extends Component {
     constructor() {
         super()
         this.state = {

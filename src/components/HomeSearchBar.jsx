@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class HomeSearchbar extends React.Component {
+class HomeSearchbar extends Component {
     render() {
         return (
             <div className="search-container">

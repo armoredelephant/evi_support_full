@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class HomeFooter extends React.Component {
+class HomeFooter extends Component {
     render() {
         return (
             <footer className="main-footer">

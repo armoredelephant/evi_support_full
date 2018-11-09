@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class ListIcon extends React.Component {
+class ListIcon extends Component {
     render() {
         return (
             <i className={`fas ${this.props.iconName}`} id="font-icons"></i>

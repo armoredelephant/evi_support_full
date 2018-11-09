@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './sass/base.scss'
@@ -12,7 +12,7 @@ import HomeFooter from './components/HomeFooter';
 import HomeHeader from './components/HomeHeader';
 import SideNavBar from './components/SideNavBar';
 
-class App extends React.Component {
+class App extends Component {
     render() {
         return (
             <Router>

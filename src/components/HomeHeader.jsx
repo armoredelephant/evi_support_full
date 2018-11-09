@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import LogoLink from './HomeLogoLink';
 import HomeSearchBar from './HomeSearchBar';
 
-class HomeHeader extends React.Component {
+class HomeHeader extends Component {
     render() {
         return (
             <div className="header-wrapper">

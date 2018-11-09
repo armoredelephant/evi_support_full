@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class EviLogo extends React.Component {
+class EviLogo extends Component {
     render() {
         return (
             <header className="mobile-header">

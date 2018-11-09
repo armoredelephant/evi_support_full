@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import HomeListItem from './HomeListItems';
 
-class SectionListItems extends React.Component {
+class SectionListItems extends Component {
     render() {
         return (
             <section className="main-section-wrapper" id="main-section-wrapper">
