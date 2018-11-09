@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import ListIcon from './HomeListIcon';
 
-class HomeListItem extends React.Component {
+class HomeListItem extends Component {
     render() {
+        const { category, iconName, categoryDescription, categoryID } = this.props
+
         return (
-            <Link to="/Articles" className="category-link">
-                <li className="flex-item category-items" id={this.props.categoryID}>
-                    <ListIcon iconName={this.props.iconName}/>
-                    <h2>{this.props.category}</h2>
+            <Link to={`/${category}`} className="category-link">
+                <li className="flex-item category-items" id={categoryID}>
+                    <ListIcon iconName={iconName}/>
+                    <h2>{category}</h2>
                     <hr />
-                    <h3>{this.props.categoryDescription}</h3>
+                    <h3>{categoryDescription}</h3>
                 </li>
             </Link> 
         );
