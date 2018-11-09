@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
-import LogoLink from './HomeLogoLink';
-import HomeSearchBar from './HomeSearchBar';
+import EviLogo from './StaticEviLogo';
+import SearchBar from './StaticSearchBar';
 
-class HomeHeader extends Component {
+class Header extends Component {
     render() {
         return (
             <div className="header-wrapper">
-                <LogoLink />
+                <EviLogo />
                 <h1 className="page-title">Help Center</h1>
-                <HomeSearchBar />
+                <SearchBar />
             </div>
         )
     }
 }
 
-export default HomeHeader;
+export default Header;

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
-import SectionListItems from './HomeSectionListItems';
-import SectionArticles from './HomeSectionArticles';
-
-/*
-    The purpose of this component is to build the list items for the category links
-*/
+import SectionListItems from './home/HomeSectionListItems';
+// import SectionArticles from './HomeSectionArticles';
 
 class HomeBody extends Component {
     render() {

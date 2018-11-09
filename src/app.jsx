@@ -3,28 +3,26 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './sass/base.scss'
 
-import Articles from './components/Articles'
-import ArticlesLanding from './components/ArticlesLanding';
-import ArticleLink from './components/ExampleArticleLink'
-import FakePage from './components/FakePage';
+import ArticlesLandingBody from './components/ArticlesLandingBody'
+import ArticleActive from './components/articles/ArticleActive'
 import HomeBody from './components/HomeBody';
-import HomeFooter from './components/HomeFooter';
-import HomeHeader from './components/HomeHeader';
-import SideNavBar from './components/SideNavBar';
+import Footer from './components/StaticFooter';
+import Header from './components/StaticHeader';
 
 class App extends Component {
     render() {
         return (
             <Router>
                 <div className="container">
-                    <HomeHeader />
-                    <Route exact path="/" component={HomeBody} />
+                    <Header />
                     <Switch>
-                        <Route exact path="/Articles" component={ArticlesLanding} />
-                        <Route path="/Articles/:category/:articleId" component={ArticleLink} />
+                        <Route exact path="/" component={HomeBody} />
                     </Switch>
-                    <Route path="#" component={FakePage} />
-                    <HomeFooter />
+                    <Switch>
+                        <Route exact path="/Articles" component={ArticlesLandingBody} />
+                        <Route path="/Articles/:category/:articleId" component={ArticleActive} />
+                    </Switch>
+                    <Footer />
                 </div>
             </Router>
         );
