@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-class ArticleLink extends React.Component {
+class ArticleActive extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -44,4 +44,4 @@ class ArticleLink extends React.Component {
     }
 }
 
-export default ArticleLink;
+export default ArticleActive;

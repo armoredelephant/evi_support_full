@@ -1,5 +1,5 @@
 {
-    "Applications-and-Software": {
+    "Applications": {
         "articles": [
             {
                 "id": 1,
@@ -54,7 +54,7 @@
             }
         ]
     },
-    "Hardware-Connection": {
+    "Hardware Setup": {
         "articles": [
             {
                 "id": 1,
@@ -70,7 +70,7 @@
             }
         ]
     },
-    "Hardware-Use": {
+    "Hardware Use": {
         "articles": [
             {
                 "id": 1,
