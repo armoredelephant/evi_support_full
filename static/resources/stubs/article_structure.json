@@ -1,197 +1,181 @@
 {
-    "Igel-Related": {
+    "Applications-and-Software": {
         "articles": [
             {
                 "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Igel Quick Start Guide",
+                "description": "A jack-of-all-trades guide that covers a number of common IGEL questions.",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "igel"
+                ]
             },
             {
                 "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Installing Licensed Software From Software Center",
+                "description": "A quick how-to on installing software from the Software Center!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "software",
+                    "license",
+                    "install"
+                ]
             },
             {
                 "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "eviNotes Tutorial",
+                "description": "A short tutorial on using eviNotes!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "evinotes"
+                ]
             },
             {
                 "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "FranklinCovey All Access Tutorial",
+                "description": "A short tutorial on using logging into FranklinCovey All Access Pass",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "franklincovey",
+                    "access"
+                ]
+            },
+            {
+                "id": 5,
+                "title": "Frozen Applications Within Citrix",
+                "description": "A quick how-to on closing out of your frozen Citrix applications and sessions!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "frozen",
+                    "freezing",
+                    "citrix",
+                    "applications"
+                ]
             }
         ]
     },
-    "Dockingstation-Related": {
+    "Hardware-Connection": {
         "articles": [
             {
                 "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Setting up a Dell WD15 docking station",
+                "description": "This article will guide you through connecting your equipment to a new WD15 docking station.",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "dell",
+                    "wd15",
+                    "dock",
+                    "docking station"
+                ]
             }
         ]
     },
-    "Laptop/Desktop-Related": {
+    "Hardware-Use": {
         "articles": [
             {
                 "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "How to Configure Multiple Monitors",
+                "description": "This article covers steps on how to enable both monitors.",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "monitor",
+                    "resolution",
+                    "extend",
+                    "display",
+                    "dual"
+                ]
             },
             {
                 "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Changing The Screen Resolution on an Igel",
+                "description": "A quick how-to on changing the resolution on your igel!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "resolution",
+                    "monitor",
+                    "igel",
+                    "extend",
+                    "display",
+                    "dual"
+                ]
             },
             {
                 "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Calling Into Webex using a Smart Board",
+                "description": "This article will guide you through using a Smart Board to call into your Webex Meetings",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "cisco",
+                    "call",
+                    "smart board",
+                    "smart",
+                    "webex"
+                ]
             },
             {
                 "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Signing Into A Cisco Phone - Model 8845",
+                "description": "An article to guide you through signing into your Cisco phone.",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "cisco",
+                    "8856",
+                    "extension",
+                    "mobility",
+                    "sign"
+                ]
             }
         ]
     },
-    "Meraki-Related": {
+    "Other": {
         "articles": [
             {
                 "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Mapping a Network Drive",
+                "description": "A quick how-to on mapping your drives!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "drive",
+                    "network",
+                    "map"
+                ]
             },
             {
                 "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Setting Up A Verification PIN for Service Desk Assistance",
+                "description": "This article will cover creating a verification PIN, which is required by Service Desk when requesting password changes!",
+                "body": "orem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "pin",
+                    "service desk"
+                ]
             }
         ]
     },
-    "Monitor-Related": {
+    "Email": {
         "articles": [
             {
                 "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Accessing Online Archive",
+                "description": "This article will assist you with navigating to your online archive.",
+                "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "archive",
+                    "email",
+                    "outlook"
+                ]
             },
             {
                 "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            }
-        ]
-    },
-    "Phone-Related": {
-        "articles": [
-            {
-                "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            }
-        ]
-    },
-    "Citrix-Related": {
-        "articles": [
-            {
-                "id": 1,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 2,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 3,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
-            },
-            {
-                "id": 4,
-                "title": "Igel will not turn on",
-                "description": "Your igel will not turn on.",
-                "body": "this is the body."
+                "title": "Airwatch Troubleshooting",
+                "description": "This article will go over steps on properly configuring Airwatch on your mobile device.",
+                "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique reprehenderit id consequatur quasi numquam aliquam quos corporis esse porro harum optio ipsum, nulla ea vero quae totam mollitia? Beatae, officiis?",
+                "tags": [
+                    "airwatch",
+                    "mobile",
+                    "email",
+                    "outlook"
+                ]
             }
         ]
     }

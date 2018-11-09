@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class SideNavBar extends React.Component {
+class SideNavBar extends Component {
     render() {
         return (
             null

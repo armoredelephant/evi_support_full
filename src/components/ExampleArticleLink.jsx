@@ -18,7 +18,7 @@ class ArticleLink extends React.Component {
             )
             
             this.setState({ currentArticle })
-            
+
         })
     }
 

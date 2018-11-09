@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-class HomeArticle extends React.Component {
+class HomeArticle extends Component {
     render() {
         return (
             <Link to="#" className="article-link">

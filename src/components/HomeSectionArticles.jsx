@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import HomeArticle from './HomeArticle';
 
-class SectionArticles extends React.Component {
+class SectionArticles extends Component {
     render() {
         return (
             <section className="main-section-wrapper" id="most-viewed-articles">
