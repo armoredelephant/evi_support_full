@@ -28,7 +28,7 @@ class ArticlesList extends Component {
         const { categoryList } = this.state;
 
         return (
-            <section className="article-category-container">
+            <section className="article-category-container" id="article-category-container">
                 {Object.keys(categoryList).map( (category, index) => (
                     <div key={index} className="article-category-wrapper">
                         <ul key={category} className="article-category-list">
