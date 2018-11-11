@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
-
 class ArticlesList extends Component {
     constructor() {
         super()
@@ -30,8 +29,8 @@ class ArticlesList extends Component {
 
         return (
             <section className="article-category-container">
-                {Object.keys(categoryList).map(category => (
-                    <div className="article-category-wrapper">
+                {Object.keys(categoryList).map( (category, index) => (
+                    <div key={index} className="article-category-wrapper">
                         <ul key={category} className="article-category-list">
                         <h3>{category}</h3>
                         <hr/>
