@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import ApplicationsCategory from './categories/ApplicationsCategory'
+
 class ArticleSidebar extends Component {
     constructor() {
         super()
@@ -27,7 +29,9 @@ class ArticleSidebar extends Component {
         const { categoryList } = this.state
         
         return (
-            null
+            <aside className="article-sidebar">
+                <ApplicationsCategory />
+            </aside>
         );
     }
 }
