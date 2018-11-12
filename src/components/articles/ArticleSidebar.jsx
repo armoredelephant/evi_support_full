@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-import ApplicationsCategory from './categories/ApplicationsCategory'
+import SidebarCategory from './categories/SidebarCategory'
 
 class ArticleSidebar extends Component {
     constructor() {
@@ -30,8 +29,11 @@ class ArticleSidebar extends Component {
         
         return (
             <aside className="article-sidebar">
-                <ApplicationsCategory categoryName="Applications"/>
-                <ApplicationsCategory categoryName="Hardware Setup" />
+                <SidebarCategory categoryName="Applications"/>
+                <SidebarCategory categoryName="Hardware Setup" />
+                <SidebarCategory categoryName="Hardware Use" />
+                <SidebarCategory categoryName="Email" />
+                <SidebarCategory categoryName="Other" />
             </aside>
         );
     }
