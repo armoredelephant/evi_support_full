@@ -15,13 +15,13 @@ class App extends Component {
             <Router>
                 <div className="container">
                     <Header />
-                    <Switch>
-                        <Route exact path="/" component={HomeBody} />
-                    </Switch>
-                    <Switch>
-                        <Route exact path="/Articles" component={ArticlesLandingBody} />
-                        <Route path="/Articles/:category/:articleId" component={ArticleActive} />
-                    </Switch>
+                        <Switch>
+                            <Route exact path="/" component={HomeBody} />
+                        </Switch>
+                        <Switch>
+                            <Route exact path="/Articles" component={ArticlesLandingBody} />
+                            <Route path="/Articles/:category/:articleId" component={ArticleActive} />
+                        </Switch>
                     <Footer />
                 </div>
             </Router>

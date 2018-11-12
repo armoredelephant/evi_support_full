@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 
+import ArticleSidebar from './ArticleSidebar'
+
 class ArticleActive extends React.Component {
     constructor() {
         super()
@@ -30,16 +32,10 @@ class ArticleActive extends React.Component {
         const { currentArticle } = this.state
 
         return (
-            <div>
-                <ul>
-                    {/* {Object.keys(articleCategories).map(category => (
-                        <li key={articleCategories[category].articles.id}>
-                            <Link to={`"/Articles/${article}"`}>
-                            </Link> 
-                        </li>
-                    ))} */}
-                </ul>
-            </div>
+            <React.Fragment>
+                <ArticleSidebar />
+            </React.Fragment>
+
         )
     }
 }
