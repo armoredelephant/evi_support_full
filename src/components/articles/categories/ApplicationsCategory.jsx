@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { articleListToggle } from '../../../utils/toggleArticles'
 
 class ApplicationsCategory extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             applicationCategory: null,
             showMe: false
@@ -17,7 +17,7 @@ class ApplicationsCategory extends Component {
         axios.get('/resources/stubs/article_structure.json').then(response => {
             this.setState(
                 {
-                    applicationCategory: response.data["Applications"].articles
+                    applicationCategory: response.data[this.props.categoryName].articles
                 }
             )
         })
@@ -40,7 +40,7 @@ class ApplicationsCategory extends Component {
                             showMe: articleListToggle(this.state.showMe) 
                         }
                     )}>
-                Applications
+                {this.props.categoryName}
                 </button>
                 {
                     this.state.showMe ?

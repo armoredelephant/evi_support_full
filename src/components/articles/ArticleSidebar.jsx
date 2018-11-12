@@ -30,7 +30,8 @@ class ArticleSidebar extends Component {
         
         return (
             <aside className="article-sidebar">
-                <ApplicationsCategory />
+                <ApplicationsCategory categoryName="Applications"/>
+                <ApplicationsCategory categoryName="Hardware Setup" />
             </aside>
         );
     }
