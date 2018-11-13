@@ -2,16 +2,16 @@ import React from 'react';
 import axios from 'axios'
 
 import ArticleSidebar from './ArticleSidebar'
+import ActualArticle from './ActualArticle'
 
 class ArticleActive extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            currentArticle: null
+            currentArticle: null,
         }
     }
-            
-    componentDidMount() {
+    axiosFetch() {
         axios.get('/resources/stubs/article_structure.json').then(response => {
             const currentArticle = response.data[this.props.match.params.category].articles.find(
                 article => {
@@ -23,6 +23,14 @@ class ArticleActive extends React.Component {
 
         })
     }
+    componentDidMount() {
+        this.axiosFetch()
+    }
+
+    componentDidUpdate(prevState) {
+        // if (prevState.currentArticle !== this.state.currentArticle) {
+        this.axiosFetch()
+    }
 
     render() {
         if (!this.state.currentArticle) {
@@ -30,10 +38,11 @@ class ArticleActive extends React.Component {
         }
 
         const { currentArticle } = this.state
-
+        
         return (
             <React.Fragment>
                 <ArticleSidebar />
+                <ActualArticle articleId={currentArticle} key={currentArticle.title}/>
             </React.Fragment>
 
         )

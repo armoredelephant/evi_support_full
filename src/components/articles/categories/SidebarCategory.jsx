@@ -7,7 +7,7 @@ class SidebarCategory extends Component {
         super(props)
         this.state = {
             sidebarCategory: null,
-            showArticles: false
+            showArticles: null
         }
     }
 
@@ -15,7 +15,8 @@ class SidebarCategory extends Component {
         axios.get('/resources/stubs/article_structure.json').then(response => {
             this.setState(
                 {
-                    sidebarCategory: response.data[this.props.categoryName].articles
+                    sidebarCategory: response.data[this.props.categoryName].articles,
+                    showArticles: false
                 }
             )
         })
@@ -38,13 +39,13 @@ class SidebarCategory extends Component {
 
         return (
             <ul>
-                <button onClick={this.toggleArticleList()}>{this.props.categoryName}</button>
+                <button onClick={() => this.toggleArticleList()}>{this.props.categoryName}</button>
                 {
                     this.state.showArticles ?
                         <React.Fragment>
                             {sidebarCategory.map( (article, index) => (
                                 <li key={index} >
-                                    <Link to={`/Articles/${sidebarCategory}/${article.id}`} className="article-link">{article.title}</Link>
+                                    <Link to={`/Articles/${this.props.categoryName}/${article.id}`} className="article-link" key={index}>{article.title}</Link>
                                 </li>
                             ))}
                         </React.Fragment> :
