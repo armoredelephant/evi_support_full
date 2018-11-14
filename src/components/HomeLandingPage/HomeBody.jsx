@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SectionListItems from './home/HomeSectionListItems';
+import SectionListItems from './HomeSectionListItems';
 // import SectionArticles from './HomeSectionArticles';
 
 class HomeBody extends Component {

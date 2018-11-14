@@ -9,6 +9,8 @@ class SidebarCategory extends Component {
             sidebarCategory: null,
             showArticles: null
         }
+
+        this.toggleArticleList = this.toggleArticleList.bind(this)
     }
 
     componentDidMount() {
@@ -23,11 +25,9 @@ class SidebarCategory extends Component {
     }
 
     toggleArticleList() {
-        this.setState(
-            {
-                showArticles: !this.state.showArticles
-            }
-        )
+        this.setState(prevState => ({
+            showArticles: !prevState.showArticles
+        }))
     }
 
     render() {
@@ -39,7 +39,7 @@ class SidebarCategory extends Component {
 
         return (
             <ul>
-                <button onClick={() => this.toggleArticleList()}>{this.props.categoryName}</button>
+                <button onClick={this.toggleArticleList}>{this.props.categoryName}</button>
                 {
                     this.state.showArticles ?
                         <React.Fragment>

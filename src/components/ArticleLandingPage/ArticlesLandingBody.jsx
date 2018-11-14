@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import ArticlesList from './articles/ArticlesList'
-import ArticleHelp from './articles/ArticleHelp'
+import ArticlesList from './ArticlesList'
+import ArticleHelp from './ArticleHelp'
 
 class ArticlesLandingBody extends Component {
     render() {
