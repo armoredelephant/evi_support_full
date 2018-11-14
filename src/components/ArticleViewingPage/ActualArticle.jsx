@@ -10,9 +10,9 @@ class ActualArticle extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            currentArticle: this.props.articleId
-        }) 
+        // this.setState({
+        //     currentArticle: this.props.articleId
+        // }) 
     }
 
     render() {
@@ -24,8 +24,9 @@ class ActualArticle extends Component {
         const { currentArticle } = this.state
         
         return (
-            
-        <h1>{currentArticle.title}</h1>
+        <main role="main">
+            <h1>{currentArticle.title}</h1>
+        </main>
         );
     }
 }

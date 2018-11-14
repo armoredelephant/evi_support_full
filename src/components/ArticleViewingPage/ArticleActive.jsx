@@ -27,10 +27,11 @@ class ArticleActive extends React.Component {
         this.axiosFetch()
     }
 
-    componentDidUpdate(prevState) {
-        // if (prevState.currentArticle !== this.state.currentArticle) {
-        this.axiosFetch()
-    }
+    // componentDidUpdate(prevState) {
+    //     if (prevState.currentArticle !== this.state.currentArticle) {
+    //     this.axiosFetch()
+    //     }
+    // }
 
     render() {
         if (!this.state.currentArticle) {
@@ -40,10 +41,10 @@ class ArticleActive extends React.Component {
         const { currentArticle } = this.state
         
         return (
-            <React.Fragment>
+            <div className="view-article-container">
                 <ArticleSidebar />
-                <ActualArticle articleId={currentArticle} key={currentArticle.title}/>
-            </React.Fragment>
+                {/* <ActualArticle articleId={currentArticle} key={currentArticle.title}/> */}
+            </div>
 
         )
     }

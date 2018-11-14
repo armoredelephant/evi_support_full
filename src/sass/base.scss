@@ -359,4 +359,53 @@ li {
     list-style: none;
 }
 
+.view-article-container {
+    display: grid;
+}
+// **************************************
 
+
+.side-drawer {
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0 , 0.5);
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 200;
+}
+
+.backdrop {
+    position: fixed;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+.toggle-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-aroud;
+    height: 24px;
+    widows: 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+
+    .toggle-button__line {
+        width: 28px;
+        height: 1px;
+        background: white;
+    }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import SidebarCategory from './categories/SidebarCategory'
+import SidebarCategory from './SidebarCategory'
 
 class ArticleSidebar extends Component {
     constructor() {

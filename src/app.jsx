@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './sass/base.scss'
 
-import ArticlesLandingBody from './components/ArticlesLandingBody'
-import ArticleActive from './components/articles/ArticleActive'
-import HomeBody from './components/HomeBody';
+import ArticlesLandingBody from './components//ArticleLandingPage/ArticlesLandingBody'
+import ArticleActive from './components/ArticleViewingPage/ArticleActive'
+import HomeBody from './components/home/HomeBody';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
 
