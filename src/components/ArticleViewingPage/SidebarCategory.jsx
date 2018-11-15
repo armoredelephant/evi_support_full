@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 function SidebarCategory(props) {
-        return (
-            <ul>
-                <button onClick={props.onClick}>{this.props.categoryName}</button>
-                {
-                    props.showArticles ?
-                        <React.Fragment>
-                            {props.fetchArticleList.map( (article, index) => (
-                                <li key={index} >
-                                    <Link to={`/Articles/${this.props.categoryName}/${article.id}`} className="article-link" key={index}>{article.title}</Link>
-                                </li>
-                            ))}
-                        </React.Fragment> :
-                        null
-                }
-            </ul>
-        );
+
+    const articleList = props.fetchArticleList
+    
+    return (
+        <ul>
+            <button data-trigger={props.trigger} onClick={props.onClick}>{props.categoryName}</button>
+            <div className={props.openCategories.includes(props.trigger) ? 'show' : 'hide'}>
+                {props.articleList.map( (article, index) => (
+                    <li key={index} >
+                        <Link to={`/Articles/${props.categoryName}/${article.id}`} className="article-link" key={index}>{article.title}</Link>
+                    </li>
+                ))}
+            </div>
+        </ul>
+    );
 }
 
 export default SidebarCategory

@@ -1,20 +1,39 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 
+import ManageState from '../elements/ManageState'
 import SidebarCategory from './SidebarCategory'
 
 function ArticleSidebar(props) {
-        return (
-            <aside className="article-sidebar">
-                <SidebarCategory categoryName="Applications" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
-                <SidebarCategory categoryName="Hardware Setup" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
-                <SidebarCategory categoryName="Hardware Use" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
-                <SidebarCategory categoryName="Email" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
-                <SidebarCategory categoryName="Other" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
-            </aside>
-        );
+    return (
+        <aside className="article-sidebar">
+            {/* Manage state component */}
+            <ManageState render={
+                (managedProps) => (
+                    <Fragment>
+                        {props.categoryNames.map(category => (
+                            <SidebarCategory 
+                                articleList={props.articleList} 
+                                articleId={props.articleId} 
+                                categoryName={category}
+                                trigger={category}
+                                key={category} 
+                                openCategories={managedProps.openCategories}
+                                onClick={managedProps.actions.pushToCategories} />
+                        ))}
+                    </Fragment>
+                )}/>
+        </aside>
+    );
 }
 
 export default ArticleSidebar
 
-// 
+// yeild template to the ManageState, which will yeild back to ArticleSidebar
+
+// data attribute/trigger
+// dataset in console.dir(ele)
+
+// event > dom > 
+
+// if click on categorie, it should no longer be in the array.
