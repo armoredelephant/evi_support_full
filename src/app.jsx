@@ -5,7 +5,7 @@ import './sass/base.scss'
 
 import ArticlesLandingBody from './components//ArticleLandingPage/ArticlesLandingBody'
 import ArticleActive from './components/ArticleViewingPage/ArticleActive'
-import HomeBody from './components/home/HomeBody';
+import HomeBody from './components/HomeLandingPage/HomeBody';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
 
