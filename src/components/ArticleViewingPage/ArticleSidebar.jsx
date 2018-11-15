@@ -12,7 +12,8 @@ function ArticleSidebar(props) {
                 (managedProps) => (
                     <Fragment>
                         {props.categoryNames.map(category => (
-                            <SidebarCategory 
+                            <SidebarCategory
+                                allArticleData={props.allArticleData}
                                 articleList={props.articleList} 
                                 articleId={props.articleId} 
                                 categoryName={category}
