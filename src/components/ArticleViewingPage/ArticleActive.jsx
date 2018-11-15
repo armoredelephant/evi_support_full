@@ -8,19 +8,21 @@ class ArticleActive extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            allArticleData: null,
             categoryNames: null,
             currentArticleList: null,
-            currentArticleId: null,
+            currentArticleId: null
+            
     }
 }
 
     componentDidMount() {
         this.axiosFetchArticles()
-        console.log(this.state.categoryNames)
     }
 
     axiosFetchArticles = () => {
         return axios.get('/resources/stubs/article_structure.json').then(response => {
+            const allArticleData = response.data
             const categoryNames = Object.keys(response.data)
             const currentArticleList = response.data[this.props.match.params.category].articles
             const currentArticleId = response.data[this.props.match.params.category].articles.find(
@@ -29,7 +31,7 @@ class ArticleActive extends React.Component {
                 }
             )
             
-            this.setState({ currentArticleList, currentArticleId, categoryNames })
+            this.setState({ allArticleData, currentArticleList, currentArticleId, categoryNames })
         })
     }
 
@@ -38,11 +40,12 @@ class ArticleActive extends React.Component {
             return null
         }
 
-        const { categoryNames, currentArticleList, currentArticleId } = this.state
+        const { allArticleData, categoryNames, currentArticleList, currentArticleId } = this.state
         
         return (
             <div className="view-article-container">
                 <ArticleSidebar 
+                    allArticleData={allArticleData}
                     articleList={currentArticleList} 
                     articleId={currentArticleId}
                     categoryNames={categoryNames}
