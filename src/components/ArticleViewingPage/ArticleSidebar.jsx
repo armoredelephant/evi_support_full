@@ -3,40 +3,18 @@ import axios from 'axios';
 
 import SidebarCategory from './SidebarCategory'
 
-class ArticleSidebar extends Component {
-    constructor() {
-        super()
-        this.state = {
-            categoryList: null
-        }
-    }
-
-    componentDidMount() {
-        axios.get('/resources/stubs/article_structure.json').then( response => {
-            this.setState(
-                {
-                    categoryList: response.data
-                }
-            )
-        });
-    }
-
-    render() {
-        if(!this.state.categoryList) {
-            return null
-        }
-        const { categoryList } = this.state
-        
+function ArticleSidebar(props) {
         return (
             <aside className="article-sidebar">
-                <SidebarCategory categoryName="Applications"/>
-                <SidebarCategory categoryName="Hardware Setup" />
-                <SidebarCategory categoryName="Hardware Use" />
-                <SidebarCategory categoryName="Email" />
-                <SidebarCategory categoryName="Other" />
+                <SidebarCategory categoryName="Applications" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
+                <SidebarCategory categoryName="Hardware Setup" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
+                <SidebarCategory categoryName="Hardware Use" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
+                <SidebarCategory categoryName="Email" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
+                <SidebarCategory categoryName="Other" showArticles={props.showArticles} articleList={props.articleList} articleId={props.articleId} fetchArticleList={props.fetchArticleList} fetchArticleId={props.fetchArticleId} onClick={props.onClick} />
             </aside>
         );
-    }
 }
 
 export default ArticleSidebar
+
+// 
