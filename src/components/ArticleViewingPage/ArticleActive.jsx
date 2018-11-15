@@ -11,25 +11,17 @@ class ArticleActive extends React.Component {
             categoryNames: null,
             currentArticleList: null,
             currentArticleId: null,
-            showArticles: false
     }
 }
 
     componentDidMount() {
         this.axiosFetchArticles()
-    }
-
-    renderArticle() {
-        const { showArticles, articleList, articleId } = this.state
-
-        return (
-            <ArticleSidebar showArticles={showArticles} articleList={articleList} articleId={articleId} fetchArticleList={() => this.axiosFetchArticles()} fetchArticleId={() => this.axiosFetchArticleId()} onClick={() => this.handleClick()}/>
-        )
+        console.log(this.state.categoryNames)
     }
 
     axiosFetchArticles = () => {
         return axios.get('/resources/stubs/article_structure.json').then(response => {
-            const categoryNames = Object.keys(response.data).map(category => category)
+            const categoryNames = Object.keys(response.data)
             const currentArticleList = response.data[this.props.match.params.category].articles
             const currentArticleId = response.data[this.props.match.params.category].articles.find(
                 article => {
@@ -41,23 +33,20 @@ class ArticleActive extends React.Component {
         })
     }
 
-    handleClick = () => {
-        this.setState(prevState => ({
-            showArticles: !prevState.showArticles
-        }))
-    }
-
     render() {
-        if (!this.state.currentArticle) {
+        if (!this.state.categoryNames) {
             return null
         }
 
-        const { showArticles, articleList, articleId } = this.state
+        const { categoryNames, currentArticleList, currentArticleId } = this.state
         
         return (
             <div className="view-article-container">
-                {this.renderArticle()}
-                {/* <ActualArticle articleId={currentArticle} key={currentArticle.title}/> */}
+                <ArticleSidebar 
+                    articleList={currentArticleList} 
+                    articleId={currentArticleId}
+                    categoryNames={categoryNames}
+                />
             </div>
 
         )
