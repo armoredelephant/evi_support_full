@@ -16,11 +16,13 @@ function ArticleSidebar(props) {
                                 allArticleData={props.allArticleData}
                                 articleList={props.articleList} 
                                 articleId={props.articleId} 
+                                articleIdMatch={props.articleIdMatch}
                                 categoryName={category}
-                                trigger={category}
                                 key={category} 
                                 openCategories={managedProps.openCategories}
-                                onClick={managedProps.actions.pushToCategories} />
+                                onClick={managedProps.actions.pushToCategories}
+                                trigger={category}
+                            />
                         ))}
                     </Fragment>
                 )}/>
