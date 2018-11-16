@@ -35,6 +35,11 @@ class ArticleActive extends React.Component {
         })
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.url !== this.props.match.url)
+        this.axiosFetchArticles()
+    }
+
     render() {
         if (!this.state.categoryNames) {
             return null
@@ -49,6 +54,13 @@ class ArticleActive extends React.Component {
                     articleList={currentArticleList} 
                     articleId={currentArticleId}
                     categoryNames={categoryNames}
+                />
+                <ActualArticle 
+                    articleList={currentArticleList}
+                    allArticleData={allArticleData}
+                    articleId={currentArticleId}
+                    articleIdMatch={this.props.match.params.articleId}
+                    key={currentArticleId.title}
                 />
             </div>
 

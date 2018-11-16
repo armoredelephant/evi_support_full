@@ -1,34 +1,15 @@
 import React, { Component } from 'react';
+import ArticleSidebar from './ArticleSidebar';
 
 
-class ActualArticle extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            currentArticle: null
-        }
-    }
+function ActualArticle(props) {
 
-    componentDidMount() {
-        // this.setState({
-        //     currentArticle: this.props.articleId
-        // }) 
-    }
-
-    render() {
-        console.log(this.state.currentArticle)
-        if (!this.state.currentArticle) {
-            return null
-        }
-
-        const { currentArticle } = this.state
-        
-        return (
-        <main role="main">
-            <h1>{currentArticle.title}</h1>
-        </main>
-        );
-    }
+    return (
+            <main role="main">
+                <h2>{props.articleId.title}</h2>
+                <h3>{props.articleId.description}</h3>
+            </main>
+    );
 }
 
 export default ActualArticle

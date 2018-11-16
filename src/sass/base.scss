@@ -7,10 +7,10 @@
 // gray rgb(238, 238, 238)
 
 // <img src="img" alt="eviCore Healthcare Logo">
-/*
-    Queries
-*/
 
+/**********************************************************
+    QUERIES
+***********************************************************/
 .show {
     display: block;
     margin-top: 3px; 
@@ -63,9 +63,9 @@
     VARIABLES
 */
 
-/*
+/**********************************************************
     MAPS
-*/
+***********************************************************/
 
 $colors: (
     primary-blue: #002855,
@@ -73,20 +73,21 @@ $colors: (
     border-blue: #001935,
     nav-footer: #EFEFEF,
     body: #F8F8F8,
-    category-box: #FFF
+    category-box: #FFF,
+    hr-line: #AFAFAF
 );
 
-/*
+/**********************************************************
     FUNCTIONS
-*/
+***********************************************************/
 
 @function color($color-name) {
     @return map-get($colors, $color-name);
 }
 
-/*
-    STUFF
-*/
+/**********************************************************
+    NEEEDS REFACTOR
+***********************************************************/
 
 * {
     box-sizing: border-box;
@@ -279,8 +280,11 @@ body {
                             }
     
                             hr {
+                                display: block;
                                 max-width: 44px;
-                                color: #C8C8C8;
+                                height: 1px;
+                                border: 0;
+                                background: color(hr-line);
                             }
                         }
                     }
@@ -305,9 +309,9 @@ body {
     }
 }
 
-/*
+/**********************************************************
     ARTICLES LANDING
-*/
+***********************************************************/
 
 .article-landing-main {
     margin-top: 50px;
@@ -330,9 +334,10 @@ body {
 
     hr {
         display: block;
-        height: 3px;
+        height: 1px;
         margin: 6px 0 12px;
-        background-color: color(primary-blue);
+        border: 0;
+        background: color(hr-line);
         width: 26%;
     }
 
@@ -368,11 +373,21 @@ li {
     list-style: none;
 }
 
-/** SIDEBAR **/
+/**********************************************************
+    SIDEBAR
+***********************************************************/
+
+.article-sidebar {
+    justify-self: flex-start;
+    min-width: 200px;
+}
 
 .article-sidebar-list {
 
+    padding-left: 20px;    
+
     .article-category-button {
+        color: color(primary-blue);
         display: inline-block;
         border: none;
         font-size: 15px;
@@ -389,10 +404,11 @@ li {
 }
 
 .article-category-button-active {
+    color: color(primary-blue);
     display: inline-block;
     border: none;
     font-size: 15px;
-    letter-spacing: 1.1px;
+    letter-spacing: 1px;
     background: none;
     padding: 0;
     font-weight: 700;
@@ -400,6 +416,7 @@ li {
     &:focus,
     &:active {
         outline: none;
+        color: color(primary-blue);
     }
 }
 
@@ -409,20 +426,31 @@ li {
     margin: 10px 0;
 }
 
-.sidebar-article-link {
+.sidebar-article-link-active {
+    border-left: 2px solid color(primary-yellow);
+    display: block;
+    box-sizing: content-box;
     margin-left: 2px;
     padding-left: 3px;
-    padding-top: 3px;
-    padding-bottom: 3px;
     text-decoration: none;
     line-height: 2em;
     font-size: 12px;
     position: relative;
+    letter-spacing: .8px;
     color: color(primary-blue);
+}
 
-    &:nth-of-type(1) {
-        margin-top: 100px;
-    }
+.sidebar-article-link {
+    display: block;
+    box-sizing: content-box;
+    margin-left: 2px;
+    padding-left: 3px;
+    text-decoration: none;
+    line-height: 2em;
+    font-size: 12px;
+    position: relative;
+    letter-spacing: .8px;
+    color: color(primary-blue);
 
     &:visited,
     &:active,
@@ -432,16 +460,18 @@ li {
     }
 
     &:focus {
-        border-left: 4px solid color(primary-yellow);
+        border-left: 2px solid color(primary-yellow);
     }
     
 }
 
 .view-article-container {
-    display: grid;
+    display: flex;
 }
 
-// **************************************
+/**********************************************************
+    TEST
+***********************************************************/
 
 
 .side-drawer {
