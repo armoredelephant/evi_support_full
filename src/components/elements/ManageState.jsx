@@ -12,15 +12,19 @@ class ManageState extends Component {
         const target = event.target
         const openCategories = this.state.openCategories
 
-        if (openCategories.includes(target.dataset.trigger)) {
-            const tempIndex = openCategories.findIndex( 
-                category => category === target.dataset.trigger
-            )
-
-            openCategories.splice(tempIndex, 1)
-        } else {
-            openCategories.push(target.dataset.trigger)
+        // if (openCategories.includes(target.dataset.trigger)) {
+        //     const tempIndex = openCategories.findIndex( 
+        //         category => category === target.dataset.trigger
+        //     )
+        //     openCategories.splice(tempIndex, 1)
+        // } else {
+        //     openCategories.push(target.dataset.trigger)
+        // }
+        if (openCategories.length != 0) {
+            openCategories.pop()
         }
+
+        openCategories.push(target.dataset.trigger)        
 
         this.setState({ openCategories })
     }
