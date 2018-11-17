@@ -12,17 +12,21 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
+
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -39,22 +43,26 @@
                     {
                         "stepId": 1,
                         "step": "Click the Windows icon located at the bottom left of the screen.",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Type Software Center in the search bar and press enter.",
-                        "image": true
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Browse for and click the application you would like to install from the Applications tab.",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 4,
                         "step": "Click Install.",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
                 
@@ -70,17 +78,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
                 
@@ -97,17 +108,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
                 
@@ -126,17 +140,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             }
@@ -158,17 +175,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     } 
                 ]
             }
@@ -191,17 +211,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -221,17 +244,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -250,17 +276,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -279,17 +308,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             }
@@ -310,17 +342,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -338,17 +373,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             }
@@ -369,17 +407,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             },
@@ -395,17 +436,20 @@
                     {
                         "stepId": 1,
                         "step": "Placeholder",
-                        "image": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        "hasImage": true,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 2,
                         "step": "Placeholder",
-                        "image": false
+                        "hasImage": false,
+                        "imageUrl": null
                     },
                     {
                         "stepId": 3,
                         "step": "Placeholder",
-                        "image": true
+                        "hasImage": true,
+                        "imageUrl": null
                     }
                 ]
             }

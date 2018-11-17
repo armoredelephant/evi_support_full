@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
-import ArticleSidebar from './ArticleSidebar'
-import ActualArticle from './ActualArticle'
+import ArticleSidebar from './ArticleSidebar';
+import ActualArticle from './ActualArticle';
 
 class ArticleActive extends React.Component {
     constructor(props) {
@@ -11,13 +11,25 @@ class ArticleActive extends React.Component {
             allArticleData: null,
             categoryNames: null,
             currentArticleList: null,
-            currentArticleId: null
-            
+            currentArticleId: null,
+            displayImage: false
     }
 }
 
     componentDidMount() {
-        this.axiosFetchArticles()
+        this.axiosFetchArticles();
+    }
+
+    changeDisplayImage = () => {
+        this.setState(prevState => ({
+            displayImage: !prevState.displayImage
+        }));
+    }
+
+    backdropClickHandler = () => {
+        this.setState({
+            displayImage: false
+        });
     }
 
     axiosFetchArticles = () => {
@@ -31,13 +43,14 @@ class ArticleActive extends React.Component {
                 }
             )
             
-            this.setState({ allArticleData, currentArticleList, currentArticleId, categoryNames })
-        })
+            this.setState({ allArticleData, currentArticleList, currentArticleId, categoryNames });
+        });
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.match.url !== this.props.match.url)
-        this.axiosFetchArticles()
+        if(prevProps.match.url !== this.props.match.url) {
+            this.axiosFetchArticles();
+        }
     }
 
     render() {
@@ -45,7 +58,7 @@ class ArticleActive extends React.Component {
             return null
         }
 
-        const { allArticleData, categoryNames, currentArticleList, currentArticleId } = this.state
+        const { allArticleData, categoryNames, currentArticleList, currentArticleId, displayImage } = this.state
         
         return (
             <div className="view-article-container">
@@ -60,6 +73,9 @@ class ArticleActive extends React.Component {
                     allArticleData={allArticleData}
                     articleId={currentArticleId}
                     articleIdMatch={this.props.match.params.articleId}
+                    backdropClick={this.backdropClickHandler}
+                    click={this.changeDisplayImage}
+                    displayImage={displayImage}
                     key={currentArticleId.title}
                 />
             </div>
