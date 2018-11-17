@@ -20,7 +20,7 @@ function ArticleSidebar(props) {
                                 categoryName={category}
                                 key={category} 
                                 openCategories={managedProps.openCategories}
-                                onClick={managedProps.actions.pushToCategories}
+                                onClick={(event) => managedProps.actions.pushToCategories(event, props.handleArticleClick)}
                                 trigger={category}
                             />
                         ))}

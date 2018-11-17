@@ -7,11 +7,10 @@ const ActualArticle = ( props ) => {
     let component = (
         <Fragment>
             <ImageViewer
-                articleList={props.articleList}
-                allArticleData={props.allArticleData}
                 articleId={props.articleId}
                 articleIdMatch={props.articleIdMatch}
                 backdropClick={props.backdropClick}
+                // currentstep={currentStep.stepId}
             />
         </Fragment>
     )
@@ -24,7 +23,7 @@ const ActualArticle = ( props ) => {
             currentStep.hasImage 
             ? 
                 <li key={currentStep.stepId}>
-                    <button key={currentStep.stepId} onClick={props.click}>
+                    <button key={currentStep.stepId} onClick={props.click} currentstep={currentStep.stepId}>
                         {currentStep.step}
                     </button>
                 </li> 

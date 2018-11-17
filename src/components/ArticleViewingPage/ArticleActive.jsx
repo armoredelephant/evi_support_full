@@ -12,7 +12,7 @@ class ArticleActive extends React.Component {
             categoryNames: null,
             currentArticleList: null,
             currentArticleId: null,
-            displayImage: false
+            displayImage: false,
     }
 }
 
@@ -24,6 +24,10 @@ class ArticleActive extends React.Component {
         this.setState(prevState => ({
             displayImage: !prevState.displayImage
         }));
+    }
+
+    handleArticleClick = () => {
+        console.log("hello")
     }
 
     backdropClickHandler = () => {
@@ -49,7 +53,14 @@ class ArticleActive extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps.match.url !== this.props.match.url) {
-            this.axiosFetchArticles();
+            const allArticleData = this.state.allArticleData
+            const currentArticleId = allArticleData[this.props.match.params.category].articles.find(
+                article => {
+                    return article.id == this.props.match.params.articleId
+                }
+            )
+            
+            this.setState({ currentArticleId })
         }
     }
 
@@ -67,10 +78,9 @@ class ArticleActive extends React.Component {
                     articleList={currentArticleList} 
                     articleId={currentArticleId}
                     categoryNames={categoryNames}
+                    handleArticleClick={this.handleArticleClick}
                 />
                 <ActualArticle 
-                    articleList={currentArticleList}
-                    allArticleData={allArticleData}
                     articleId={currentArticleId}
                     articleIdMatch={this.props.match.params.articleId}
                     backdropClick={this.backdropClickHandler}
