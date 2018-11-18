@@ -4,7 +4,7 @@ const ImageFetch = ( props ) => {
 
     return(
         <div className='image-container'>
-            <img src={props.imgUrl}/>
+            <img src={`/resources/images/${props.currentCategory}/${props.articleId}/${props.stepId}`}/>
         </div>
     )
 }
