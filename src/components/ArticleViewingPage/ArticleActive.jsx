@@ -12,7 +12,8 @@ class ArticleActive extends React.Component {
             categoryNames: null,
             currentArticleList: null,
             currentArticleId: null,
-            displayImage: false
+            displayImage: false,
+            activeArticleLink: null
     }
 }
 
@@ -32,6 +33,17 @@ class ArticleActive extends React.Component {
         });
     }
 
+    // clickedArticle will be activeArticle.title
+    // handleActiveArticle = ( clickedArticle ) => {
+    //     const activeArticleLink = [this.state.currentArticleId.title]
+    //     this.setState({ activeArticleLink })
+    // }
+
+    handleCurrentCategory = (prevState) => {
+        const activeArticleLink = null
+        this.setState({ activeArticleLink })
+    }
+
     axiosFetchArticles = () => {
         return axios.get('/resources/stubs/article_structure.json').then(response => {
             const allArticleData = response.data
@@ -48,8 +60,17 @@ class ArticleActive extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.match.url !== this.props.match.url) {
-            this.axiosFetchArticles();
+        if (prevProps.match.url !== this.props.match.url)  {
+            const allArticleData = this.state.allArticleData
+            const currentArticleId = allArticleData[this.props.match.params.category].articles.find(
+                article => {
+                    return article.id == this.props.match.params.articleId
+                }
+            )
+            const activeArticleLink = currentArticleId.title
+            const categoryNames = Object.keys(allArticleData)
+            
+            this.setState({ currentArticleId, categoryNames, activeArticleLink })
         }
     }
 
@@ -58,7 +79,7 @@ class ArticleActive extends React.Component {
             return null
         }
 
-        const { allArticleData, categoryNames, currentArticleList, currentArticleId, displayImage } = this.state
+        const { allArticleData, activeArticleLink, categoryNames, currentArticleList, currentArticleId, displayImage } = this.state
         
         return (
             <div className="view-article-container">
@@ -67,10 +88,12 @@ class ArticleActive extends React.Component {
                     articleList={currentArticleList} 
                     articleId={currentArticleId}
                     categoryNames={categoryNames}
+                    handleCurrentCategory={this.handleCurrentCategory}
+                    handleActiveArticle={this.handleActiveArticle}
+                    activeArticleLink={activeArticleLink}
                 />
+
                 <ActualArticle 
-                    articleList={currentArticleList}
-                    allArticleData={allArticleData}
                     articleId={currentArticleId}
                     articleIdMatch={this.props.match.params.articleId}
                     backdropClick={this.backdropClickHandler}

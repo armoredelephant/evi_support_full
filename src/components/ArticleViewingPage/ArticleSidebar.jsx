@@ -14,13 +14,15 @@ function ArticleSidebar(props) {
                         {props.categoryNames.map(category => (
                             <SidebarCategory
                                 allArticleData={props.allArticleData}
+                                activeArticleLink={props.activeArticleLink}
                                 articleList={props.articleList} 
                                 articleId={props.articleId} 
                                 articleIdMatch={props.articleIdMatch}
                                 categoryName={category}
+                                handleActiveArticle={props.handleActiveArticle}
                                 key={category} 
                                 openCategories={managedProps.openCategories}
-                                onClick={managedProps.actions.pushToCategories}
+                                onClick={(event) => managedProps.actions.pushToCategories(event, props.handleCurrentCategory)}
                                 trigger={category}
                             />
                         ))}
