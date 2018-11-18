@@ -39,7 +39,7 @@ class ArticleActive extends React.Component {
     //     this.setState({ activeArticleLink })
     // }
 
-    handleCurrentCategory = (prevState) => {
+    handleCurrentCategory = () => {
         const activeArticleLink = null
         this.setState({ activeArticleLink })
     }
