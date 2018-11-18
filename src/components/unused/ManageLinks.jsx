@@ -8,7 +8,7 @@ class ManageLinks extends Component {
         }
     }
 
-    pushToClickedLink = event => {
+    pushToClickedLink = ( event ) => {
         const target = event.target
         const clickedLink = this.state.clickedLink
 

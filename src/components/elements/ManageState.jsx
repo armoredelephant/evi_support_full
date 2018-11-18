@@ -8,7 +8,7 @@ class ManageState extends Component {
         }
     }
 
-    pushToCategories = (event, callBack) => {
+    pushToCategories = ( event, callBack ) => {
         const target = event.target
         const openCategories = this.state.openCategories
 
@@ -19,7 +19,9 @@ class ManageState extends Component {
         openCategories.push(target.dataset.trigger)
         
         this.setState({ openCategories })
+
         callBack()
+
     }
     
     render() {
