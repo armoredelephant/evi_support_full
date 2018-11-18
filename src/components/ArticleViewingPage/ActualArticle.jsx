@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import ImageViewer from './ImageLoad/ImageViewer';
 
+//receive props from the updated data for currentarticleId and set it's own state for the current stepId?
+
 const ActualArticle = ( props ) => {
     let component = (
         <Fragment>
@@ -10,7 +12,6 @@ const ActualArticle = ( props ) => {
                 articleId={props.articleId}
                 articleIdMatch={props.articleIdMatch}
                 backdropClick={props.backdropClick}
-                // currentstep={currentStep.stepId}
             />
         </Fragment>
     )
@@ -26,9 +27,9 @@ const ActualArticle = ( props ) => {
                     ? 
                         <li key={currentStep.stepId} className="article-step__image">
                             <button key={currentStep.stepId} 
-                                onClick={props.click} 
                                 className="article-step-button"
-                                currentstep={currentStep.stepId}>
+                                currentstep={currentStep.stepId}
+                                onClick={(event) => props.click(event, currentStep.stepId)} >
                                     {currentStep.step}
                             </button>
                         </li> 

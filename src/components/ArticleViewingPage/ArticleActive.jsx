@@ -13,7 +13,8 @@ class ArticleActive extends React.Component {
             currentArticleList: null,
             currentArticleId: null,
             displayImage: false,
-            activeArticleLink: null
+            activeArticleLink: null,
+            currentStepId: null
     }
 }
 
@@ -21,9 +22,11 @@ class ArticleActive extends React.Component {
         this.axiosFetchArticles();
     }
 
-    changeDisplayImage = () => {
+    changeDisplayImage = ( event, value ) => {
+        const currentStepId = value
         this.setState(prevState => ({
-            displayImage: !prevState.displayImage
+            displayImage: !prevState.displayImage,
+            currentStepId: currentStepId
         }));
     }
 
@@ -32,12 +35,6 @@ class ArticleActive extends React.Component {
             displayImage: false
         });
     }
-
-    // clickedArticle will be activeArticle.title
-    // handleActiveArticle = ( clickedArticle ) => {
-    //     const activeArticleLink = [this.state.currentArticleId.title]
-    //     this.setState({ activeArticleLink })
-    // }
 
     handleCurrentCategory = () => {
         const activeArticleLink = null
