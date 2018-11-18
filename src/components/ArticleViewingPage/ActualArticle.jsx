@@ -15,24 +15,30 @@ const ActualArticle = ( props ) => {
         </Fragment>
     )
     return (
-        <main role="main">
-        <h2>{props.articleId.title}</h2>
-        <h3>{props.articleId.description}</h3>
-        <ul>
-            {props.articleId.body.map(currentStep => (
-            currentStep.hasImage 
-            ? 
-                <li key={currentStep.stepId}>
-                    <button key={currentStep.stepId} onClick={props.click} currentstep={currentStep.stepId}>
-                        {currentStep.step}
-                    </button>
-                </li> 
-            :
-                <li key={currentStep.stepId}>
-                    {currentStep.step}
-                </li>
-            ))}
-        </ul>
+        <main role="main" className="article-view-main" id="article-view-main">
+            <div className="article-view-wrapper">
+                <h2 className="article-title">{props.articleId.title}</h2>
+                <hr/>
+                <h3 className="article-into">{props.articleId.description}</h3>
+                <ol>
+                    {props.articleId.body.map(currentStep => (
+                    currentStep.hasImage 
+                    ? 
+                        <li key={currentStep.stepId} className="article-step__image">
+                            <button key={currentStep.stepId} 
+                                onClick={props.click} 
+                                className="article-step-button"
+                                currentstep={currentStep.stepId}>
+                                    {currentStep.step}
+                            </button>
+                        </li> 
+                    :
+                        <li key={currentStep.stepId} className="article-step">
+                            {currentStep.step}
+                        </li>
+                    ))}
+                </ol>
+            </div>
         {props.displayImage ? component : ''}
         </main>
     )

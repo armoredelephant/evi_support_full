@@ -8,48 +8,7 @@
 
 // <img src="img" alt="eviCore Healthcare Logo">
 
-/**********************************************************
-    QUERIES
-***********************************************************/
-.show {
-    display: block;
-    margin-top: 3px; 
-}
 
-.hide {
-    display: none;
-}
-
-@media (min-width: 992px) {
-    section {
-        max-width: 992px;
-    }
-}
-
-@media (min-width: 720px) {
-    .article-category-container {
-        min-width: 918px;
-    } 
-}
-
-@media (max-width: 576px) {
-    #article-category-container{
-        flex-flow: column wrap;
-        max-width: 350px;
-        margin-left: 3vw;
-        // margin-left: 20px;
-        // justify-content: space-evenly;
-
-    }
-    .helper-section {
-        max-width: 350px;
-
-        img {
-            max-width: 350px;
-        }
-    }
-
-}
 
 // @media (min-width: 577px) {
 //     .article-category-container {
@@ -96,6 +55,13 @@ $colors: (
 #root, body, html {
     min-height: 100%;
     height: 100vh;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    background: color(hr-line);
 }
 
 body {
@@ -279,11 +245,7 @@ body {
                             }
     
                             hr {
-                                display: block;
                                 max-width: 44px;
-                                height: 1px;
-                                border: 0;
-                                background: color(hr-line);
                             }
                         }
                     }
@@ -332,11 +294,7 @@ body {
     line-height: 2em;
 
     hr {
-        display: block;
-        height: 1px;
         margin: 6px 0 12px;
-        border: 0;
-        background: color(hr-line);
         width: 26%;
     }
 
@@ -421,34 +379,34 @@ li {
 
 .article-sidebar {
     width: 300px;
-    border-right: 1px solid #EFEFEF;
+    border-right: 1px solid color(hr-line);
     margin: 10px 0;
 }
 
 .sidebar-article-link-active {
     border-left: 2px solid color(primary-yellow);
     display: block;
-    box-sizing: content-box;
+    // box-sizing: content-box;
     margin-left: 2px;
     padding-left: 3px;
     text-decoration: none;
     line-height: 2em;
     font-size: 12px;
     position: relative;
-    letter-spacing: .8px;
+    letter-spacing: .7px;
     color: color(primary-blue);
 }
 
 .sidebar-article-link {
     display: block;
-    box-sizing: content-box;
+    // box-sizing: content-box;
     margin-left: 2px;
     padding-left: 3px;
     text-decoration: none;
     line-height: 2em;
     font-size: 12px;
     position: relative;
-    letter-spacing: .8px;
+    letter-spacing: .7px;
     color: color(primary-blue);
 
     &:visited,
@@ -466,7 +424,146 @@ li {
 
 .view-article-container {
     display: flex;
+
+    .article-view-main {
+        width: 600px;
+        // justify-self: center;
+        margin: 10px auto;
+        justify-content: flex-start;
+    }
 }
+
+/**********************************************************
+    ARTICLE VIEW
+***********************************************************/
+
+.article-view-wrapper{
+    justify-self: flex-start;
+    align-self: flex-start;
+    align-items: flex-start;
+
+    hr {
+        margin: 6px 0 12px;
+        background: color(primary-yellow);
+        // width: 26%;
+        width: 102px;
+    }
+
+    .article-title {
+        font-size: 20px;
+        color: color(primary-blue);
+    }
+
+    .article-into {
+        font-size: 15px;
+        font-weight: 300;
+        color: color(primary-blue);
+    }
+
+    .article-step-button {
+        text-decoration: underline;
+        text-align: left;
+        font-family: Arial;
+        color: color(primary-blue);
+        display: inline-block;
+        border: none;
+        font-size: 13px;
+        letter-spacing: .8px;
+        background: none;
+        padding: 0;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+
+    ol {
+        padding-left: 20px;
+        // line-height: 1.8em;
+
+        li {
+            margin-bottom: 15px;
+            list-style-type: circle;
+            font-size: 13px;
+        }
+    }
+}
+
+.article-step {
+    color: color(primary-blue);
+    font-size: 13px;
+    letter-spacing: .8px;
+}
+
+/**********************************************************
+    QUERIES
+***********************************************************/
+.show {
+    display: block;
+    margin-top: 3px; 
+}
+
+.hide {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    section {
+        max-width: 992px;
+    }
+}
+
+@media (min-width: 720px) {
+    .article-category-container {
+        min-width: 918px;
+    } 
+
+}
+
+@media (max-width: 1040px) {
+    #article-view-main {
+        margin: 10px 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    #article-category-container {
+        flex-flow: column wrap;
+        max-width: 350px;
+        margin-left: 3vw;
+        // margin-left: 20px;
+        // justify-content: space-evenly;
+
+    }
+    .helper-section {
+        max-width: 350px;
+
+        img {
+            max-width: 350px;
+        }
+    }
+
+    .view-article-container {
+        flex-wrap: wrap-reverse;
+
+        .article-view-main {
+            width: 300px;
+            border-bottom: 1px solid color(hr-line);
+        }
+
+        .article-sidebar {
+            border: none;
+            margin-left: 30px;
+        }
+    }
+
+    #article-view-main {
+        margin: 10px 50px;
+    }
+
+}
+
 
 /**********************************************************
     TEST
