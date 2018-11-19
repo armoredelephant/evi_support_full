@@ -421,11 +421,6 @@ li {
         color: color(primary-blue);
         text-decoration: underline;
     }
-
-    &:focus {
-        border-left: 2px solid color(primary-yellow);
-    }
-    
 }
 
 .view-article-container {
@@ -480,7 +475,7 @@ li {
         letter-spacing: .8px;
         background: none;
         padding: 0;
-        font-weight: 700;
+        // font-weight: 700;
 
         &:focus,
         &:active {
@@ -525,6 +520,7 @@ li {
 }
 
 .loaded-image {
+    z-index: 200;
     position: absolute;
     top: 30%;
     text-align: center;
