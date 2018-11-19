@@ -6,12 +6,15 @@ import ImageViewer from './ImageLoad/ImageViewer';
 //receive props from the updated data for currentarticleId and set it's own state for the current stepId?
 
 const ActualArticle = ( props ) => {
+
+    console.log
     let component = (
         <Fragment>
             <ImageViewer
-                articleId={props.articleId}
                 articleIdMatch={props.articleIdMatch}
                 backdropClick={props.backdropClick}
+                currentCategory={props.currentCategory}
+                currentStepId={props.currentStepId}
             />
         </Fragment>
     )
@@ -40,7 +43,7 @@ const ActualArticle = ( props ) => {
                     ))}
                 </ol>
             </div>
-        {props.displayImage ? component : ''}
+            {props.displayImage ? component : ''}
         </main>
     )
 }

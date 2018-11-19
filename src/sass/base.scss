@@ -55,6 +55,7 @@ $colors: (
 #root, body, html {
     min-height: 100%;
     height: 100vh;
+    width: 100%;
 }
 
 hr {
@@ -70,7 +71,7 @@ body {
 
     .container {
         display: grid;
-        grid-template-rows: 187px auto 10%;
+        grid-template-rows: 187px auto 50%;
         height: 100%;
 
             .header-wrapper {
@@ -146,6 +147,7 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                margin-bottom: 50px;
 
                 // margin: 30px auto;
 
@@ -256,6 +258,10 @@ body {
             .main-footer {
                 display: flex;
                 align-items: center;
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
                 justify-content: center;
                 background-color: color(nav-footer);
                 color: color(primary-blue);
@@ -424,6 +430,8 @@ li {
 
 .view-article-container {
     display: flex;
+    height: 80vh;
+    margin-bottom: 50px;
 
     .article-view-main {
         width: 600px;
@@ -472,6 +480,7 @@ li {
         letter-spacing: .8px;
         background: none;
         padding: 0;
+        font-weight: 700;
 
         &:focus,
         &:active {
@@ -482,11 +491,15 @@ li {
     ol {
         padding-left: 20px;
         // line-height: 1.8em;
-
+        
         li {
             margin-bottom: 15px;
             list-style-type: circle;
             font-size: 13px;
+
+            &:nth-last-child(1) {
+                margin-bottom: 30px;
+            }
         }
     }
 }
@@ -495,6 +508,26 @@ li {
     color: color(primary-blue);
     font-size: 13px;
     letter-spacing: .8px;
+}
+
+/**********************************************************
+    IMAGE LOADER
+***********************************************************/
+
+.backdrop {
+    position: fixed;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    top: 0;
+    left: 0;
+}
+
+.loaded-image {
+    position: absolute;
+    top: 30%;
+    text-align: center;
 }
 
 /**********************************************************
@@ -526,6 +559,11 @@ li {
     #article-view-main {
         margin: 10px 30px;
     }
+
+    .image-container {
+        left: 30vw;
+    }
+
 }
 
 @media (max-width: 576px) {
@@ -533,10 +571,8 @@ li {
         flex-flow: column wrap;
         max-width: 350px;
         margin-left: 3vw;
-        // margin-left: 20px;
-        // justify-content: space-evenly;
-
     }
+
     .helper-section {
         max-width: 350px;
 
@@ -562,7 +598,6 @@ li {
     #article-view-main {
         margin: 10px 50px;
     }
-
 }
 
 
@@ -570,48 +605,3 @@ li {
     TEST
 ***********************************************************/
 
-
-.side-drawer {
-    height: 100%;
-    background-color: white;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0 , 0.5);
-    position:fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    max-width: 400px;
-    z-index: 200;
-}
-
-.backdrop {
-    position: fixed;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    top: 0;
-    left: 0;
-}
-
-.toggle-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-aroud;
-    height: 24px;
-    widows: 28px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    box-sizing: border-box;
-
-    &:focus {
-        outline: none;
-    }
-
-    .toggle-button__line {
-        width: 28px;
-        height: 1px;
-        background: white;
-    }
-}
