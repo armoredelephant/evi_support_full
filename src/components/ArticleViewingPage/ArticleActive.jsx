@@ -8,13 +8,13 @@ class ArticleActive extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            activeArticleLink: null,
             allArticleData: null,
             categoryNames: null,
             currentArticleList: null,
             currentArticleId: null,
-            displayImage: false,
-            activeArticleLink: null,
-            currentStepId: null
+            currentStepId: null,
+            displayImage: false
     }
 }
 
@@ -66,8 +66,8 @@ class ArticleActive extends React.Component {
             )
             const activeArticleLink = currentArticleId.title
             const categoryNames = Object.keys(allArticleData)
-            
-            this.setState({ currentArticleId, categoryNames, activeArticleLink })
+
+            this.setState({ activeArticleLink, currentArticleId, categoryNames })
         }
     }
 
@@ -76,7 +76,15 @@ class ArticleActive extends React.Component {
             return null
         }
 
-        const { allArticleData, activeArticleLink, categoryNames, currentArticleList, currentArticleId, displayImage } = this.state
+        const { 
+                allArticleData, 
+                activeArticleLink, 
+                categoryNames, 
+                currentArticleList, 
+                currentArticleId, 
+                currentStepId, 
+                displayImage 
+            } = this.state
         
         return (
             <div className="view-article-container">
@@ -95,6 +103,8 @@ class ArticleActive extends React.Component {
                     articleIdMatch={this.props.match.params.articleId}
                     backdropClick={this.backdropClickHandler}
                     click={this.changeDisplayImage}
+                    currentCategory={this.props.match.params.category}
+                    currentStepId={currentStepId}
                     displayImage={displayImage}
                     key={currentArticleId.title}
                 />

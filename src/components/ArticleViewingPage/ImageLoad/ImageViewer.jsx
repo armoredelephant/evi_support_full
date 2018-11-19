@@ -6,10 +6,15 @@ import ImageFetch from './ImageFetch';
 // this will be ran when one of the step buttons is clicked
 
 const ImageViewer = ( props ) => {
+    console.log(props.articleIdMatch)
     return (
         <Fragment>
             <Backdrop backdropClick={props.backdropClick} />
-            {/* <ImageFetch articleId={props.articleId} /> */}
+            <ImageFetch 
+                articleIdMatch={props.articleIdMatch}
+                currentCategory={props.currentCategory}
+                currentStepId={props.currentStepId}
+            />
         </Fragment>
         
     // ImgageFetch needs to receive the articleId.body.imageUrl and step
