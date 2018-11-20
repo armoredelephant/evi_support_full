@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import ManageState from '../elements/ManageState'
 import SidebarCategory from './SidebarCategory'
@@ -28,6 +29,16 @@ function ArticleSidebar(props) {
                         ))}
                     </Fragment>
                 )}/>
+                <hr />
+                <ul className="article-sidebar-list">
+                    <li className="sidebar-route-li">
+                        <Link to='/' className="sidebar-route-link" >Home</Link>
+                    </li>
+                    <li className="sidebar-route-li">
+                        <Link to='/Videos' className="sidebar-route-link" >Videos</Link>
+                    </li>
+                </ul>
+                
         </aside>
     );
 }
