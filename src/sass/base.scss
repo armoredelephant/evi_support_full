@@ -30,10 +30,11 @@ $colors: (
     primary-blue: #002855,
     primary-yellow: #c99700,
     border-blue: #001935,
-    nav-footer: #EFEFEF,
+    nav-border: #e4e4e4,
     body: #F8F8F8,
     category-box: #FFF,
-    hr-line: #AFAFAF
+    hr-line: #AFAFAF,
+    nav-back: #F6F6F6
 );
 
 /**********************************************************
@@ -80,7 +81,8 @@ body {
                 grid-column-start: 1;
                 position: relative;
                 width: 100%;
-                background-color: color(nav-footer);
+                background-color: color(nav-back);
+                border-bottom: 1px solid color(nav-border);
 
                 .mobile-header {
                     display: block;
@@ -256,6 +258,7 @@ body {
             }
 
             .main-footer {
+                border-top: 1px solid color(nav-border);
                 display: flex;
                 align-items: center;
                 position: fixed;
@@ -263,7 +266,7 @@ body {
                 bottom: 0;
                 width: 100%;
                 justify-content: center;
-                background-color: color(nav-footer);
+                background-color: color(nav-back);
                 color: color(primary-blue);
                 text-align: center;
 
