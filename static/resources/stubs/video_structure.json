@@ -1,0 +1,52 @@
+{
+    "Hardware Setup": {
+        "videos": [
+            {
+                "id": 1,
+                "title": "Full Remote Setup: Igel",
+                "description": "This video will cover connecting a full remote igel setup.",
+                "tags": [
+                    "igel",
+                    "video",
+                    "connection",
+                    "remote",
+                    "setup"
+                ],
+                "videoUrl": "https://vimeo.com/somewhere" 
+            },
+            {
+                "id": 2,
+                "title": "Full Remote Setup: Laptop - Dell 5480",
+                "description": "This video will cover connecting a full remote Dell 5480 laptop setup.",
+                "tags": [
+                    "igel",
+                    "video",
+                    "connection",
+                    "remote",
+                    "setup",
+                    "dell",
+                    "5480"
+                ],
+                "videoUrl": "https://vimeo.com/somewhere" 
+            }
+        ]
+    },
+    "Other": {
+        "videos": [
+            {
+                "id": 1,
+                "title": "How to log into a Cisco 8845",
+                "description": "This video will cover how to log into a Cisco 8845",
+                "tags": [
+                    "cisco",
+                    "video",
+                    "phone",
+                    "login",
+                    "extension",
+                    "8845"
+                ],
+                "videoUrl": "https://vimeo.com/somewhere" 
+            }
+        ]
+    }
+}
