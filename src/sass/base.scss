@@ -599,16 +599,19 @@ li {
     }
 
     .view-article-container {
-        flex-wrap: wrap-reverse;
+        flex-wrap: wrap;
 
         .article-view-main {
+            order: 1;
             width: 300px;
             border-bottom: 1px solid color(hr-line);
         }
 
         .article-sidebar {
+            order: 2;
             border: none;
             margin-left: 30px;
+            margin-bottom: 50px;
         }
     }
 
