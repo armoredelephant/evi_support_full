@@ -31,7 +31,7 @@ class VideoLandingBody extends Component {
         }
 
         return (
-            <main role="main" className="article-landing-main">
+            <main role="main" className="video-landing-main">
                 <VideoList categoryList={categoryList} />
             </main>
         );
