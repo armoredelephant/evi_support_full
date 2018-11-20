@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const VideoList = ( props ) => {
     return (
-        <section className="article-category-container" id="article-category-container">
+        <section className="category-container" id="video-category-container">
             {Object.keys(props.categoryList).map( (category, index) => (
-                <div key={index} className="article-category-wrapper">
-                    <ul key={category} className="article-category-list">
+                <div key={index} className="category-wrapper">
+                    <ul key={category} className="category-list">
                     <h3>{category}</h3>
                     <hr/>
                         {props.categoryList[category].videos.map( (video, index) => (

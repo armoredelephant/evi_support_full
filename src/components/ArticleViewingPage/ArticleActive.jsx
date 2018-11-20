@@ -94,7 +94,6 @@ class ArticleActive extends React.Component {
                     articleId={currentArticleId}
                     categoryNames={categoryNames}
                     handleCurrentCategory={this.handleCurrentCategory}
-                    handleActiveArticle={this.handleActiveArticle}
                     activeArticleLink={activeArticleLink}
                 />
 

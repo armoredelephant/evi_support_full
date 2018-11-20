@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import ManageState from '../elements/ManageState'
-import SidebarCategory from './SidebarCategory'
+import VideoSidebarCategory from './VideoSidebarCategories';
 
 function ArticleSidebar(props) {
     return (
@@ -11,12 +11,12 @@ function ArticleSidebar(props) {
                 (managedProps) => (
                     <Fragment>
                         {props.categoryNames.map(category => (
-                            <SidebarCategory
-                                allData={props.allArticleData}
-                                activeArticleLink={props.activeArticleLink}
-                                articleList={props.articleList} 
-                                articleId={props.articleId} 
-                                articleIdMatch={props.articleIdMatch}
+                            <VideoSidebarCategory
+                                allData={props.allVideosData}
+                                activeVideoLink={props.activeVideoLink}
+                                videoList={props.videoList} 
+                                videoId={props.videoId} 
+                                videoIdMatch={props.videoIdMatch}
                                 categoryName={category}
                                 handleActiveArticle={props.handleActiveArticle}
                                 key={category} 
@@ -33,7 +33,7 @@ function ArticleSidebar(props) {
                         <Link to='/' className="sidebar-route-link" >Home</Link>
                     </li>
                     <li className="sidebar-route-li">
-                        <Link to='/Videos' className="sidebar-route-link" >Videos</Link>
+                        <Link to='/Articles' className="sidebar-route-link" >Articles</Link>
                     </li>
                 </ul>
                 
@@ -42,12 +42,3 @@ function ArticleSidebar(props) {
 }
 
 export default ArticleSidebar
-
-// yeild template to the ManageState, which will yeild back to ArticleSidebar
-
-// data attribute/trigger
-// dataset in console.dir(ele)
-
-// event > dom > 
-
-// if click on categorie, it should no longer be in the array.

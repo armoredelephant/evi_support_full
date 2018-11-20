@@ -6,18 +6,6 @@
 /* YELLOW #c99700 */
 // gray rgb(238, 238, 238)
 
-// <img src="img" alt="eviCore Healthcare Logo">
-
-
-
-// @media (min-width: 577px) {
-//     .article-category-container {
-//         justify-content: space-evenly;
-//         max-width: 350px;
-//     }
-// }
-
-
 /*
     VARIABLES
 */
@@ -287,19 +275,19 @@ body {
     margin-top: 50px;
 }
 
-.article-category-container {
+.category-container {
     display: flex;
     justify-content: space-between;
     justify-items: center;
     flex-flow: row wrap;
     margin: 30px auto;
 
-    .article-category-wrapper {
+    .category-wrapper {
         width: 300px;
     }
 }
 
-.article-category-list {
+.category-list {
     line-height: 2em;
 
     hr {
@@ -548,6 +536,14 @@ li {
 }
 
 /**********************************************************
+    VIDEO  LANDING
+***********************************************************/
+
+#video-category-container {
+    justify-content: space-evenly;
+}
+
+/**********************************************************
     QUERIES
 ***********************************************************/
 .show {
@@ -566,7 +562,7 @@ li {
 }
 
 @media (min-width: 720px) {
-    .article-category-container {
+    .category-container {
         min-width: 918px;
     } 
 
@@ -584,7 +580,8 @@ li {
 }
 
 @media (max-width: 576px) {
-    #article-category-container {
+    #article-category-container,
+    #video-category-container {
         flex-flow: column wrap;
         max-width: 350px;
         margin-left: 3vw;

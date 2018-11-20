@@ -8,6 +8,7 @@ import ArticleActive from './components/ArticleViewingPage/ArticleActive'
 import HomeBody from './components/HomeLandingPage/HomeBody';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
+import VideoActive from './components/VideoViewingPage/VideoActive';
 import VideoLandingBody from './components/VideoLandingPage/VideoLandingBody';
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <Route exact path="/Videos" component={VideoLandingBody} />
-                            {/* <Route path="/Videos/:category/:videoId" component={VideoActive} /> */}
+                            <Route path="/Videos/:category/:videoId" component={VideoActive} />
                         </Switch>
                     <Footer />
                 </div>
