@@ -1,6 +1,6 @@
 {
     "Hardware Setup": {
-        "videos": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "Full Remote Setup: Igel",
@@ -32,7 +32,7 @@
         ]
     },
     "Other": {
-        "videos": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "How to log into a Cisco 8845",

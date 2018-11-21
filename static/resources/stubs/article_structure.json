@@ -1,6 +1,6 @@
 {
     "Applications": {
-        "articles": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "Igel Quick Start Guide",
@@ -160,7 +160,7 @@
         ]
     },
     "Hardware Setup": {
-        "articles": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "Setting up a Dell WD15 docking station",
@@ -195,7 +195,7 @@
         ]
     },
     "Hardware Use": {
-        "articles": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "How to Configure Multiple Monitors",
@@ -328,7 +328,7 @@
         ]
     },
     "Email": {
-        "articles": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "Accessing Online Archive",
@@ -393,7 +393,7 @@
         ]
     },
     "Other": {
-        "articles": [
+        "categoryItems": [
             {
                 "id": 1,
                 "title": "Mapping a Network Drive",

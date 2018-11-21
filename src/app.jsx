@@ -22,11 +22,11 @@ class App extends Component {
                         </Switch>
                         <Switch>
                             <Route exact path="/Articles" component={ArticlesLandingBody} />
-                            <Route path="/Articles/:category/:articleId" component={ArticleActive} />
+                            <Route path="/Articles/:category/:itemId" component={ArticleActive} />
                         </Switch>
                         <Switch>
                             <Route exact path="/Videos" component={VideoLandingBody} />
-                            <Route path="/Videos/:category/:videoId" component={VideoActive} />
+                            <Route path="/Videos/:category/:itemId" component={VideoActive} />
                         </Switch>
                     <Footer />
                 </div>

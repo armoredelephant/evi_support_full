@@ -176,7 +176,7 @@ body {
                         flex-direction: column;
                         margin: 50px 0;
 
-                        .article-link {
+                        .item-link {
 
                             &:visited,
                             &:active,
@@ -305,7 +305,7 @@ body {
 
 }
 
-.article-link {
+.item-link {
     text-decoration: none;
     color: color(primary-blue);
 
@@ -331,7 +331,7 @@ li {
     SIDEBAR
 ***********************************************************/
 
-.article-sidebar-list {
+.item-sidebar-list {
 
     padding-left: 20px;  
     
@@ -349,7 +349,7 @@ li {
         padding: 0;
     }
 
-    .article-category-button {
+    .item-category-button {
         color: color(primary-blue);
         display: inline-block;
         border: none;
@@ -367,7 +367,7 @@ li {
     }
 }
 
-.article-category-button-active {
+.item-category-button-active {
     color: color(primary-blue);
     display: inline-block;
     border: none;
@@ -385,7 +385,7 @@ li {
     }
 }
 
-.article-sidebar {
+.item-sidebar {
     width: 300px;
     border-right: 1px solid color(hr-line);
     margin: 10px 0;
@@ -398,7 +398,7 @@ li {
     }
 }
 
-.sidebar-article-link-active {
+.sidebar-link-active {
     border-left: 2px solid color(primary-yellow);
     display: block;
     // box-sizing: content-box;
@@ -412,7 +412,7 @@ li {
     color: color(primary-blue);
 }
 
-.sidebar-article-link {
+.sidebar-link {
     display: block;
     // box-sizing: content-box;
     margin-left: 2px;
@@ -587,6 +587,13 @@ li {
         margin-left: 3vw;
     }
 
+    .article-category-container,
+    .video-category-container {
+        flex-flow: column wrap;
+        max-width: 350px;
+        margin-left: 3vw;
+    }
+
     .helper-section {
         max-width: 350px;
 
@@ -604,7 +611,7 @@ li {
             border-bottom: 1px solid color(hr-line);
         }
 
-        .article-sidebar {
+        .item-sidebar {
             order: 2;
             border: none;
             margin-left: 30px;
@@ -616,7 +623,7 @@ li {
         margin: 10px 50px;
     }
 
-    .article-sidebar {
+    .item-sidebar {
 
         hr {
             margin-left: 20px;

@@ -1,56 +1,56 @@
 import React from 'react';
 import axios from 'axios';
 
-import VideoSidebar from './VideoSidebar';
+import Sidebar from '../Sidebar/Sidebar';
 
-class ArticleActive extends React.Component {
+class VideoActive extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeVideoLink: null,
-            allVideosData: null,
+            activeItemLink: null,
+            allData: null,
             categoryNames: null,
-            currentVideosList: null,
-            currentVideoId: null
+            currentItemList: null,
+            currentItemId: null
     }
 }
 
     componentDidMount() {
-        this.axiosFetchArticles();
+        this.axiosFetchCategoryData();
     }
 
     handleCurrentCategory = () => {
-        const activeVideoLink = null
-        this.setState({ activeVideoLink })
+        const activeItemLink = null
+        this.setState({ activeItemLink })
     }
 
-    axiosFetchArticles = () => {
+    axiosFetchCategoryData = () => {
         return axios.get('/resources/stubs/video_structure.json').then(response => {
-            const allVideosData = response.data
+            const allData = response.data
             const categoryNames = Object.keys(response.data)
-            const currentVideosList = response.data[this.props.match.params.category].videos
-            const currentVideoId = response.data[this.props.match.params.category].videos.find(
-                videos => {
-                    return videos.id == this.props.match.params.videoId
+            const currentItemList = response.data[this.props.match.params.category].categoryItems
+            const currentItemId = response.data[this.props.match.params.category].categoryItems.find(
+                item => {
+                    return item.id == this.props.match.params.itemId
                 }
             )
             
-            this.setState({ allVideosData, currentVideosList, currentVideoId, categoryNames });
+            this.setState({ allData, currentItemList, currentItemId, categoryNames });
         });
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.url !== this.props.match.url)  {
-            const allVideosData = this.state.allVideosData
-            const currentVideoId = allVideosData[this.props.match.params.category].videos.find(
-                video => {
-                    return video.id == this.props.match.params.videoId
+            const allData = this.state.allData
+            const currentItemId = allItemData[this.props.match.params.category].categoryItems.find(
+                item => {
+                    return item.id == this.props.match.params.itemId
                 }
             )
-            const activeVideoLink = currentVideoId.title
-            const categoryNames = Object.keys(allVideoData)
+            const activeItemLink = currentItemId.title
+            const categoryNames = Object.keys(allData)
 
-            this.setState({ activeVideoLink, currentVideoId, categoryNames })
+            this.setState({ activeItemLink, currentItemId, categoryNames })
         }
     }
 
@@ -60,38 +60,29 @@ class ArticleActive extends React.Component {
         }
 
         const { 
-                allVideosData, 
-                activeVideoLink, 
+                allData, 
+                activeItemLink, 
                 categoryNames, 
-                currentVideosList, 
-                currentVideoId, 
+                currentItemList, 
+                currentItemId, 
             } = this.state
+
+        const sitePage = 'Videos';
         
         return (
             <div className="view-article-container">
-                <VideoSidebar 
-                    activeVideoLink={activeVideoLink}
-                    allVideosData={allVideosData}
+                <Sidebar 
+                    activeItemLink={activeItemLink}
+                    allData={allData}
                     categoryNames={categoryNames}
                     handleCurrentCategory={this.handleCurrentCategory}
-                    videoList={currentVideosList}
-                    videoId={currentVideoId}
+                    currentItemList={currentItemList}
+                    currentItemId={currentItemId}
                 />
-
-                {/* <ActualVideo 
-                    articleId={currentArticleId}
-                    articleIdMatch={this.props.match.params.articleId}
-                    backdropClick={this.backdropClickHandler}
-                    click={this.changeDisplayImage}
-                    currentCategory={this.props.match.params.category}
-                    currentStepId={currentStepId}
-                    displayImage={displayImage}
-                    key={currentArticleId.title}
-                /> */}
             </div>
 
         )
     }
 }
 
-export default ArticleActive;
+export default VideoActive;
