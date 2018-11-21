@@ -14,7 +14,7 @@ class ArticleActive extends React.Component {
             currentItemList: null,
             currentItemId: null,
             currentStepId: null,
-            displayImage: false
+            displayBackdrop: false
     }
 }
 
@@ -25,14 +25,14 @@ class ArticleActive extends React.Component {
     changeDisplayImage = ( event, value ) => {
         const currentStepId = value
         this.setState(prevState => ({
-            displayImage: !prevState.displayImage,
+            displayBackdrop: !prevState.displayBackdrop,
             currentStepId: currentStepId
         }));
     }
 
     backdropClickHandler = () => {
         this.setState({
-            displayImage: false
+            displayBackdrop: false
         });
     }
 
@@ -84,11 +84,10 @@ class ArticleActive extends React.Component {
                 currentItemList, 
                 currentItemId, 
                 currentStepId, 
-                displayImage 
+                displayBackdrop 
             } = this.state
 
         const sitePage = "Articles";
-        console.log(this.props.match.params.itemId)
         
         return (
             <div className="view-article-container">
@@ -110,7 +109,7 @@ class ArticleActive extends React.Component {
                     click={this.changeDisplayImage}
                     currentCategory={this.props.match.params.category}
                     currentStepId={currentStepId}
-                    displayImage={displayImage}
+                    displayBackdrop={displayBackdrop}
                     key={currentItemId.title}
                 />
             </div>
