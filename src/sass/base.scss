@@ -314,65 +314,67 @@ body {
     li {
         display: inline-block;
 
-        .item-link {
-            display: block;
-            text-decoration: none;
-            line-height: 2em;
-            font-size: 15px;
-            position: relative;
-            letter-spacing: .7px;
-            color: color(primary-blue);
-            padding-bottom: 1px;
-    
-                &:before,
-                &:after {
-                    content: '';
-                    position: absolute;
-                    bottom: 2px;
-                    left: 0; right: 0;
-                    height: 1px;
-                    background-color: color(primary-yellow);
-                }
-                &:before {
-                    opacity: 0;
-                    transform: translateY(- $distance);
-                    transition: transform 0s $easeOutBack, opacity 0s;
-                }
-                &:after {
-                    opacity: 0;
-                    transform: translateY($distance/2);
-                    transition: transform $duration $easeOutBack, opacity $duration;
-                }
-                &:hover,
-                &:focus {
-                    &:before,
-                    &:after {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                    &:before {
-                        transition: transform $duration $easeOutBack, opacity $duration;
-                    }
-                    &:after {
-                        transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
-                    }
-                }
-        }
     }
 }
-
-// .item-link {
-//     text-decoration: none;
-//     color: color(primary-blue);
-
-//     &:visited,
-//     &:active,
-//     &:hover {
-//         color: color(primary-blue);
-//         text-decoration: underline;
-//     }
+//         .item-link {
+//             display: block;
+//             text-decoration: none;
+//             line-height: 2em;
+//             font-size: 15px;
+//             position: relative;
+//             letter-spacing: .7px;
+//             color: color(primary-blue);
+//             padding-bottom: 1px;
     
+//                 &:before,
+//                 &:after {
+//                     content: '';
+//                     position: absolute;
+//                     bottom: 2px;
+//                     left: 0; right: 0;
+//                     height: 1px;
+//                     background-color: color(primary-yellow);
+//                 }
+//                 &:before {
+//                     opacity: 0;
+//                     transform: translateY(- $distance);
+//                     transition: transform 0s $easeOutBack, opacity 0s;
+//                 }
+//                 &:after {
+//                     opacity: 0;
+//                     transform: translateY($distance/2);
+//                     transition: transform $duration $easeOutBack, opacity $duration;
+//                 }
+//                 &:hover,
+//                 &:focus {
+//                     &:before,
+//                     &:after {
+//                         opacity: 1;
+//                         transform: translateY(0);
+//                     }
+//                     &:before {
+//                         transition: transform $duration $easeOutBack, opacity $duration;
+//                     }
+//                     &:after {
+//                         transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+//                     }
+//                 }
+//         }
+//     }
 // }
+
+.item-link {
+    text-decoration: none;
+    color: color(primary-blue);
+
+    &:visited,
+    &:active,
+    &:hover {
+        color: color(primary-blue);
+        text-decoration: underline;
+    }
+    
+}
 
 textarea:focus,
 input:focus {
