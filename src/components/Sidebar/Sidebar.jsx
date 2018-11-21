@@ -4,44 +4,45 @@ import { Link } from 'react-router-dom';
 import ManageState from '../elements/ManageState'
 import SidebarCategory from './SidebarCategory'
 
-function ArticleSidebar(props) {
+function Sidebar(props) {
     return (
-        <aside className="article-sidebar">
+        <aside className="item-sidebar">
             <ManageState render={
                 (managedProps) => (
                     <Fragment>
                         {props.categoryNames.map(category => (
                             <SidebarCategory
-                                allData={props.allArticleData}
-                                activeArticleLink={props.activeArticleLink}
-                                articleList={props.articleList} 
-                                articleId={props.articleId} 
-                                articleIdMatch={props.articleIdMatch}
+                                allData={props.allData}
+                                activeItemLink={props.activeItemLink}
+                                currentItemList={props.currentItemList} 
+                                currentItemId={props.currentItemId} 
+                                itemIdMatch={props.itemIdMatch}
                                 categoryName={category}
-                                handleActiveArticle={props.handleActiveArticle}
                                 key={category} 
                                 openCategories={managedProps.openCategories}
                                 onClick={(event) => managedProps.actions.pushToCategories(event, props.handleCurrentCategory)}
+                                sitePage={props.sitePage}
                                 trigger={category}
                             />
                         ))}
                     </Fragment>
                 )}/>
                 <hr />
-                <ul className="article-sidebar-list">
+                <ul className="item-sidebar-list">
                     <li className="sidebar-route-li">
                         <Link to='/' className="sidebar-route-link" >Home</Link>
                     </li>
                     <li className="sidebar-route-li">
-                        <Link to='/Videos' className="sidebar-route-link" >Videos</Link>
+                        <Link to={props.sitePage == 'Articles' ? '/Videos' : '/Articles'} className="sidebar-route-link" >{props.sitePage == 'Articles' ? 'Videos' : 'Articles'}</Link>
                     </li>
                 </ul>
-                
         </aside>
     );
 }
 
-export default ArticleSidebar
+export default Sidebar
+
+// 
 
 // yeild template to the ManageState, which will yeild back to ArticleSidebar
 

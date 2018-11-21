@@ -1,25 +1,25 @@
 import React from 'react';
 import axios from 'axios';
 
-import ArticleSidebar from './ArticleSidebar';
+import Sidebar from '../Sidebar/Sidebar';
 import ActualArticle from './ActualArticle';
 
 class ArticleActive extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeArticleLink: null,
-            allArticleData: null,
+            activeItemLink: null,
+            allData: null,
             categoryNames: null,
-            currentArticleList: null,
-            currentArticleId: null,
+            currentItemList: null,
+            currentItemId: null,
             currentStepId: null,
             displayImage: false
     }
 }
 
     componentDidMount() {
-        this.axiosFetchArticles();
+        this.axiosFetchCategoryData();
     }
 
     changeDisplayImage = ( event, value ) => {
@@ -37,37 +37,38 @@ class ArticleActive extends React.Component {
     }
 
     handleCurrentCategory = () => {
-        const activeArticleLink = null
-        this.setState({ activeArticleLink })
+        const activeItemLink = null
+        this.setState({ activeItemLink })
     }
 
-    axiosFetchArticles = () => {
+    axiosFetchCategoryData = () => {
+        // can prob be refactored further to be conditional get on video or article depending on sitePage
         return axios.get('/resources/stubs/article_structure.json').then(response => {
-            const allArticleData = response.data
+            const allData = response.data
             const categoryNames = Object.keys(response.data)
-            const currentArticleList = response.data[this.props.match.params.category].articles
-            const currentArticleId = response.data[this.props.match.params.category].articles.find(
-                article => {
-                    return article.id == this.props.match.params.articleId
+            const currentItemList = response.data[this.props.match.params.category].categoryItems
+            const currentItemId = response.data[this.props.match.params.category].categoryItems.find(
+                item => {
+                    return item.id == this.props.match.params.itemId
                 }
             )
             
-            this.setState({ allArticleData, currentArticleList, currentArticleId, categoryNames });
+            this.setState({ allData, currentItemList, currentItemId, categoryNames });
         });
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.url !== this.props.match.url)  {
-            const allArticleData = this.state.allArticleData
-            const currentArticleId = allArticleData[this.props.match.params.category].articles.find(
-                article => {
-                    return article.id == this.props.match.params.articleId
+            const allData = this.state.allData
+            const currentItemId = allData[this.props.match.params.category].categoryItems.find(
+                item => {
+                    return item.id == this.props.match.params.itemId
                 }
             )
-            const activeArticleLink = currentArticleId.title
-            const categoryNames = Object.keys(allArticleData)
+            const activeItemLink = currentItemId.title
+            const categoryNames = Object.keys(allData)
 
-            this.setState({ activeArticleLink, currentArticleId, categoryNames })
+            this.setState({ activeItemLink, currentItemId, categoryNames })
         }
     }
 
@@ -77,35 +78,40 @@ class ArticleActive extends React.Component {
         }
 
         const { 
-                allArticleData, 
-                activeArticleLink, 
+                allData, 
+                activeItemLink, 
                 categoryNames, 
-                currentArticleList, 
-                currentArticleId, 
+                currentItemList, 
+                currentItemId, 
                 currentStepId, 
                 displayImage 
             } = this.state
+
+        const sitePage = "Articles";
+        console.log(this.props.match.params.itemId)
         
         return (
             <div className="view-article-container">
-                <ArticleSidebar 
-                    allArticleData={allArticleData}
-                    articleList={currentArticleList} 
-                    articleId={currentArticleId}
+                <Sidebar 
+                    activeItemLink={activeItemLink}
+                    allData={allData}
+                    currentItemList={currentItemList} 
+                    currentItemId={currentItemId}
                     categoryNames={categoryNames}
                     handleCurrentCategory={this.handleCurrentCategory}
-                    activeArticleLink={activeArticleLink}
+                    sitePage={sitePage}
+                    
                 />
 
                 <ActualArticle 
-                    articleId={currentArticleId}
-                    articleIdMatch={this.props.match.params.articleId}
+                    currentItemId={currentItemId}
+                    itemIdMatch={this.props.match.params.itemId}
                     backdropClick={this.backdropClickHandler}
                     click={this.changeDisplayImage}
                     currentCategory={this.props.match.params.category}
                     currentStepId={currentStepId}
                     displayImage={displayImage}
-                    key={currentArticleId.title}
+                    key={currentItemId.title}
                 />
             </div>
 

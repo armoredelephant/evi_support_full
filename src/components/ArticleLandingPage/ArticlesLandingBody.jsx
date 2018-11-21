@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ArticlesList from './ArticlesList';
+import ItemList from '../Shared/ItemList';
 import ArticleHelp from './ArticleHelp';
 
 class ArticlesLandingBody extends Component {
@@ -28,11 +28,12 @@ class ArticlesLandingBody extends Component {
         }
 
         const { categoryList } = this.state;
+        const sitePage = "Articles"
 
         return (
             <main role="main" className="article-landing-main">
                 <ArticleHelp />
-                <ArticlesList categoryList={categoryList}/>
+                <ItemList categoryList={categoryList} sitePage={sitePage} />
             </main>
         );
     }

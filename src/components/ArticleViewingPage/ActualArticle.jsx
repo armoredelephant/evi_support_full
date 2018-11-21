@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 
 import ImageViewer from './ImageLoad/ImageViewer';
 
@@ -11,7 +10,7 @@ const ActualArticle = ( props ) => {
     let component = (
         <Fragment>
             <ImageViewer
-                articleIdMatch={props.articleIdMatch}
+                itemIdMatch={props.itemIdMatch}
                 backdropClick={props.backdropClick}
                 currentCategory={props.currentCategory}
                 currentStepId={props.currentStepId}
@@ -21,11 +20,12 @@ const ActualArticle = ( props ) => {
     return (
         <main role="main" className="article-view-main" id="article-view-main">
             <div className="article-view-wrapper">
-                <h2 className="article-title">{props.articleId.title}</h2>
+             {/** might need to be props.itemId.title */}
+                <h2 className="article-title">{props.currentItemId.title}</h2>
                 <hr/>
-                <h3 className="article-into">{props.articleId.description}</h3>
+                <h3 className="article-into">{props.currentItemId.description}</h3>
                 <ol>
-                    {props.articleId.body.map(currentStep => (
+                    {props.currentItemId.body.map(currentStep => (
                     currentStep.hasImage 
                     ? 
                         <li key={currentStep.stepId} className="article-step__image">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import VideoList from './VideoList';
+import ItemList from '../Shared/ItemList';
 
 class VideoLandingBody extends Component {
     constructor(props) {
@@ -25,14 +25,14 @@ class VideoLandingBody extends Component {
 
     render() {
         const { categoryList, isLoading } = this.state
-
+        const sitePage = 'Videos';
         if (isLoading) {
             return null
         }
 
         return (
             <main role="main" className="video-landing-main">
-                <VideoList categoryList={categoryList} />
+                <ItemList categoryList={categoryList} sitePage={sitePage} />
             </main>
         );
     }
