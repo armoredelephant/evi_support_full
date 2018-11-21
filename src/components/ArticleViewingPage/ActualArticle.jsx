@@ -11,6 +11,7 @@ const ActualArticle = ( props ) => {
         <Fragment>
             <ImageViewer
                 itemIdMatch={props.itemIdMatch}
+                displayBackdrop={props.displayBackdrop}
                 backdropClick={props.backdropClick}
                 currentCategory={props.currentCategory}
                 currentStepId={props.currentStepId}
@@ -43,7 +44,7 @@ const ActualArticle = ( props ) => {
                     ))}
                 </ol>
             </div>
-            {props.displayImage ? component : ''}
+            {props.displayBackdrop ? component : ''}
         </main>
     )
 }
