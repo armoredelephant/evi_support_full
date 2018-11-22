@@ -1,0 +1,14 @@
+$colors: (
+    primary-blue: #002855,
+    primary-yellow: #c99700,
+    border-blue: #001935,
+    nav-border: #e4e4e4,
+    body: #F8F8F8,
+    category-box: #FFF,
+    hr-line: #AFAFAF,
+    nav-back: #F6F6F6
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}

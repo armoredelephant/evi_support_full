@@ -16,11 +16,11 @@ function Sidebar(props) {
                                 activeItemLink={props.activeItemLink}
                                 currentItemList={props.currentItemList} 
                                 currentItemId={props.currentItemId} 
-                                itemIdMatch={props.itemIdMatch}
                                 categoryName={category}
+                                itemIdMatch={props.itemIdMatch}
                                 key={category} 
                                 openCategories={managedProps.openCategories}
-                                onClick={(event) => managedProps.actions.pushToCategories(event, props.handleCurrentCategory)}
+                                onClick={managedProps.actions.pushToCategories}
                                 sitePage={props.sitePage}
                                 trigger={category}
                             />
@@ -33,7 +33,10 @@ function Sidebar(props) {
                         <Link to='/' className="sidebar-route-link" >Home</Link>
                     </li>
                     <li className="sidebar-route-li">
-                        <Link to={props.sitePage == 'Articles' ? '/Videos' : '/Articles'} className="sidebar-route-link" >{props.sitePage == 'Articles' ? 'Videos' : 'Articles'}</Link>
+                        <Link to={props.sitePage == 'Articles' ? '/Videos' : '/Articles'} 
+                            className="sidebar-route-link" >
+                            {props.sitePage == 'Articles' ? 'Videos' : 'Articles'}
+                        </Link>
                     </li>
                 </ul>
         </aside>
