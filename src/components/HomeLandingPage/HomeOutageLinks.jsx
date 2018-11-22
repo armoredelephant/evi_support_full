@@ -3,11 +3,11 @@ import React from 'react';
 import Backdrop from '../elements/Backdrop';
 
 const HomeOutageLinks = ( props ) => {
-
-        return(
-                <Backdrop />
-        )
+    return(
+        <Backdrop />
+    )
 }
+
 
 export default HomeOutageLinks;
            

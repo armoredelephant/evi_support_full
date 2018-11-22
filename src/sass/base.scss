@@ -1,42 +1,15 @@
 // @import '~bootstrap/scss/bootstrap';
+@import './_colors';
+@import './_homepage';
 
-// Refactor: 3 class deep.
-
-/* BLUE #002855 */
-/* YELLOW #c99700 */
-// gray rgb(238, 238, 238)
-
-/*
-    VARIABLES
-*/
 
 /**********************************************************
     MAPS
 ***********************************************************/
 
-$duration: .2s;
+$duration: .4s;
 $distance: 8px;
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
-
-
-$colors: (
-    primary-blue: #002855,
-    primary-yellow: #c99700,
-    border-blue: #001935,
-    nav-border: #e4e4e4,
-    body: #F8F8F8,
-    category-box: #FFF,
-    hr-line: #AFAFAF,
-    nav-back: #F6F6F6
-);
-
-/**********************************************************
-    FUNCTIONS
-***********************************************************/
-
-@function color($color-name) {
-    @return map-get($colors, $color-name);
-}
 
 /**********************************************************
     NEEEDS REFACTOR
@@ -68,75 +41,6 @@ body {
         grid-template-rows: 187px auto 50%;
         height: 100%;
 
-            .header-wrapper {
-                display: block;
-                height: 187px;
-                grid-column-start: 1;
-                position: relative;
-                width: 100%;
-                background-color: color(nav-back);
-                border-bottom: 1px solid color(nav-border);
-
-                .mobile-header {
-                    display: block;
-                    position: relative;
-                    height: 70px;
-                    box-sizing: border-box;
-
-                    .mobile-header-inner {
-                        margin: 0 auto;
-                        padding: 1em 10px 0 10px;
-                        position: relative;
-                        height: 100%;
-                        display: flex;
-                        justify-content: center;
-
-                        .header-logo {
-                            height: 51px;
-                        }
-                    }
-                }
-
-                .page-title {
-                    font-weight: 700;
-                    letter-spacing: 1px;
-                    margin: 10 auto 0 auto;
-                    text-align: center;
-                    color: color(primary-blue);
-                }
-
-                .search-container {
-                    display: flex;
-                    justify-content: center;
-                    height: 65px;
-
-                    .search {
-                        display: block;
-                        position: relative;
-                        padding-top: 12px;
-                        width: 300px;
-                        height: 40px;
-
-                        .placeicons {
-                            font-family: fontawesome;
-                        }
-
-                        .query-search {
-                            width: 100%;
-                            height: 30px;
-                            border: 1px solid #f8f8f8;
-                            border-radius: .5em;
-                            text-align: left;
-                            padding-left: 7%;
-                            letter-spacing: 1.1px;
-                            box-shadow: 2px 3px 2px rgba(119, 119, 119, 0.05);
-                        }
-
-                    }
-
-                }
-            }
-
             main {
                 display: flex;
                 flex-direction: column;
@@ -151,7 +55,7 @@ body {
                 }
 
                 .main-section-wrapper {
-                    margin: 30px auto;
+                    margin: 81px auto;
 
                     .section-title {
                         text-align: center;
@@ -285,7 +189,7 @@ body {
     justify-content: space-between;
     justify-items: center;
     flex-flow: row wrap;
-    margin: 30px auto;
+    margin: 81px auto;
 
     .category-wrapper {
         width: 300px;

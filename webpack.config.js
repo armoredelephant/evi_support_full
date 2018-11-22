@@ -52,6 +52,6 @@ module.exports = {
   resolve: {
     // You can add a resolve for '.scss' here so you don't have to
     // specify file extensions in your components.
-    extensions: ['.js', '.jsx']
+    extensions: ['.jsx', '.js', 'scss']
   }
 };

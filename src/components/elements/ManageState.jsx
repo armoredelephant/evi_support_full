@@ -8,19 +8,17 @@ class ManageState extends Component {
         }
     }
 
-    pushToCategories = ( event, callBack ) => {
+    pushToCategories = ( event ) => {
         const target = event.target
         const openCategories = this.state.openCategories
 
-        if (openCategories.length != 0) {
-            openCategories.pop()
+        if (openCategories.length) {
+            openCategories.length = 0
         }
 
         openCategories.push(target.dataset.trigger)
         
         this.setState({ openCategories })
-
-        callBack()
 
     }
     

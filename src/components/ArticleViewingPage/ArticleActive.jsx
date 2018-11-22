@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 
 import Sidebar from '../Sidebar/Sidebar';
 import ActualArticle from './ActualArticle';
+import { axiosGet } from '../Shared/AxiosFetch'
 
 class ArticleActive extends React.Component {
     constructor(props) {
@@ -10,16 +10,17 @@ class ArticleActive extends React.Component {
         this.state = {
             activeItemLink: null,
             allData: null,
-            categoryNames: null,
-            currentItemList: null,
-            currentItemId: null,
             currentStepId: null,
             displayBackdrop: false
+        }
     }
-}
 
     componentDidMount() {
-        this.axiosFetchCategoryData();
+        axiosGet('/resources/stubs/article_structure.json').then(
+            response => this.setState({
+                allData: response
+            })
+        )
     }
 
     changeDisplayImage = ( event, value ) => {
@@ -36,57 +37,26 @@ class ArticleActive extends React.Component {
         });
     }
 
-    handleCurrentCategory = () => {
-        const activeItemLink = null
-        this.setState({ activeItemLink })
-    }
-
-    axiosFetchCategoryData = () => {
-        // can prob be refactored further to be conditional get on video or article depending on sitePage
-        return axios.get('/resources/stubs/article_structure.json').then(response => {
-            const allData = response.data
-            const categoryNames = Object.keys(response.data)
-            const currentItemList = response.data[this.props.match.params.category].categoryItems
-            const currentItemId = response.data[this.props.match.params.category].categoryItems.find(
-                item => {
-                    return item.id == this.props.match.params.itemId
-                }
-            )
-            
-            this.setState({ allData, currentItemList, currentItemId, categoryNames });
-        });
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.url !== this.props.match.url)  {
-            const allData = this.state.allData
-            const currentItemId = allData[this.props.match.params.category].categoryItems.find(
-                item => {
-                    return item.id == this.props.match.params.itemId
-                }
-            )
-            const activeItemLink = currentItemId.title
-            const categoryNames = Object.keys(allData)
-
-            this.setState({ activeItemLink, currentItemId, categoryNames })
-        }
-    }
-
     render() {
-        if (!this.state.categoryNames) {
+        if (!this.state.allData) {
             return null
         }
 
         const { 
                 allData, 
-                activeItemLink, 
-                categoryNames, 
-                currentItemList, 
-                currentItemId, 
                 currentStepId, 
                 displayBackdrop 
             } = this.state
 
+        const categoryNames = Object.keys(allData)
+        const currentItemList = allData[this.props.match.params.category].categoryItems
+        const currentItemId = currentItemList.find(
+            item => {             
+                return item.id == this.props.match.params.itemId
+            }
+        );
+
+        const activeItemLink = currentItemId.title
         const sitePage = "Articles";
         
         return (
@@ -99,7 +69,6 @@ class ArticleActive extends React.Component {
                     categoryNames={categoryNames}
                     handleCurrentCategory={this.handleCurrentCategory}
                     sitePage={sitePage}
-                    
                 />
 
                 <ActualArticle 
@@ -110,7 +79,6 @@ class ArticleActive extends React.Component {
                     currentCategory={this.props.match.params.category}
                     currentStepId={currentStepId}
                     displayBackdrop={displayBackdrop}
-                    key={currentItemId.title}
                 />
             </div>
 
@@ -120,15 +88,3 @@ class ArticleActive extends React.Component {
 
 export default ArticleActive;
 
-/* 
-    State can be set here for all child components as currentArticle and button as showArticles
-
-    Sidebar:
-        - Category as button
-            - Button needs click handler who's event needs to be passed down
-            - Click handler can be created here and passed down as a function
-        - Article title as li>Link
-
-    Artcile: 
-        - Needs to receive props for article
-*/

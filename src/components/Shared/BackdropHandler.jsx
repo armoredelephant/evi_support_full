@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BackdropHandler = (event, state) => {
-    return !state
+const BackdropHandler = (event, prop) => {
+    return !prop
 }
 
 export default BackdropHandler
