@@ -1,0 +1,116 @@
+$duration: .4s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+
+/**********************************************************
+    BACKDROP
+***********************************************************/
+
+.backdrop {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 200;
+    top: 0;
+    left: 0;
+}
+
+
+/**********************************************************
+    IMAGE LOADER
+***********************************************************/
+
+.loaded-image {
+    margin: auto auto;
+    text-align: center;
+}
+
+/**********************************************************
+    OutageLinks
+***********************************************************/
+
+.outage-links-wrapper {
+    margin: auto auto;
+    height: 600px;
+    width: 300px;
+    background: white;
+
+    h2 {
+        margin: 0;
+        letter-spacing: 1px;
+        text-align: center;
+        background: color(primary-blue);
+        color: white;
+        font-size: 18px;
+        padding: 15px 0;
+    }
+    
+    hr {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    ul {
+        padding: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+
+    li {
+        align-self: center;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+
+    a {
+        cursor: pointer;
+        display: block;
+        margin-left: 2px;
+        padding-left: 3px;
+        text-decoration: none;
+        line-height: 2em;
+        position: relative;
+        letter-spacing: .7px;
+        color: color(primary-blue);
+        padding-bottom: 1px;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0; right: 0;
+            height: 1px;
+            background-color: color(primary-yellow);
+        }
+        &:before {
+            opacity: 0;
+            transform: translateY(- $distance);
+            transition: transform 0s $easeOutBack, opacity 0s;
+        }
+        &:after {
+            opacity: 0;
+            transform: translateY($distance/2);
+            transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:hover,
+        &:focus {
+            &:before,
+            &:after {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            &:before {
+                transition: transform $duration $easeOutBack, opacity $duration;
+            }
+            &:after {
+                transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+            }
+        }
+    }
+}

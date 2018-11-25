@@ -1,0 +1,66 @@
+/**********************************************************
+    ARTICLE VIEW
+***********************************************************/
+
+.article-view-wrapper{
+    justify-self: flex-start;
+    align-self: flex-start;
+    align-items: flex-start;
+
+    hr {
+        margin: 6px 0 12px;
+        background: color(primary-yellow);
+        width: 102px;
+    }
+
+    .article-title {
+        font-size: 20px;
+        color: color(primary-blue);
+    }
+
+    .article-into {
+        margin-bottom: 30px;
+        font-size: 15px;
+        font-weight: 300;
+        color: color(primary-blue);
+    }
+
+    .article-step-button {
+        text-decoration: underline;
+        text-align: left;
+        font-family: Arial;
+        color: color(primary-blue);
+        display: inline-block;
+        border: none;
+        font-size: 13px;
+        letter-spacing: .8px;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+
+    ol {
+        padding-left: 20px;
+        
+        li {
+            margin-bottom: 15px;
+            list-style-type: circle;
+            font-size: 13px;
+
+            &:nth-last-child(1) {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+.article-step {
+    color: color(primary-blue);
+    font-size: 13px;
+    letter-spacing: .8px;
+}
