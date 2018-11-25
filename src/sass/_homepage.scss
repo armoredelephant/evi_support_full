@@ -72,3 +72,131 @@
         }
     }
 }
+
+/**********************************************************
+    HomeSectionListItems
+***********************************************************/
+
+.main-section-wrapper {
+    margin: 81px auto;
+    
+    .home-list-container {
+        list-style: none;
+    }
+
+    #home-article-container {
+        justify-content: space-evenly;
+        justify-items: center;
+        margin: 25px 0 0 0;
+        letter-spacing: 1.1px;
+        font-size: 14px;
+    }
+
+    .home-article-container {
+        list-style: none;
+        flex-direction: column;
+        margin: 50px 0;
+
+        .item-link {
+            text-decoration: none;
+
+            &:visited,
+            &:active,
+            &:hover {
+                color: color(primary-blue);
+                text-decoration: underline;
+            }
+
+        }
+
+    }
+
+    .flex-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        .category-items {
+            width: 240px;
+            height: 260px;
+        }
+    }
+}
+
+/**********************************************************
+    HomeListItem
+***********************************************************/
+
+.flex-item {
+    background: color(category-box);
+    box-shadow: 0px 7px 20px rgba(119, 119, 119, 0.30);
+    border-radius: 5px;
+    font-weight: 700;
+    margin: 10px;
+    padding: 35px 5px 5px 5px;
+    text-align: center;
+
+    .category-link,
+    .category-link-button {
+        color: color(primary-blue);
+        background-color: transparent;
+        text-decoration: none;
+        font-weight: 400;
+        text-size-adjust: 100%;
+
+        #font-icons {
+            padding-top: 15px;
+            font-size: 50px;
+        }
+
+        h2 {
+            color: color(primary-yellow);
+            letter-spacing: 1px;
+        }
+    
+        h3 {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 1.2px;
+        }
+
+        hr {
+            max-width: 44px;
+        }
+    }
+
+    .category-link-button {
+        font-size: 15px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+/**********************************************************
+    FOOTER
+***********************************************************/
+
+.main-footer {
+    border-top: 1px solid color(nav-border);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    justify-content: center;
+    background-color: color(nav-back);
+    color: color(primary-blue);
+    text-align: center;
+
+    h3 {
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 1.2px;
+    }
+}

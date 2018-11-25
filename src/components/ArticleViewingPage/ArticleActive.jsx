@@ -2,7 +2,7 @@ import React from 'react';
 
 import Sidebar from '../Sidebar/Sidebar';
 import ActualArticle from './ActualArticle';
-import { axiosGet } from '../Shared/AxiosFetch'
+import { axiosGet } from '../Shared/AxiosFetch';
 
 class ArticleActive extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class ArticleActive extends React.Component {
             activeItemLink: null,
             allData: null,
             currentStepId: null,
-            displayBackdrop: false
+            displayModal: false
         }
     }
 
@@ -20,43 +20,43 @@ class ArticleActive extends React.Component {
             response => this.setState({
                 allData: response
             })
-        )
-    }
+        );
+    };
 
     changeDisplayImage = ( event, value ) => {
         const currentStepId = value
         this.setState(prevState => ({
-            displayBackdrop: !prevState.displayBackdrop,
+            displayModal: !prevState.displayModal,
             currentStepId: currentStepId
         }));
-    }
+    };
 
-    backdropClickHandler = () => {
+    hideModal = () => {
         this.setState({
-            displayBackdrop: false
+            displayModal: false
         });
-    }
+    };
 
     render() {
         if (!this.state.allData) {
-            return null
-        }
+            return null;
+        };
 
         const { 
                 allData, 
                 currentStepId, 
-                displayBackdrop 
+                displayModal
             } = this.state
 
-        const categoryNames = Object.keys(allData)
-        const currentItemList = allData[this.props.match.params.category].categoryItems
+        const categoryNames = Object.keys(allData);
+        const currentItemList = allData[this.props.match.params.category].categoryItems;
         const currentItemId = currentItemList.find(
             item => {             
-                return item.id == this.props.match.params.itemId
+                return item.id == this.props.match.params.itemId;
             }
         );
 
-        const activeItemLink = currentItemId.title
+        const activeItemLink = currentItemId.title;
         const sitePage = "Articles";
         
         return (
@@ -74,17 +74,17 @@ class ArticleActive extends React.Component {
                 <ActualArticle 
                     currentItemId={currentItemId}
                     itemIdMatch={this.props.match.params.itemId}
-                    backdropClick={this.backdropClickHandler}
+                    hideModal={this.hideModal}
                     click={this.changeDisplayImage}
                     currentCategory={this.props.match.params.category}
                     currentStepId={currentStepId}
-                    displayBackdrop={displayBackdrop}
+                    displayModal={displayModal}
                 />
             </div>
 
-        )
-    }
-}
+        );
+    };
+};
 
 export default ArticleActive;
 

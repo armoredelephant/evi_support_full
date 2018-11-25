@@ -1,22 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 
-import ImageViewer from './ImageLoad/ImageViewer';
-
-//receive props from the updated data for currentarticleId and set it's own state for the current stepId?
+import ModalConductor from '../elements/ModalConductor';
 
 const ActualArticle = ( props ) => {
-    let component = (
-        <Fragment>
-            <ImageViewer
-                itemIdMatch={props.itemIdMatch}
-                displayBackdrop={props.displayBackdrop}
-                backdropClick={props.backdropClick}
-                currentCategory={props.currentCategory}
-                currentStepId={props.currentStepId}
-            />
-        </Fragment>
-    )
-    
+    const currentModal = 'IMAGE_LOADER';
+
     return (
         <main role="main" className="article-view-main" id="article-view-main">
             <div className="article-view-wrapper">
@@ -42,9 +30,18 @@ const ActualArticle = ( props ) => {
                     ))}
                 </ol>
             </div>
-            {props.displayBackdrop ? component : ''}
+            {props.displayModal 
+            ? 
+                <ModalConductor 
+                    currentModal={currentModal} 
+                    currentCategory={props.currentCategory}
+                    currentStepId={props.currentStepId}
+                    itemIdMatch={props.itemIdMatch}
+                    hideModal={props.hideModal} /> 
+            : 
+                ''}
         </main>
-    )
-}
+    );
+};
 
-export default ActualArticle
+export default ActualArticle;

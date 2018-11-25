@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 const Backdrop = ( props ) => {
     return (
@@ -9,3 +9,8 @@ const Backdrop = ( props ) => {
 }
 
 export default Backdrop
+
+// accept a prop that decides which component to display within the backdrop
+
+// use a switch?
+
