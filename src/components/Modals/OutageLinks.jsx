@@ -13,10 +13,10 @@ const OutageLinks = props => {
                         <a href='https://www.downdetector.com'>Down Detector</a>
                     </li>
                     <li>
-                        <a href='#'>Meraki Test</a>
+                        <a href='http://wired.meraki.com'>Meraki Test</a>
                     </li>
                     <li>
-                        <a href='#'>Speed Test</a>
+                        <a href='http://www.speedtest.net/'>Speed Test</a>
                     </li>
                 </ul>
             </div>
