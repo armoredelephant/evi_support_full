@@ -4,7 +4,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 
 /**********************************************************
-    BACKDROP
+    MODAL WRAPPER
 ***********************************************************/
 
 .backdrop {
@@ -17,8 +17,38 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     z-index: 200;
     top: 0;
     left: 0;
-}
 
+    header {
+        border-bottom: 1px solid color(nav-border);
+        margin-bottom: 30px;
+        background: color(primary-blue);
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+
+
+        h2 {
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center;
+            background: color(primary-blue);
+            color: white;
+            font-size: 18px;
+            padding: 15px 0;
+            margin-left: 29%;
+        }
+
+        button {
+            border: none;
+            color: color(primary-yellow);
+            background: color(primary-blue);
+            outline: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+    }
+}
 
 /**********************************************************
     IMAGE LOADER
@@ -33,26 +63,14 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     OutageLinks
 ***********************************************************/
 
-.outage-links-wrapper {
+.modal-wrapper {
     margin: auto auto;
-    height: 600px;
+    height: 400px;
     width: 300px;
     background: white;
-
-    h2 {
-        margin: 0;
-        letter-spacing: 1px;
-        text-align: center;
-        background: color(primary-blue);
-        color: white;
-        font-size: 18px;
-        padding: 15px 0;
-    }
-    
-    hr {
-        margin-top: 0;
-        margin-bottom: 30px;
-    }
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 
     ul {
         padding: 0;
