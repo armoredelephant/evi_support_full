@@ -8,9 +8,10 @@ class AdminPortal extends Component {
 
     render() {
         return (
-            null
+            <div>
+                test
+            </div>
         );
     }
 }
-
 export default AdminPortal

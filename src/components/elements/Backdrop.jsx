@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Backdrop = ( props ) => {
     return (
         <div className="backdrop" onClick={props.backdropClick}>
-            {/* Start Modal Here */}
         </div>
     )
 }

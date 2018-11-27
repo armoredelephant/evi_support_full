@@ -32,5 +32,3 @@ const ModalWrapper = ( props ) => {
 }
 
 export default ModalWrapper;
-
-// Maybe use another switch? modalLayout={} switch(props.modalLayout) {}
