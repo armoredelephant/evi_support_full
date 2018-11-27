@@ -1,8 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-import Footer from '../StaticFooter';
-import Header from '../StaticHeader';
 import ItemList from '../Shared/ItemList';
 
 class VideoLandingBody extends Component {
@@ -33,13 +31,9 @@ class VideoLandingBody extends Component {
         }
 
         return (
-            <Fragment>
-                <Header />
-                <main role="main" className="video-landing-main">
-                    <ItemList categoryList={categoryList} sitePage={sitePage} />
-                </main>
-                <Footer />
-            </Fragment>
+            <main role="main" className="video-landing-main">
+                <ItemList categoryList={categoryList} sitePage={sitePage} />
+            </main>
         );
     }
 }

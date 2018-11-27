@@ -1,9 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import ActualArticle from './ActualArticle';
 import { axiosGet } from '../Shared/AxiosFetch';
-import Footer from '../StaticFooter';
-import Header from '../StaticHeader';
 import Sidebar from '../Sidebar/Sidebar';
 
 
@@ -63,31 +61,27 @@ class ArticleActive extends React.Component {
         const sitePage = "Articles";
         
         return (
-            <Fragment>
-                <Header />
-                <div className="view-article-container">
-                    <Sidebar 
-                        activeItemLink={activeItemLink}
-                        allData={allData}
-                        currentItemList={currentItemList} 
-                        currentItemId={currentItemId}
-                        categoryNames={categoryNames}
-                        handleCurrentCategory={this.handleCurrentCategory}
-                        sitePage={sitePage}
-                    />
+            <div className="view-article-container">
+                <Sidebar 
+                    activeItemLink={activeItemLink}
+                    allData={allData}
+                    currentItemList={currentItemList} 
+                    currentItemId={currentItemId}
+                    categoryNames={categoryNames}
+                    handleCurrentCategory={this.handleCurrentCategory}
+                    sitePage={sitePage}
+                />
 
-                    <ActualArticle 
-                        currentItemId={currentItemId}
-                        itemIdMatch={this.props.match.params.itemId}
-                        hideModal={this.hideModal}
-                        click={this.changeDisplayImage}
-                        currentCategory={this.props.match.params.category}
-                        currentStepId={currentStepId}
-                        displayModal={displayModal}
-                    />
-                </div>
-                <Footer />
-            </Fragment>
+                <ActualArticle 
+                    currentItemId={currentItemId}
+                    itemIdMatch={this.props.match.params.itemId}
+                    hideModal={this.hideModal}
+                    click={this.changeDisplayImage}
+                    currentCategory={this.props.match.params.category}
+                    currentStepId={currentStepId}
+                    displayModal={displayModal}
+                />
+            </div>
         );
     };
 };
