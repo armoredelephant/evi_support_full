@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-import ItemList from '../Shared/ItemList';
 import ArticleHelp from './ArticleHelp';
+import Footer from '../StaticFooter';
+import Header from '../StaticHeader';
+import ItemList from '../Shared/ItemList';
 
 class ArticlesLandingBody extends Component {
     constructor() {
@@ -31,10 +33,14 @@ class ArticlesLandingBody extends Component {
         const sitePage = "Articles"
 
         return (
-            <main role="main" className="article-landing-main">
-                <ArticleHelp />
-                <ItemList categoryList={categoryList} sitePage={sitePage} />
-            </main>
+            <Fragment>
+                <Header />
+                <main role="main" className="article-landing-main">
+                    <ArticleHelp />
+                    <ItemList categoryList={categoryList} sitePage={sitePage} />
+                </main>
+                <Footer />
+            </Fragment>
         );
     }
 }

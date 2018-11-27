@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
+import Footer from '../StaticFooter';
+import Header from '../StaticHeader';
 import SectionListItems from './HomeSectionListItems';
 
 class HomeBody extends Component {
@@ -26,13 +28,17 @@ class HomeBody extends Component {
         const { displayModal } = this.state;
 
         return (
-            <main role="main">
-                <SectionListItems
-                    displayModal={displayModal}
-                    hideModal={this.hideModal}
-                    showModal={this.showModal} 
-                />
-            </main>
+            <Fragment>
+                <Header />
+                <main role="main">
+                    <SectionListItems
+                        displayModal={displayModal}
+                        hideModal={this.hideModal}
+                        showModal={this.showModal} 
+                    />
+                </main>
+                <Footer />
+            </Fragment>
         );
     }
 }

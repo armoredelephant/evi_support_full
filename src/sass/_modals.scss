@@ -19,6 +19,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     left: 0;
 
     header {
+        height: 55px;
         border-bottom: 1px solid color(nav-border);
         margin-bottom: 30px;
         background: color(primary-blue);
@@ -44,7 +45,7 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
             background: color(primary-blue);
             outline: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 20px;
             margin-right: 10px;
         }
     }

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 
+import Footer from '../StaticFooter';
+import Header from '../StaticHeader';
 import Sidebar from '../Sidebar/Sidebar';
 
 class VideoActive extends React.Component {
@@ -70,16 +72,20 @@ class VideoActive extends React.Component {
         const sitePage = 'Videos';
         
         return (
-            <div className="view-article-container">
-                <Sidebar 
-                    activeItemLink={activeItemLink}
-                    allData={allData}
-                    categoryNames={categoryNames}
-                    handleCurrentCategory={this.handleCurrentCategory}
-                    currentItemList={currentItemList}
-                    currentItemId={currentItemId}
-                />
-            </div>
+            <Fragment>
+                <Header />
+                <div className="view-article-container">
+                    <Sidebar 
+                        activeItemLink={activeItemLink}
+                        allData={allData}
+                        categoryNames={categoryNames}
+                        handleCurrentCategory={this.handleCurrentCategory}
+                        currentItemList={currentItemList}
+                        currentItemId={currentItemId}
+                    />
+                </div>
+                <Footer />
+            </Fragment>
 
         )
     }

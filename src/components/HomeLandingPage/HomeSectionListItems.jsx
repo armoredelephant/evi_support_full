@@ -12,12 +12,14 @@ const SectionListItems = props => {
                     iconName="fa-video"
                     categoryID="category-videos"
                     categoryDescription="Helpful videos for connecting equipment."
+                    disabled="true"
                 />
                 <HomeListItem 
                     category="Articles" 
                     iconName="fa-book"
                     categoryID="category-articles"
                     categoryDescription="Browse through our articles."
+                    disabled="false"
                 />
                 <HomeOutageLinks
                     {...props} 
@@ -31,6 +33,7 @@ const SectionListItems = props => {
                     iconName="fa-file"
                     categoryID="category-request"
                     categoryDescription="Submit a request."
+                    disabled="true"
                 />
             </ul>
         </section>
