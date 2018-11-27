@@ -139,8 +139,13 @@
     padding: 35px 5px 5px 5px;
     text-align: center;
 
+    .category-link-disabled {
+        pointer-events: none;
+    }
+
     .category-link,
-    .category-link-button {
+    .category-link-button,
+    .category-link-disabled {
         color: color(primary-blue);
         background-color: transparent;
         text-decoration: none;

@@ -6,7 +6,7 @@ import ListIcon from './HomeListIcon';
 const HomeListItem = props => {
     return (
         <li className="flex-item category-items" id={props.categoryID}>
-            <Link to={`/${props.category}`} className="category-link">
+            <Link to={`/${props.category}`} className={props.disabled == 'true' ? "category-link-disabled" : "category-link"}>
                 <ListIcon iconName={props.iconName}/>
                 <h2>{props.category}</h2>
                 <hr />
