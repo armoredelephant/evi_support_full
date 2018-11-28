@@ -1,0 +1,512 @@
+{
+    "articles": {
+        "Applications": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "Igel Quick Start Guide",
+                    "description": "A jack-of-all-trades guide that covers a number of common IGEL questions.",
+                    "tags": [
+                        "igel"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": "url? https://firebase.com/weRWQ2-sdfsd-fssf/img.jpg added when adding step via admin."
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+    
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Installing Software From Software Center",
+                    "description": "A quick how-to on installing software from the Software Center!",
+                    "tags": [
+                        "software",
+                        "license",
+                        "install"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Click the Windows icon located at the bottom left of the screen.",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Type Software Center in the search bar and press enter.",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Browse for and click the application you would like to install from the Applications tab.",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 4,
+                            "step": "Click Install.",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                    
+                },
+                {
+                    "id": 3,
+                    "title": "eviNotes Tutorial",
+                    "description": "A short tutorial on using eviNotes!",
+                    "tags": [
+                        "evinotes"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                    
+                },
+                {
+                    "id": 4,
+                    "title": "FranklinCovey All Access Tutorial",
+                    "description": "A short tutorial on using logging into FranklinCovey All Access Pass",
+                    "tags": [
+                        "franklincovey",
+                        "access"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                    
+                },
+                {
+                    "id": 5,
+                    "title": "Frozen Applications Within Citrix",
+                    "description": "A quick how-to on closing out of your frozen Citrix applications and sessions!",
+                    "tags": [
+                        "frozen",
+                        "freezing",
+                        "citrix",
+                        "applications"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                }
+            ]
+        },
+        "Hardware Setup": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "Setting up a Dell WD15 docking station",
+                    "description": "This article will guide you through connecting your equipment to a new WD15 docking station.",
+                    "tags": [
+                        "dell",
+                        "wd15",
+                        "dock",
+                        "docking station"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        } 
+                    ]
+                }
+            ]
+        },
+        "Hardware Use": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "How to Configure Multiple Monitors",
+                    "description": "This article covers steps on how to enable both monitors.",
+                    "tags": [
+                        "monitor",
+                        "resolution",
+                        "extend",
+                        "display",
+                        "dual"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Changing The Screen Resolution on an Igel",
+                    "description": "A quick how-to on changing the resolution on your igel!",
+                    "tags": [
+                        "resolution",
+                        "monitor",
+                        "igel",
+                        "extend",
+                        "display",
+                        "dual"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Calling Into Webex using a Smart Board",
+                    "description": "This article will guide you through using a Smart Board to call into your Webex Meetings",
+                    "tags": [
+                        "cisco",
+                        "call",
+                        "smart board",
+                        "smart",
+                        "webex"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Signing Into A Cisco Phone - Model 8845",
+                    "description": "An article to guide you through signing into your Cisco phone.",
+                    "tags": [
+                        "cisco",
+                        "8856",
+                        "extension",
+                        "mobility",
+                        "sign"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                }
+            ]
+        },
+        "Email": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "Accessing Online Archive",
+                    "description": "This article will assist you with navigating to your online archive.",
+                    "tags": [
+                        "archive",
+                        "email",
+                        "outlook"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Airwatch Troubleshooting",
+                    "description": "This article will go over steps on properly configuring Airwatch on your mobile device.",
+                    "tags": [
+                        "airwatch",
+                        "mobile",
+                        "email",
+                        "outlook"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                }
+            ]
+        },
+        "Other": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "Mapping a Network Drive",
+                    "description": "A quick how-to on mapping your drives!",
+                    "tags": [
+                        "drive",
+                        "network",
+                        "map"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Setting Up A Verification PIN for Service Desk Assistance",
+                    "description": "This article will cover creating a verification PIN, which is required by Service Desk when requesting password changes!",
+                    "tags": [
+                        "pin",
+                        "service desk"
+                    ],
+                    "body": [
+                        {
+                            "stepId": 1,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 2,
+                            "step": "Placeholder",
+                            "hasImage": false,
+                            "imageUrl": null
+                        },
+                        {
+                            "stepId": 3,
+                            "step": "Placeholder",
+                            "hasImage": true,
+                            "imageUrl": null
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "videos": {
+        "Hardware Setup": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "Full Remote Setup: Igel",
+                    "description": "This video will cover connecting a full remote igel setup.",
+                    "tags": [
+                        "igel",
+                        "video",
+                        "connection",
+                        "remote",
+                        "setup"
+                    ],
+                    "videoUrl": "https://vimeo.com/somewhere" 
+                },
+                {
+                    "id": 2,
+                    "title": "Full Remote Setup: Laptop - Dell 5480",
+                    "description": "This video will cover connecting a full remote Dell 5480 laptop setup.",
+                    "tags": [
+                        "igel",
+                        "video",
+                        "connection",
+                        "remote",
+                        "setup",
+                        "dell",
+                        "5480"
+                    ],
+                    "videoUrl": "https://vimeo.com/somewhere" 
+                }
+            ]
+        },
+        "Other": {
+            "categoryItems": [
+                {
+                    "id": 1,
+                    "title": "How to log into a Cisco 8845",
+                    "description": "This video will cover how to log into a Cisco 8845",
+                    "tags": [
+                        "cisco",
+                        "video",
+                        "phone",
+                        "login",
+                        "extension",
+                        "8845"
+                    ],
+                    "videoUrl": "https://vimeo.com/somewhere" 
+                }
+            ]
+        }
+    }
+}
