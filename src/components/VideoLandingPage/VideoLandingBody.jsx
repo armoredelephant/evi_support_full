@@ -13,7 +13,7 @@ class VideoLandingBody extends Component {
     }
 
     componentDidMount() {
-        axios.get('/resources/stubs/video_structure.json').then( response => {
+        axios.get('http://localhost:3000/').then( response => {
             this.setState(
                 {
                     isLoading: false,

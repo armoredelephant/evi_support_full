@@ -17,7 +17,7 @@ class ArticleActive extends React.Component {
     }
 
     componentDidMount() {
-        axiosGet('/resources/stubs/article_structure.json').then(
+        axiosGet('http://localhost:3000/').then(
             response => this.setState({
                 allData: response
             })

@@ -13,7 +13,8 @@ class ArticlesLandingBody extends Component {
     }
 
     componentDidMount() {
-        axios.get('/resources/stubs/article_structure.json').then( response => {
+        axios.get('http://localhost:3000/').then( response => {
+            console.log(response.data);
             this.setState(
                 {
                     categoryList: response.data

@@ -25,7 +25,7 @@ class VideoActive extends React.Component {
     }
 
     axiosFetchCategoryData = () => {
-        return axios.get('/resources/stubs/video_structure.json').then(response => {
+        return axios.get('http://localhost:3000/').then(response => {
             const allData = response.data
             const categoryNames = Object.keys(response.data)
             const currentItemList = response.data[this.props.match.params.category].categoryItems
