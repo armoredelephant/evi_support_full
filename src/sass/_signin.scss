@@ -52,6 +52,7 @@
         text-decoration: none;
         font-size: 12px;
         margin-right: 26px;
+        color: #bbb;
 
         &:visited,
         &:active,
@@ -86,6 +87,7 @@
         border: none;
         height: 35px;
         width: 250px;
+        font-weight: 700;
     }
 
     input[type=text].signIn-email {
