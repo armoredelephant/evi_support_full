@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './sass/base.scss'
 
-import AdminPortal from './components/Admin/AdminPortal.jsx';
 import ArticlesLandingBody from './components//ArticleLandingPage/ArticlesLandingBody';
 import ArticleActive from './components/ArticleViewingPage/ArticleActive';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
 import HomeBody from './components/HomeLandingPage/HomeBody';
+import SignIn from './components/Admin/SignIn';
 import VideoActive from './components/VideoViewingPage/VideoActive';
 import VideoLandingBody from './components/VideoLandingPage/VideoLandingBody';
 
@@ -17,8 +17,8 @@ class App extends Component {
         return (
             <Router>
                 <div className="container">
-                    {window.location.pathname.includes('/AdminPortal') ? 
-                        <Route exact path="/AdminPortal" component={AdminPortal} />
+                    {window.location.pathname.includes('/SignIn') ? 
+                        <Route exact path="/SignIn" component={SignIn} />
                     : (
                         <Fragment>
                             <Header />
