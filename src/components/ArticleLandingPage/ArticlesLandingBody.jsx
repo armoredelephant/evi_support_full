@@ -13,7 +13,8 @@ class ArticlesLandingBody extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/').then( response => {
+        console.log(process.env);
+        axios.get('http://localhost:3000').then( response => {
             console.log(response.data);
             this.setState(
                 {

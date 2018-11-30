@@ -23,10 +23,10 @@ class App extends Component {
                         <Fragment>
                             <Header />
                             <Route exact path="/" component={HomeBody} />
-                            <Route exact path="/Articles" component={ArticlesLandingBody} />
-                            <Route path="/Articles/:category/:itemId" component={ArticleActive} />
-                            <Route exact path="/Videos" component={VideoLandingBody} />
-                            <Route path="/Videos/:category/:itemId" component={VideoActive} />
+                            <Route exact path="/articles" component={ArticlesLandingBody} />
+                            <Route path="/articles/:category/:itemId" component={ArticleActive} />
+                            <Route exact path="/videos" component={VideoLandingBody} />
+                            <Route path="/videos/:category/:itemId" component={VideoActive} />
                             <Footer />
                         </Fragment>
                     )}
