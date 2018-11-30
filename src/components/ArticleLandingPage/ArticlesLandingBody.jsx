@@ -13,9 +13,9 @@ class ArticlesLandingBody extends Component {
     }
 
     componentDidMount() {
-        console.log(process.env);
-        axios.get('http://localhost:3000').then( response => {
-            console.log(response.data);
+        const API_HOST_URL = process.env.API_URL
+
+        axios.get(`${API_HOST_URL}/api/articles`).then( response => {
             this.setState(
                 {
                     categoryList: response.data
