@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const getClientEnvironment = require('./config/env');
 
+// const env = getClientEnvironment()
 /**
  * Webpack config file. Bare bones~ish.
  */
@@ -20,6 +22,9 @@ module.exports = {
     port: 9000,
     historyApiFallback: true
   },
+  // plugins: [
+  //   new webpack.DefinePlugin(env)
+  // ],
   module: {
     rules: [
       {
