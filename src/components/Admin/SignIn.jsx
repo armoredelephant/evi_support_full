@@ -11,22 +11,25 @@ class SignIn extends Component {
     }
 
     // need an onClick that will set the state based on what is submitted
-    storeCredentials = event => {
+    hangleChange = event => {
         const target = event.target;
 
         this.setState({ [target.name]: target.value })
     }
 
-    // need a function that checks with axios 
+    // This will post the crednetials to the backend which will then check with firebase. If authenticated = login/reroute : 
     handleSubmit = event => {
         event.preventDefault();
+        const API_HOST_URL = process.env.API_URL;
 
         const user = {
             email: this.state.email,
             password: this.state.password
         }
 
-        axios.post('http://localhost:3000/users/', user)
+        axios.post(`${API_HOST_URL}/api/users`, user).then(response => {
+
+        });
     }
 
     render() {
@@ -42,7 +45,7 @@ class SignIn extends Component {
                         autoComplete="email"
                         className="placeicons signIn-email" 
                         name="email"
-                        onChange={this.storeCredentials}
+                        onChange={this.handleChange}
                         placeholder="&#xf0e0;    email"
                         type="email" >
                     </input>
@@ -50,7 +53,7 @@ class SignIn extends Component {
                         autoComplete="password"
                         className="placeicons signIn-password" 
                         name="password"
-                        onChange={this.storeCredentials}
+                        onChange={this.handleChange}
                         placeholder="&#xf023;    password"
                         type="password">
                     </input>
