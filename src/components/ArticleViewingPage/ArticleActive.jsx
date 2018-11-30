@@ -17,7 +17,9 @@ class ArticleActive extends React.Component {
     }
 
     componentDidMount() {
-        axiosGet('http://localhost:3000').then(
+        const API_HOST_URL = process.env.API_URL;
+
+        axiosGet(`${API_HOST_URL}/api/articles`).then(
             response => this.setState({
                 allData: response
             })

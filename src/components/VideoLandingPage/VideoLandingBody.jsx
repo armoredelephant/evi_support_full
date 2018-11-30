@@ -13,7 +13,9 @@ class VideoLandingBody extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/').then( response => {
+        const API_HOST_URL = process.env.API_URL;
+
+        axios.get(`${API_HOST_URL}/api/videos`).then( response => {
             this.setState(
                 {
                     isLoading: false,
