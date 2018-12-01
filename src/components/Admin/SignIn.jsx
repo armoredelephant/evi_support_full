@@ -11,7 +11,7 @@ class SignIn extends Component {
     }
 
     // need an onClick that will set the state based on what is submitted
-    hangleChange = event => {
+    handleChange = event => {
         const target = event.target;
 
         this.setState({ [target.name]: target.value })
@@ -20,19 +20,23 @@ class SignIn extends Component {
     // This will post the crednetials to the backend which will then check with firebase. If authenticated = login/reroute : 
     handleSubmit = event => {
         event.preventDefault();
+        
         const API_HOST_URL = process.env.API_URL;
 
         const user = {
             email: this.state.email,
             password: this.state.password
         }
-
-        axios.post(`${API_HOST_URL}/api/users`, user).then(response => {
-
+        axios.post(`${API_HOST_URL}/api/users/auth`, user).then(response => {
+            console.log(response.data);
+            console.log(this.props);
+            const isSignedIn = response.data.isLogged;
+            // isSignedIn ? this.props.history.push('/') : ''
         });
     }
 
     render() {
+
         return (
             <div className="card-wrapper">
                 <form className="signIn-card">
@@ -62,7 +66,9 @@ class SignIn extends Component {
                         forgot
                         </a>
                     </div>
-                    <button type="submit" className="signIn-submit">
+                    <button type="submit" 
+                        className="signIn-submit"
+                        onClick={this.handleSubmit}>
                     Sign In
                     </button>
                 </form>
