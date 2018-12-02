@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { AuthConsumer } from '../elements/AuthContext';
 
 class SignIn extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class SignIn extends Component {
     }
 
     // This will post the crednetials to the backend which will then check with firebase. If authenticated = login/reroute : 
-    handleSubmit = event => {
+    handleSubmit = (event, authChange) => {
         event.preventDefault();
         
         const API_HOST_URL = process.env.API_URL;
@@ -28,51 +29,57 @@ class SignIn extends Component {
             password: this.state.password
         }
         axios.post(`${API_HOST_URL}/api/users/auth`, user).then(response => {
-            console.log(response.data);
-            console.log(this.props);
-            const isSignedIn = response.data.isLogged;
-            // isSignedIn ? this.props.history.push('/') : ''
+            const isSignedIn = response.data.isAuthenticated;
+            
+            authChange(isSignedIn)
+
+            if(isSignedIn) {
+                this.props.history.push('/Dashboard')
+            } 
         });
     }
 
     render() {
-
         return (
-            <div className="card-wrapper">
-                <form className="signIn-card">
-                    <header>
-                        <h3>
-                        Dashboard Login
-                        </h3>
-                    </header>
-                    <input 
-                        autoComplete="email"
-                        className="placeicons signIn-email" 
-                        name="email"
-                        onChange={this.handleChange}
-                        placeholder="&#xf0e0;    email"
-                        type="email" >
-                    </input>
-                    <input
-                        autoComplete="password"
-                        className="placeicons signIn-password" 
-                        name="password"
-                        onChange={this.handleChange}
-                        placeholder="&#xf023;    password"
-                        type="password">
-                    </input>
-                    <div className="signIn-link-container">
-                        <a href="#">
-                        forgot
-                        </a>
+            <AuthConsumer>
+                {value => (
+                    <div className="card-wrapper">
+                        <form className="signIn-card">
+                            <header>
+                                <h3>
+                                Dashboard Login
+                                </h3>
+                            </header>
+                            <input 
+                                autoComplete="email"
+                                className="placeicons signIn-email" 
+                                name="email"
+                                onChange={this.handleChange}
+                                placeholder="&#xf0e0;    email"
+                                type="email" >
+                            </input>
+                            <input
+                                autoComplete="password"
+                                className="placeicons signIn-password" 
+                                name="password"
+                                onChange={this.handleChange}
+                                placeholder="&#xf023;    password"
+                                type="password">
+                            </input>
+                            <div className="signIn-link-container">
+                                <a href="#">
+                                forgot
+                                </a>
+                            </div>
+                            <button type="submit" 
+                                className="signIn-submit"
+                                onClick={(e) => this.handleSubmit(e, value.handleAuthChange)}>
+                            Sign In
+                            </button>
+                        </form>
                     </div>
-                    <button type="submit" 
-                        className="signIn-submit"
-                        onClick={this.handleSubmit}>
-                    Sign In
-                    </button>
-                </form>
-            </div>
+                )}
+            </AuthConsumer>
         );
     }
 }
