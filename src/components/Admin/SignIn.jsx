@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { AuthConsumer } from '../elements/AuthContext';
+import { AuthConsumer } from './AuthContext';
 
 class SignIn extends Component {
     constructor(props) {

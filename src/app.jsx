@@ -5,7 +5,7 @@ import './sass/base.scss'
 
 import ArticlesLandingBody from './components//ArticleLandingPage/ArticlesLandingBody';
 import ArticleActive from './components/ArticleViewingPage/ArticleActive';
-import Dashboard from './components/Admin/Dashboard';
+import AuthChecker from './components/Admin/AuthChecker';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
 import HomeBody from './components/HomeLandingPage/HomeBody';
@@ -13,7 +13,7 @@ import SignIn from './components/Admin/SignIn';
 import VideoActive from './components/VideoViewingPage/VideoActive';
 import VideoLandingBody from './components/VideoLandingPage/VideoLandingBody';
 
-import { AuthProvider } from './components/elements/AuthContext';
+import { AuthProvider } from './components/Admin/AuthContext';
 
 
 class App extends Component {
@@ -24,7 +24,8 @@ class App extends Component {
                     {window.location.pathname.includes('/SignIn') || window.location.pathname.includes('/Dashboard') ?
                         <AuthProvider>
                             <Route exact path="/SignIn" component={SignIn} />
-                            <Route exact path="/Dashboard" component={Dashboard} />
+                            <Route exact path="/Dashboard" component={AuthChecker} />
+                            {/** add another route to like /Dashboad/:UID  to be pulled from currentUser ?  or just have the component load at Dasboard if authenticated. */}
                         </AuthProvider>
                     : (
                         <Fragment>
