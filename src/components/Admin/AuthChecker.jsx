@@ -5,10 +5,10 @@ import { AuthConsumer } from './AuthContext';
 const AuthChecker = props => {
     return(
         <AuthConsumer>
-            { value  => (
-                value.isAuthenticated 
+            { ({ isLogged })  => (
+                isLogged
                 ?
-                    <div>This will be the Dashboard componenet</div>
+                    <div>This will be the Dashboard componenet </div>
                     // <Dashboard /> will be loaded here
                 :
                     <div>Not Logged In</div>

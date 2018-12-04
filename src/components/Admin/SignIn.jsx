@@ -18,8 +18,12 @@ class SignIn extends Component {
         this.setState({ [target.name]: target.value })
     }
 
-    // This will post the crednetials to the backend which will then check with firebase. If authenticated = login/reroute : 
-    handleSubmit = (event, authChange) => {
+    /**
+     * This will post the crednetials to the backend which will then check with firebase.
+     * If the user is authenticated, it will run the callback from AdminSwitch.jsx to update isLogged in context
+     * Then it will route to the admin dashboard page
+     **/
+    handleSubmit = (event, handleUpdateUser) => {
         event.preventDefault();
         
         const API_HOST_URL = process.env.API_URL;
@@ -29,12 +33,11 @@ class SignIn extends Component {
             password: this.state.password
         }
         axios.post(`${API_HOST_URL}/api/users/auth`, user).then(response => {
-            const isSignedIn = response.data.isAuthenticated;
-            
-            authChange(isSignedIn)
+            const userAuthenticated = response.data.isAuthenticated;
 
-            if(isSignedIn) {
-                this.props.history.push('/Dashboard')
+            if(userAuthenticated) {
+                handleUpdateUser()
+                this.props.history.push('/Admin/dashboard')
             } 
         });
     }
@@ -73,7 +76,7 @@ class SignIn extends Component {
                             </div>
                             <button type="submit" 
                                 className="signIn-submit"
-                                onClick={(e) => this.handleSubmit(e, value.handleAuthChange)}>
+                                onClick={(e) => this.handleSubmit(e, value.handleUser)}>
                             Sign In
                             </button>
                         </form>
