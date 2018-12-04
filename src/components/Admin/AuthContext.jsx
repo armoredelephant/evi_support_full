@@ -1,5 +1,6 @@
 import React from 'react';
-import Dashboard from '../Admin/Dashboard';
+import axios from 'axios';
+import { throws } from 'assert';
 
 const AuthContext = React.createContext({});
 
@@ -8,7 +9,7 @@ export class  AuthProvider extends React.Component {
         super(props);
         this.state = {
             isAuthenticated: false,
-            test: "wtf"
+            currentUser: null
         }
     }
 
@@ -19,15 +20,30 @@ export class  AuthProvider extends React.Component {
         });
     }
 
+    // make a function that will grab auth().currentUser from the backend?
+    handleUser = () => {
+        const API_HOST_URL = process.env.API_URL;
+
+        axios.get(`${API_HOST_URL}/api/users`).then(response => {
+            console.log(response)
+            this.setState({
+                // what is this?
+            });
+        })
+    }
+
+
+
     render() {
         const { children } = this.props;
+        const { currentUser, isAuthenticated } = this.state;
 
         return (
             <AuthContext.Provider 
                 value={{
                     handleAuthChange: this.handleAuthChange,
-                    isAuthenticated: this.state.isAuthenticated,
-                    test: this.state.test
+                    isAuthenticated: isAuthenticated,
+                    currentUser: currentUser
                 }}
             >
             {children} {/** children will receive the values and be able to consume them */}
