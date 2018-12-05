@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Route } from 'react-router-dom';
-
 
 import AuthChecker from './AuthChecker';
 import { AuthProvider } from './AuthContext';
 import { axiosGet } from '../Shared/AxiosFetch';
 import SignIn from './SignIn';
 
-class AdminSwitch extends Component {
+class Admin extends Component {
     constructor() {
         super();
         this.state = {
@@ -19,6 +17,12 @@ class AdminSwitch extends Component {
     componentWillMount() {
         this.handleUser()
     };
+
+    handleLoad() { 
+        this.setState(prevState => ({
+            isLoading: !prevState.isLoading
+        }))
+    }
 
     handleUser = () => {
         const API_HOST_URL = process.env.API_URL;
@@ -32,6 +36,7 @@ class AdminSwitch extends Component {
 
     render() {
         const { isLogged } = this.state;
+
         return(
             <AuthProvider 
                 isLogged={isLogged}
@@ -43,4 +48,4 @@ class AdminSwitch extends Component {
     }
 }
 
-export default AdminSwitch;
+export default Admin;
