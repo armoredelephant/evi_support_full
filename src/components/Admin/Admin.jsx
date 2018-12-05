@@ -18,12 +18,6 @@ class Admin extends Component {
         this.handleUser()
     };
 
-    handleLoad() { 
-        this.setState(prevState => ({
-            isLoading: !prevState.isLoading
-        }))
-    }
-
     handleUser = () => {
         const API_HOST_URL = process.env.API_URL;
 
