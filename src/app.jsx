@@ -5,7 +5,7 @@ import './sass/base.scss'
 
 import ArticlesLandingBody from './components//ArticleLandingPage/ArticlesLandingBody';
 import ArticleActive from './components/ArticleViewingPage/ArticleActive';
-import AdminSwitch from './components/Admin/AdminSwitch';
+import Admin from './components/Admin/Admin';
 import Footer from './components/StaticFooter';
 import Header from './components/StaticHeader';
 import HomeBody from './components/HomeLandingPage/HomeBody';
@@ -18,7 +18,7 @@ class App extends Component {
             <Router>
                 <div className="container">
                     {window.location.pathname.includes('/Admin') ?
-                        <Route path="/Admin" component={AdminSwitch} />
+                        <Route path="/Admin" component={Admin} />
                     : (
                         <Fragment>
                             <Header />

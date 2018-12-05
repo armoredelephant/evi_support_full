@@ -12,6 +12,7 @@ const AuthChecker = props => {
                     // <Dashboard /> will be loaded here
                 :
                     <div>Not Logged In</div>
+                    // this <NoUser> component will have an interval to load of 3-4 seconds so it will not display?
             )}
         </AuthConsumer>
     );
