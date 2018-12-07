@@ -1,0 +1,58 @@
+/**********************************************************
+    VIDEO  LANDING
+***********************************************************/
+
+.dashboard-header {
+    height: 50px;
+    background-color: #333;
+
+    .dashboard-nav {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 100px;
+    }
+
+    .dashboard-button {
+        height: 30px;
+        font-size: 18px;
+        align-self: flex-end;
+        border: none;
+        background-color:  #666;
+        color: white;
+        outline: none;
+
+        &:nth-of-type(1) {
+            border-top-left-radius: 5px;
+        }
+
+        &:nth-of-type(2) {
+            border-top-right-radius: 5px;
+        }
+
+        
+    }
+
+    .dashboard-button-active_article {
+        background-color: #999;
+        height: 30px;
+        font-size: 18px;
+        align-self: flex-end;
+        border: none;
+        color: white;
+        outline: none;
+        border-top-left-radius: 5px;
+
+    }
+    
+    .dashboard-button-active_video {
+        background-color: #999;
+        height: 30px;
+        font-size: 18px;
+        align-self: flex-end;
+        border: none;
+        color: white;
+        outline: none;
+        border-top-right-radius: 5px;
+    }
+}
