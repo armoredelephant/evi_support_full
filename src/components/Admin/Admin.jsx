@@ -6,6 +6,8 @@ import { AuthProvider } from './AuthContext';
 import { axiosGet } from '../Shared/AxiosFetch';
 import SignIn from './SignIn';
 
+import Dashboard from './Dashboard';
+
 class Admin extends Component {
     constructor() {
         super();
@@ -37,6 +39,7 @@ class Admin extends Component {
                 handleUser={this.handleUser} >
                 <Route path="/Admin/signin" component={SignIn} />
                 <Route path="/Admin/dashboard" component={AuthChecker} />
+                <Route path="/Admin/test" component={Dashboard} />
             </AuthProvider>
         )
     }

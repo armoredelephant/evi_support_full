@@ -12,13 +12,15 @@ import HomeBody from './components/HomeLandingPage/HomeBody';
 import VideoActive from './components/VideoViewingPage/VideoActive';
 import VideoLandingBody from './components/VideoLandingPage/VideoLandingBody';
 
+const windowPathLowerCase = window.location.pathname.toLowerCase()
+
 class App extends Component {
     render() {
         return (
             <Router>
                 <div className="container">
-                    {window.location.pathname.includes('/Admin') ?
-                        <Route path="/Admin" component={Admin} />
+                    { windowPathLowerCase.includes('/admin') ?
+                        <Route path="/admin" component={Admin} />
                     : (
                         <Fragment>
                             <Header />
