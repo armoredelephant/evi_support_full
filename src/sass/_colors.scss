@@ -6,7 +6,15 @@ $colors: (
     body: #F8F8F8,
     category-box: #FFF,
     hr-line: #AFAFAF,
-    nav-back: #F6F6F6
+    nav-back: #F6F6F6,
+    dashboard-darkest: #12101E,
+    dashboard-dark: #16151D,
+    dashboard-body: #302F36,
+    dashboard-light: #514F5A,
+    dashboard-lightest: #706F7B,
+    dashboard-header-text: #1EB980,
+    dashboard-header-borders: #b15dff
+
 );
 
 @function color($color-name) {

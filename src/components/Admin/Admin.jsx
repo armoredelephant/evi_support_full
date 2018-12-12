@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import AuthChecker from './AuthChecker';
 import { AuthProvider } from './AuthContext';
 import { axiosGet } from '../Shared/AxiosFetch';
+import PostArticle from './PostArticle';
 import SignIn from './SignIn';
 
 import Dashboard from './Dashboard';
@@ -12,7 +13,8 @@ class Admin extends Component {
     constructor() {
         super();
         this.state = {
-            isLogged: false
+            isLogged: false,
+            isAdmin: false
         }
     }
 
@@ -31,15 +33,17 @@ class Admin extends Component {
     }
 
     render() {
-        const { isLogged } = this.state;
+        const { isAdmin, isLogged } = this.state;
 
         return(
             <AuthProvider 
                 isLogged={isLogged}
+                isAdmin={isAdmin}
                 handleUser={this.handleUser} >
                 <Route path="/Admin/signin" component={SignIn} />
                 <Route path="/Admin/dashboard" component={AuthChecker} />
                 <Route path="/Admin/test" component={Dashboard} />
+                <Route path="/admin/postarticle" component={PostArticle} />
             </AuthProvider>
         )
     }
