@@ -2,10 +2,166 @@
     FORM - POST ARTICLES
 ***********************************************************/
 
+.form-wrapper {
+    width: 100%;
+    margin: 30px 0;
+    padding: 0 30px;
+}
+
 .form-post-article {
     display: flex; 
     font-size: 15px;
-    color: white;
+    color: color(faded-text);
     justify-content: center;
-    margin-top: 50px;
+    flex-flow: column;
 }
+
+.form-label {
+    margin-bottom: 30px;
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+    }
+
+    div {
+        font-size:  13px;
+        margin-bottom: 15px;
+    }
+
+    input {
+        background-color: color(dashboard-lightest);
+        border: none;
+        border-bottom: 1px solid color(form-border);
+        padding-bottom: 3px;
+        color: white;
+
+        &:focus {
+            border-bottom: 1px solid color(dashboard-header-text);
+        }
+    }
+
+    select {
+        outline: none;
+    }
+
+    textarea {
+        background-color: color(dashboard-lightest);
+        border-color: color(form-border);
+        border-radius: 4px;
+        color: white;
+        padding-bottom: 3px;
+        resize: none;
+
+        &:focus {
+            border-color: color(dashboard-header-text);
+            border-radius: 4px;
+        }
+    }
+}
+
+/**********************************************************
+    category
+***********************************************************/
+
+.category-select {
+    background: color(dashboard-lightest);
+    height: 25px;
+    color: white;
+}
+
+/**********************************************************
+    step & tag
+***********************************************************/
+
+.tag-div,
+.add-step-div {
+    display: flex;
+    justify-content: space-between;
+
+    .tag-label {
+        width: 150px;
+    }
+}
+
+
+
+.tag-button,
+.add-step-button {
+    height: 30px;
+    background-color: color(dashboard-lightest);
+    border: 1px solid color(form-border);
+    border-radius: 4px;
+    color: color(faded-text);
+    margin-top: 5px;
+    cursor: pointer;
+
+    &:active,
+    &:hover {
+        outline: none;
+        border-color: color(dashboard-header-text);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+/**********************************************************
+    tags
+***********************************************************/
+
+.tag-viewer-wrapper {
+    border: 1px solid color(form-border);
+    border-radius: 4px;
+}
+
+.tag-viewer {
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+        border-radius: 3px;
+        background-color: color(form-border);
+        font-size: 12px;
+        letter-spacing: .8px;
+        padding: 2px;
+        margin: 5px;
+    }
+
+    .tag-delete-button {
+        background: color(form-border);
+        border: none;
+        color: color(dashboard-light);
+
+        &:focus,
+        &:hover,
+        &:active {
+            outline: none;
+            transition: color .1s ease;
+            color: color(dashboard-header-text);
+        }
+    }
+
+    .tag-delete-button:after {
+        display: inline-block;
+    }
+}
+
+/**********************************************************
+    steps
+***********************************************************/
+
+.add-step-div {
+    height: 100px;
+}
+
+.add-step-button {
+        color: transparent;
+        text-shadow: 0 0 0 color(faded-text);
+}
+

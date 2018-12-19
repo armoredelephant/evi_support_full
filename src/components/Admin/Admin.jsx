@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import AuthChecker from './AuthChecker';
 import { AuthProvider } from './AuthContext';
 import { axiosGet } from '../Shared/AxiosFetch';
-import PostArticle from './PostArticle';
+import PostArticle from './PostArticle/PostArticle';
 import SignIn from './SignIn';
 
 import Dashboard from './Dashboard';
