@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import PostArticle from './PostArticle';
+import PostArticle from './PostArticle/PostArticle';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -77,9 +77,7 @@ class Dashboard extends Component {
                         </div>
                         { adminView === 'article'
                         ?
-                            <div>
-                                <PostArticle />
-                            </div>
+                            <PostArticle />
                         :
                             <div>{/** <PostVideo /> */}</div>
                         }

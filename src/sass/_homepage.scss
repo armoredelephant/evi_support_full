@@ -187,14 +187,6 @@
 
 .main-footer {
     border-top: 1px solid color(nav-border);
-    display: flex;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
-    width: 100%;
-    justify-content: center;
     background-color: color(nav-back);
     color: color(primary-blue);
     text-align: center;
