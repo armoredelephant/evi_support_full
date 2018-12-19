@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import DashboardFormCategory from './DashboardFormCategory';
 import DashboardFormDescription from './DashboardFormDescription';
+import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
 
@@ -18,7 +19,7 @@ class PostArticle extends Component {
             tagInput: '',
             tags: [],
             imageChecked: false,
-            steps: {} // will be steps: {step: text, image: 'url', stepId: will be push id}
+            steps: [] // will be steps: {step: text, image: 'url', stepId: will be push id}
         }
     }
 
@@ -66,10 +67,20 @@ class PostArticle extends Component {
 
     handleStep = ( event ) => {
         event.preventDefault();
-        const target = event.target
         const { steps } = this.state
-        
+        const arrayOfSteps = Array.from(steps)
+        const nextStep = { step: null, imgUrl: null }
+        const updatedSteps = [...arrayOfSteps, nextStep];
 
+        this.setState({
+            steps: updatedSteps
+        })
+    }
+
+    handleStepInput = ( event ) => {
+        // this will update the input of the current step
+
+        // will have to determing which step is being typed in by index?
     }
 
     handleSubmit = () => {
@@ -85,7 +96,7 @@ class PostArticle extends Component {
     // can refactor each section of the form into it's own component?
 
     render() {
-        const { category, description, tagInput, tags, title } = this.state;
+        const { category, description, steps, tagInput, tags, title } = this.state;
 
         return (
             <div className="form-wrapper">
@@ -118,6 +129,12 @@ class PostArticle extends Component {
                         </label>
                         <button className="add-step-button" onClick={this.handleStep}>&#x2795;</button>
                     </div>
+                    {steps.length !== 0
+                    ?
+                        <DashboardFormSteps steps={steps} />
+                    :
+                        ''
+                    }
                 </form>
             </div>
         );
