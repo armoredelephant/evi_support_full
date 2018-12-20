@@ -19,7 +19,7 @@ class PostArticle extends Component {
             tagInput: '',
             tags: [],
             imageChecked: false,
-            steps: [] // will be steps: {step: text, image: 'url', stepId: will be push id}
+            steps: [{step: '', imgName: null, imgUrl: null}] // will be steps: {step: text, image: 'url', stepId: will be push id}
         }
     }
 
@@ -37,6 +37,8 @@ class PostArticle extends Component {
         });
     }
 
+    // add a conditional check to not allow adding the same tag twice
+    
     handleTags = ( e ) => {
         e.preventDefault();
         const { tags, tagInput } = this.state;
@@ -69,7 +71,7 @@ class PostArticle extends Component {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
-        const nextStep = { step: null, imgUrl: null }
+        const nextStep = { step: '', imgName: null, imgUrl: null }
         const updatedSteps = [...arrayOfSteps, nextStep];
 
         this.setState({
@@ -81,6 +83,18 @@ class PostArticle extends Component {
         // this will update the input of the current step
 
         // will have to determing which step is being typed in by index?
+    }
+
+    handleImage = ( files, index ) => {
+        const { steps } = this.state;
+        let oldSteps = Array.from(steps);
+        console.log(files);
+        oldSteps[index].imgName = files[0].name
+        
+        const newSteps = oldSteps
+        this.setState({
+            steps: newSteps
+        })
     }
 
     handleSubmit = () => {
@@ -131,7 +145,7 @@ class PostArticle extends Component {
                     </div>
                     {steps.length !== 0
                     ?
-                        <DashboardFormSteps steps={steps} />
+                        <DashboardFormSteps handleImage={this.handleImage} steps={steps} handleInputChange={this.handleInputChange}/>
                     :
                         ''
                     }
