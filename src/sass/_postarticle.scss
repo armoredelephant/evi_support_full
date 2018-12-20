@@ -85,10 +85,9 @@
     }
 }
 
-
-
 .tag-button,
-.add-step-button {
+.add-step-button,
+.image-upload-label {
     height: 30px;
     background-color: color(dashboard-lightest);
     border: 1px solid color(form-border);
@@ -115,6 +114,7 @@
 .tag-viewer-wrapper {
     border: 1px solid color(form-border);
     border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 .tag-viewer {
@@ -157,7 +157,7 @@
 ***********************************************************/
 
 .add-step-div {
-    height: 100px;
+    height: 50px;
 }
 
 .add-step-button {
@@ -165,3 +165,38 @@
         text-shadow: 0 0 0 color(faded-text);
 }
 
+.steps-list {
+    width: 100%;
+    padding-left: 15px;
+    
+    li {
+        list-style: circle;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 15px;
+        background-color: color(dashboard-lightest);
+        border: none;
+        border-bottom: 1px solid color(form-border);
+        padding-bottom: 3px;
+        color: white;
+
+        &:focus {
+            border-bottom: 1px solid color(dashboard-header-text);
+        }
+    }
+}
+
+#file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.image-upload-label {
+    font-size: 11px;
+    padding: 8px;
+}

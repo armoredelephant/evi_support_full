@@ -128,7 +128,6 @@
     align-self: flex-start;
     max-width: 700px;
     min-width: 300px;
-    height: 600px;
     min-height: 479px;
     margin: 50px auto;
     display: flex;
@@ -137,6 +136,8 @@
     background-color: color(dashboard-lightest);
     border-radius: 4px;
     box-shadow: 2px 7px 20px rgba(22, 21, 29, 0.50);
+    overflow: auto;
+    position: relative;
 
     .dashboard-main-header {
         align-self: flex-start;
