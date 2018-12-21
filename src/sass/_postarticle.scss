@@ -171,6 +171,7 @@
     
     li {
         list-style: circle;
+        margin-bottom: 20px;
     }
 
     input {
@@ -188,7 +189,7 @@
     }
 }
 
-#file-input {
+.file-input {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -196,7 +197,15 @@
     z-index: -1;
 }
 
+.upload-image-div {
+    height: 62px;
+    align-self: flex-start;
+}
+
 .image-upload-label {
+    display: inline-block;
+    text-align: center;
     font-size: 11px;
+    min-width: 72px;
     padding: 8px;
 }

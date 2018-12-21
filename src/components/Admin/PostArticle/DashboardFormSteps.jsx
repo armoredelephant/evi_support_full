@@ -7,11 +7,25 @@ const DashboardFormSteps = ( props ) => {
                 return (
                     <li key={index} >
                     <div>
-                        <input type="text" value={field.step} onChange={props.handleStepInput} />
+                        <input 
+                            onChange={props.handleStepInput}
+                            name={index}
+                            type="text" 
+                            value={field.step} />
                     </div>
-                    <input id="file-input" className="file-input" value={field.imgUrl} name="image-upload" type="file" src="#" alt="Submit" onChange={(e) => props.handleImage(e.target.files, index)} />
                     <div className="upload-image-div">
-                        <label className="image-upload-label" htmlFor="file-input">
+                        <input 
+                            accept="image/png image/jpeg"
+                            className="file-input" 
+                            id={`file-input-${index}`} 
+                            name={index} 
+                            onChange={(e) => props.handleImage(e, e.target.files)}
+                            src="#" 
+                            type="file" 
+                            value={field.imgUrl} />
+                        <label className="image-upload-label" 
+                            htmlFor={`file-input-${index}`}
+                            id="image-upload-label">
                         {field.imgName
                         ?
                             `${field.imgName}`

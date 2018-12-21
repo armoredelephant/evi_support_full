@@ -80,18 +80,31 @@ class PostArticle extends Component {
     }
 
     handleStepInput = ( event ) => {
-        // this will update the input of the current step
+        const target = event.target;
+        const value = target.value;
+        const { steps } = this.state;
 
-        // will have to determing which step is being typed in by index?
+        let oldSteps = Array.from(steps);
+
+        oldSteps[target.name].step = value;
+
+        const newSteps = oldSteps;
+
+        this.setState({
+            steps: newSteps
+        })
     }
 
-    handleImage = ( files, index ) => {
+    handleImage = ( event, files ) => {
+        const target = event.target
         const { steps } = this.state;
+
         let oldSteps = Array.from(steps);
-        console.log(files);
-        oldSteps[index].imgName = files[0].name
+
+        oldSteps[target.name].imgName = files[0].name
         
         const newSteps = oldSteps
+
         this.setState({
             steps: newSteps
         })
@@ -145,7 +158,10 @@ class PostArticle extends Component {
                     </div>
                     {steps.length !== 0
                     ?
-                        <DashboardFormSteps handleImage={this.handleImage} steps={steps} handleInputChange={this.handleInputChange}/>
+                        <DashboardFormSteps 
+                            handleImage={this.handleImage} 
+                            handleStepInput={this.handleStepInput} 
+                            steps={steps} />
                     :
                         ''
                     }
