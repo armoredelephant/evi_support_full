@@ -7,6 +7,8 @@ import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
 import axios from 'axios';
 
+const API_HOST_URL = process.env.API_URL;
+
 // this can be refactored to consume the category from backend and set it in the state to pass down as props.
 // use AxiosFetch from shared?
 
@@ -15,14 +17,31 @@ class PostArticle extends Component {
         super(props);
         this.state = {
             category: 'choose a category',
-            title: '',
+            categoryItemCount: 0,
             description: '',
-            tagInput: '',
-            tags: [],
             imageChecked: false,
-            steps: [{step: '', imgName: null, imgData: ''}] // will be steps: {step: text, image: 'url', stepId: will be push id}
+            steps: [{step: '', imgName: null, imgData: ''}],
+            title: '',
+            tagInput: '',
+            tags: []
         }
     }
+
+    componentDidMount() { 
+        const options = {
+            category: this.state.category
+        }
+
+        axios.get(`${API_HOST_URL}/api/dashboard/`, options)
+            .then(response => {
+                // const { itemCount } = response.data <== can this work?
+                const itemCount = response.data.itemCount
+
+                this.setState({ 
+                    categoryItemCount: Object.keys(itemCount).length 
+                })
+            })
+    }        
 
     handleChange = ( event ) => {
         this.setState({ category: event.target.value })
