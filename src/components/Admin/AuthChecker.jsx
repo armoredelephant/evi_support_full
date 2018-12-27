@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { AuthConsumer } from './AuthContext';
+import Dashboard from './Dashboard';
 
 const AuthChecker = props => {
     return(
@@ -8,8 +9,8 @@ const AuthChecker = props => {
             { ({ isLogged, isAdmin })  => (
                 isLogged
                 ?
-                    <div>This will be the Dashboard componenet </div>
-                    // <Dashboard isAdmin={isAdmin} /> will be loaded here
+                    // <div>This will be the Dashboard componenet </div>
+                    <Dashboard isAdmin={isAdmin} />
                 :
                     <div>Not Logged In</div>
                     // this <NoUser> component will have an interval to load of 3-4 seconds so it will not display?
