@@ -5,6 +5,7 @@ import DashboardFormDescription from './DashboardFormDescription';
 import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
+import axios from 'axios';
 
 // this can be refactored to consume the category from backend and set it in the state to pass down as props.
 // use AxiosFetch from shared?
@@ -19,7 +20,7 @@ class PostArticle extends Component {
             tagInput: '',
             tags: [],
             imageChecked: false,
-            steps: [{step: '', imgName: null, imgUrl: null}] // will be steps: {step: text, image: 'url', stepId: will be push id}
+            steps: [{step: '', imgName: null, imgData: ''}] // will be steps: {step: text, image: 'url', stepId: will be push id}
         }
     }
 
@@ -71,7 +72,7 @@ class PostArticle extends Component {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
-        const nextStep = { step: '', imgName: null, imgUrl: null }
+        const nextStep = { step: '', imgName: null, imgData: '' }
         const updatedSteps = [...arrayOfSteps, nextStep];
 
         this.setState({
@@ -102,6 +103,7 @@ class PostArticle extends Component {
         let oldSteps = Array.from(steps);
 
         oldSteps[target.name].imgName = files[0].name
+        oldSteps[target.name].imgData = files[0] 
         
         const newSteps = oldSteps
 
@@ -110,7 +112,31 @@ class PostArticle extends Component {
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = ( event ) => {
+        // event.preventDefault();
+
+        const { category, description, steps, tags, title } = this.state;
+
+        const API_HOST_URL = process.env.API_URL;
+
+        const options = {
+            category: category,
+            description: description,
+            steps: steps,
+            tags: tags,
+            title: title
+        }
+
+        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+            .then(response => {
+                console.log(response)
+                alert(response.body.message)
+            })
+            .catch(error => {
+                console.log(error)
+            });
+
+
         // this will post to the backend/db
 
         // need switch to handle where to post based on category
@@ -142,7 +168,7 @@ class PostArticle extends Component {
                             <div>Tags</div>
                             <input name='tagInput' type='text' value={tagInput} onChange={this.handleInputChange} />
                         </label>
-                        <button className="tag-button" onClick={this.handleTags}>Add</button>
+                        <button className="form-button" onClick={this.handleTags}>Add</button>
                     </div>
                     {tags.length !== 0 
                     ?
@@ -165,6 +191,11 @@ class PostArticle extends Component {
                     :
                         ''
                     }
+                    <div className="submit-wrapper">
+                        <button className="form-button submit-button" onClick={this.handleSubmit}>
+                        Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         );

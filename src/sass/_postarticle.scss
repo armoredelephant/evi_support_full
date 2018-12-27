@@ -6,6 +6,10 @@
     width: 100%;
     margin: 30px 0;
     padding: 0 30px;
+    
+    div {
+        letter-spacing: .8px;
+    }
 }
 
 .form-post-article {
@@ -85,7 +89,7 @@
     }
 }
 
-.tag-button,
+.form-button,
 .add-step-button,
 .image-upload-label {
     height: 30px;
@@ -114,7 +118,7 @@
 .tag-viewer-wrapper {
     border: 1px solid color(form-border);
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .tag-viewer {
@@ -168,6 +172,7 @@
 .steps-list {
     width: 100%;
     padding-left: 15px;
+    margin-bottom: 0;
     
     li {
         list-style: circle;
@@ -208,4 +213,21 @@
     font-size: 11px;
     min-width: 72px;
     padding: 8px;
+}
+
+/**********************************************************
+    submit
+***********************************************************/
+
+.submit-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    justify-items: center;
+}
+
+.submit-button {
+    font-size: 15px;
+    letter-spacing: .8px;
+    border-color: color(dashboard-header-text);
 }

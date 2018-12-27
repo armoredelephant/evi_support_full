@@ -43,7 +43,6 @@ class Admin extends Component {
                 <Route path="/Admin/signin" component={SignIn} />
                 <Route path="/Admin/dashboard" component={AuthChecker} />
                 <Route path="/Admin/test" component={Dashboard} />
-                <Route path="/admin/postarticle" component={PostArticle} />
             </AuthProvider>
         )
     }
