@@ -17,7 +17,6 @@ class PostArticle extends Component {
         super(props);
         this.state = {
             category: 'choose a category',
-            categoryItemIndex: null,
             description: '',
             imageChecked: false,
             steps: [{step: '', imgName: null, imgData: ''}],
@@ -26,30 +25,6 @@ class PostArticle extends Component {
             tags: []
         }
     }
-
-    // componentDidUpdate() {
-    //     if (prevState.category !== this.state.category) {
-    //         const { category } = this.state;
-    //         const options = {
-    //             params: {
-    //                 category: category
-    //             }
-    //         }
-    //         console.log(options)
-    
-    //         axios.get(`${API_HOST_URL}/api/dashboard`, options)
-    //             .then(response => { console.log(response.data) })
-    //             .then(response => {
-    //                 console.log(response.data)
-    //                 const { itemCount } = response.data <== can this work?
-    //                 const itemCount = response.data.itemCount
-    
-    //                 this.setState({ 
-    //                     categoryItemIndex: Object.keys(itemCount).length 
-    //                 })
-    //             })
-    //     }
-    // }
 
     handleChange = ( event ) => {
         this.setState({ category: event.target.value })
@@ -138,48 +113,44 @@ class PostArticle extends Component {
         })
     }
 
-    handleSubmit = ( event ) => {
-        const { category, categoryItemIndex, description, steps, tags, title } = this.state;
-
-        const API_HOST_URL = process.env.API_URL;
-        let startingIndex = ''
-
-        categoryItemIndex === null
-        ? 
-            startingIndex = 0
-        :
-            startingIndex = categoryItemIndex
-        const itemIdIncrement = categoryItemIndex + 1
-
+    handleSubmit = () => {
+        const { category } = this.state;
         const options = {
-            category: category,
-            categoryItemIndex: startingIndex,
-            description: description,
-            itemId: itemIdIncrement,
-            steps: steps,
-            tags: tags,
-            title: title
+            params: {
+                category: category
+            }
         }
 
-        if (category !== 'choose a category') {
-            axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+        axios.get(`${API_HOST_URL}/api/dashboard/`, options)
             .then(response => {
-                alert(response.data)
+                const { category, description, steps, tags, title } = this.state;
+                
+                const nextAvailableIndex = Object.keys(response.data).length
+
+                const itemIdIncrement = nextAvailableIndex + 1
+
+                const options = {
+                    category: category,
+                    categoryItemIndex: nextAvailableIndex,
+                    description: description,
+                    itemId: itemIdIncrement,
+                    steps: steps,
+                    tags: tags,
+                    title: title
+                }
+
+                if (category !== 'choose a category') {
+                    axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                    .then(response => {
+                        alert(response.data)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+                } else {
+                    alert('Please select a valid category.')
+                }
             })
-            .catch(error => {
-                console.log(error)
-            });
-        } else {
-            alert('Please select a valid category.')
-        }
-        
-        // this will post to the backend/db
-
-        // need switch to handle where to post based on category
-
-        // make an object {title: '', description: '', body: '', tags: []} 
-
-        // tried doing it in the state, but broke the inputs.
     }
 
     // can refactor each section of the form into it's own component?
