@@ -17,7 +17,7 @@ class PostArticle extends Component {
         super(props);
         this.state = {
             category: 'choose a category',
-            categoryItemCount: 0,
+            categoryItemIndex: null,
             description: '',
             imageChecked: false,
             steps: [{step: '', imgName: null, imgData: ''}],
@@ -27,21 +27,29 @@ class PostArticle extends Component {
         }
     }
 
-    componentDidMount() { 
-        const options = {
-            category: this.state.category
-        }
-
-        axios.get(`${API_HOST_URL}/api/dashboard/`, options)
-            .then(response => {
-                // const { itemCount } = response.data <== can this work?
-                const itemCount = response.data.itemCount
-
-                this.setState({ 
-                    categoryItemCount: Object.keys(itemCount).length 
-                })
-            })
-    }        
+    // componentDidUpdate() {
+    //     if (prevState.category !== this.state.category) {
+    //         const { category } = this.state;
+    //         const options = {
+    //             params: {
+    //                 category: category
+    //             }
+    //         }
+    //         console.log(options)
+    
+    //         axios.get(`${API_HOST_URL}/api/dashboard`, options)
+    //             .then(response => { console.log(response.data) })
+    //             .then(response => {
+    //                 console.log(response.data)
+    //                 const { itemCount } = response.data <== can this work?
+    //                 const itemCount = response.data.itemCount
+    
+    //                 this.setState({ 
+    //                     categoryItemIndex: Object.keys(itemCount).length 
+    //                 })
+    //             })
+    //     }
+    // }
 
     handleChange = ( event ) => {
         this.setState({ category: event.target.value })
@@ -120,7 +128,6 @@ class PostArticle extends Component {
         const { steps } = this.state;
 
         let oldSteps = Array.from(steps);
-
         oldSteps[target.name].imgName = files[0].name
         oldSteps[target.name].imgData = files[0] 
         
@@ -132,30 +139,40 @@ class PostArticle extends Component {
     }
 
     handleSubmit = ( event ) => {
-        // event.preventDefault();
-
-        const { category, description, steps, tags, title } = this.state;
+        const { category, categoryItemIndex, description, steps, tags, title } = this.state;
 
         const API_HOST_URL = process.env.API_URL;
+        let startingIndex = ''
+
+        categoryItemIndex === null
+        ? 
+            startingIndex = 0
+        :
+            startingIndex = categoryItemIndex
+        const itemIdIncrement = categoryItemIndex + 1
 
         const options = {
             category: category,
+            categoryItemIndex: startingIndex,
             description: description,
+            itemId: itemIdIncrement,
             steps: steps,
             tags: tags,
             title: title
         }
 
-        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+        if (category !== 'choose a category') {
+            axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
             .then(response => {
-                console.log(response)
-                alert(response.body.message)
+                alert(response.data)
             })
             .catch(error => {
                 console.log(error)
             });
-
-
+        } else {
+            alert('Please select a valid category.')
+        }
+        
         // this will post to the backend/db
 
         // need switch to handle where to post based on category
@@ -211,7 +228,7 @@ class PostArticle extends Component {
                         ''
                     }
                     <div className="submit-wrapper">
-                        <button className="form-button submit-button" onClick={this.handleSubmit}>
+                        <button type="button" className="form-button submit-button" onClick={this.handleSubmit}>
                         Submit
                         </button>
                     </div>
