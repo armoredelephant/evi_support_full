@@ -139,6 +139,9 @@ footer {
 
     .view-article-container {
         flex-wrap: wrap;
+        margin-bottom: -50px;
+        padding-bottom: 50px;
+        min-height: 100%;
 
         .article-view-main {
             order: 1;

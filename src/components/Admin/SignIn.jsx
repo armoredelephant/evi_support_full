@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { AuthConsumer } from './AuthContext';
+import Dashboard from './Dashboard';
 
 class SignIn extends Component {
     constructor(props) {
@@ -9,6 +10,18 @@ class SignIn extends Component {
             email: null,
             password: null
         }
+    }
+
+    componentWillMount() {
+        <AuthConsumer>
+            { ({ isLogged }) => {
+                isLogged
+                ?
+                    <Dashboard isAdmin={isAdmin} />
+                : 
+                    null
+            }}
+        </AuthConsumer>
     }
 
     // need an onClick that will set the state based on what is submitted
@@ -46,41 +59,45 @@ class SignIn extends Component {
         return (
             <AuthConsumer>
                 {value => (
-                    <div className="card-wrapper">
-                        <form className="signIn-card">
-                            <header>
-                                <h3>
-                                Dashboard Login
-                                </h3>
-                            </header>
-                            <input 
-                                autoComplete="email"
-                                className="placeicons signIn-email" 
-                                name="email"
-                                onChange={this.handleChange}
-                                placeholder="&#xf0e0;    email"
-                                type="email" >
-                            </input>
-                            <input
-                                autoComplete="password"
-                                className="placeicons signIn-password" 
-                                name="password"
-                                onChange={this.handleChange}
-                                placeholder="&#xf023;    password"
-                                type="password">
-                            </input>
-                            <div className="signIn-link-container">
-                                <a href="#">
-                                forgot
-                                </a>
-                            </div>
-                            <button type="submit" 
-                                className="signIn-submit"
-                                onClick={(e) => this.handleSubmit(e, value.handleUser)}>
-                            Sign In
-                            </button>
-                        </form>
-                    </div>
+                    value.isLogged 
+                    ?
+                        this.props.history.push('/Admin/dashboard')
+                    :
+                        <div className="card-wrapper">
+                            <form className="signIn-card">
+                                <header>
+                                    <h3>
+                                    Dashboard Login
+                                    </h3>
+                                </header>
+                                <input 
+                                    autoComplete="email"
+                                    className="placeicons signIn-email" 
+                                    name="email"
+                                    onChange={this.handleChange}
+                                    placeholder="&#xf0e0;    email"
+                                    type="email" >
+                                </input>
+                                <input
+                                    autoComplete="password"
+                                    className="placeicons signIn-password" 
+                                    name="password"
+                                    onChange={this.handleChange}
+                                    placeholder="&#xf023;    password"
+                                    type="password">
+                                </input>
+                                <div className="signIn-link-container">
+                                    <a href="#">
+                                    forgot
+                                    </a>
+                                </div>
+                                <button type="submit" 
+                                    className="signIn-submit"
+                                    onClick={(e) => this.handleSubmit(e, value.handleUser)}>
+                                Sign In
+                                </button>
+                            </form>
+                        </div>
                 )}
             </AuthConsumer>
         );

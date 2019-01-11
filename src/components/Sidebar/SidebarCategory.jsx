@@ -15,9 +15,11 @@ function SidebarCategory(props) {
                 {props.allData[props.trigger].categoryItems.map((item, index) => (
                     <li key={index} >
                         <Link to={`/${props.sitePage}/${props.trigger}/${item.id}`} 
-                            className={props.activeItemLink === item.title ? 
-                                "sidebar-link-active" : 
-                                "sidebar-link"}  
+                            className={props.activeItemLink === item.title 
+                                ? 
+                                    "sidebar-link-active" 
+                                : 
+                                    "sidebar-link"}  
                                 key={index}>
                             {item.title}
                         </Link>

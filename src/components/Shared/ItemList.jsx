@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const ItemList = ( props ) => {
+    console.log(props.categoryList)
     return (
         <section className="category-container" 
             id={props.sitePage == 'Articles' ?
