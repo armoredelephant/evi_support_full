@@ -9,11 +9,11 @@ const PostArticleCategory = ( props ) => {
             <div>Category</div>
             <select className="category-select" value={props.category} onChange={props.handleChange}>
                 <option value='choose a category' disabled='disabled'>choose a category...</option>
-                <option value='applications'>Applications</option>
-                <option value='email'>Email</option>
-                <option value='hardware setup'>Hardware Setup</option>
-                <option value='hardware use'>Hardware Use</option>
-                <option value='other'>Other</option>
+                <option value='Applications'>Applications</option>
+                <option value='Email'>Email</option>
+                <option value='Hardware Setup'>Hardware Setup</option>
+                <option value='Hardware Use'>Hardware Use</option>
+                <option value='Other'>Other</option>
             </select>
         </label>
     )

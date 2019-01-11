@@ -20,6 +20,8 @@
 
 .category-list {
     line-height: 2em;
+    display: flex;
+    flex-flow: column;
 
     hr {
         margin: 6px 0 12px;

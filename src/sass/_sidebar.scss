@@ -6,7 +6,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
     SIDEBAR
 ***********************************************************/
 .show {
-    display: block;
     margin-top: 3px; 
 }
 
@@ -15,7 +14,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 .item-sidebar-list {
-
     padding-left: 20px;  
     
     .sidebar-route-li {
@@ -95,14 +93,16 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 .show {
+    display: flex;
+    flex-flow: column;
 
     li {
-        display: inline-block;
+        display: inline;
     }
 }
 
 .sidebar-link {
-    display: block;
+    display: inline-block;
     margin-left: 2px;
     padding-left: 3px;
     text-decoration: none;
@@ -150,8 +150,6 @@ $easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
 
 .view-article-container {
     display: flex;
-    height: 80vh;
-    margin-bottom: 50px;
 
     .article-view-main {
         width: 600px;
