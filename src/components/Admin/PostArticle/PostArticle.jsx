@@ -18,7 +18,6 @@ class PostArticle extends Component {
         this.state = {
             category: 'choose a category',
             description: '',
-            imageChecked: false,
             steps: [{step: '', imgName: null, imgData: ''}],
             title: '',
             tagInput: '',
@@ -163,7 +162,8 @@ class PostArticle extends Component {
                 <form className="form-post-article">
                     <DashboardFormCategory 
                         handleChange={this.handleChange} 
-                        category={category} />
+                        category={category}
+                        categoryList={this.props.categoryList} />
                     <DashboardFormTitle 
                         handleInputChange={this.handleInputChange} 
                         title={title} />
