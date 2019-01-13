@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
+import ManageArticle from './ManageArticle';
 import PostArticle from './PostArticle/PostArticle';
 
 class Dashboard extends Component {
@@ -77,7 +78,7 @@ class Dashboard extends Component {
                         </div>
                         { adminView === 'article'
                         ?
-                            <PostArticle />
+                            <ManageArticle adminAction={selectedAction}/>
                         :
                             <div>{/** <PostVideo /> */}</div>
                         }
