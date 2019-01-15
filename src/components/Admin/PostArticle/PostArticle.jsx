@@ -12,6 +12,8 @@ const API_HOST_URL = process.env.API_URL;
 // this can be refactored to consume the category from backend and set it in the state to pass down as props.
 // use AxiosFetch from shared?
 
+// Refactor to store state in ManageArticle and use callback functions instead?
+
 class PostArticle extends Component {
     constructor(props) {
         super(props);
@@ -24,11 +26,7 @@ class PostArticle extends Component {
             tags: []
         }
     }
-
-    handleChange = ( event ) => {
-        this.setState({ category: event.target.value })
-    }
-
+    
     handleInputChange = ( event ) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -161,7 +159,7 @@ class PostArticle extends Component {
             <div className="form-wrapper">
                 <form className="form-post-article">
                     <DashboardFormCategory 
-                        handleChange={this.handleChange} 
+                        handleChange={this.handleInputChange} 
                         category={category}
                         categoryList={this.props.categoryList} />
                     <DashboardFormTitle 
