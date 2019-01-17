@@ -14,7 +14,8 @@ class EditArticle extends Component {
         super(props);
         this.state = {
             articleList: null,
-            category: 'choose a category'
+            category: 'choose a category',
+            titleList: null
         }
     }
 
@@ -38,10 +39,11 @@ class EditArticle extends Component {
                 }
             }
 
-            axios.get(`${API_HOST_URL}/api/dashboard/edit-article`, options)
+            axios.get(`${API_HOST_URL}/api/dashboard/article-titles`, options)
             .then(response => {
+                console.log(response.data)
                 this.setState({
-                    articleList: response.data
+                    titleList: response.data.titles
                 })
             })
         }
