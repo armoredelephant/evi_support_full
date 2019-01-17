@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { axiosGet } from '../Shared/AxiosFetch';
+import axios from  'axios';
 import EditArticle from './PostArticle/EditArticle';
 import PostArticle from './PostArticle/PostArticle';
 
@@ -10,22 +11,21 @@ class ManageArticle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            allData: '',
-            category: 'choose a category'
+            category: 'choose a category',
+            categoryList: []
         }
     }
 
     componentWillMount() {
-        axiosGet(`${API_HOST_URL}/api/articles`).then(
-            response => this.setState({
-                allData: response
-            })
+        axios.get(`${API_HOST_URL}/api/articles/category-list`).then(
+            response =>  {
+                const categoryList = response.data.categoryList
+                this.setState({ categoryList: categoryList })
+            }
         );
     }
 
-    handleAction = (articleData, action) => {
-        const categoryList = Object.keys(articleData);
-
+    handleAction = (categoryList, action) => {
         switch(action) {
             case 'post':
             return <PostArticle categoryList={categoryList} />;
@@ -38,10 +38,10 @@ class ManageArticle extends Component {
     }
  
     render() {
-        const { allData } = this.state;
+        const { categoryList} = this.state;
         const { adminAction } = this.props;
 
-        return ( this.handleAction(allData, adminAction) );
+        return ( this.handleAction(categoryList, adminAction) );
     }
 }
 
