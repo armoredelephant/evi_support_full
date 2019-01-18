@@ -2,10 +2,10 @@ import React from 'react';
 
 const DashboardFormDescription = ( props ) => {
     return (
-        <label className="form-label">
-            <div>Description</div>
-            <textarea name='description' value={props.description} onChange={props.handleInputChange} />
-        </label>
+        <div className="form-label">
+            <label htmlFor="form-description">Description</label>
+            <textarea id="form-description" name='description' value={props.description} onChange={props.handleInputChange} />
+        </div>
     )
 }
 

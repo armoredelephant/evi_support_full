@@ -2,10 +2,10 @@ import React from 'react';
 
 const DashboardFormTitle = ( props ) => {
     return (
-        <label className="form-label">
-            <div>Title</div>
-            <input name='title' type="text" value={props.title} onChange={props.handleInputChange} />
-        </label>
+        <div className="form-label">
+            <label htmlFor="form-title">Title</label>
+            <input id="form-title" name='title' type="text" value={props.title} onChange={props.handleInputChange} />
+        </div>
     )
 }
 
