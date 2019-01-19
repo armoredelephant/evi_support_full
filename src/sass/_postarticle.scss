@@ -46,6 +46,10 @@
         padding-bottom: 3px;
         color: white;
 
+        &::placeholder {
+            color: white;
+        }
+
         &:focus {
             border-bottom: 1px solid color(dashboard-header-text);
         }
