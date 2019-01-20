@@ -28,11 +28,11 @@ class ManageArticle extends Component {
     handleAction = (categoryList, action) => {
         switch(action) {
             case 'post':
-            return <PostArticle categoryList={categoryList} />;
+            return <PostArticle adminAction={action} categoryList={categoryList} stepAction='Add Steps' />;
             case 'edit':
-            return <EditArticle category={this.state.category} categoryList={categoryList} />;
+            return <EditArticle adminAction={action} category={this.state.category} categoryList={categoryList} stepAction='Add or Remove Steps'/>;
             case 'delete':
-            return <PostArticle categoryList={categoryList} />;
+            return <PostArticle adminAction={action} categoryList={categoryList} />;
         }
 
     }

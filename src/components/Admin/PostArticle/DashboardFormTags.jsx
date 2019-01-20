@@ -6,10 +6,10 @@ const DashboardFormTags = ( props ) => {
     return (
         <Fragment>
             <div className="tag-div">
-                <label className="form-label tag-label">
-                    <div>Tags</div>
+                <div className="form-label tag-label">
+                    <label htmlFor='tagInput'>Tags</label>
                     <input name='tagInput' type='text' value={props.tagInput} onChange={props.handleInputChange} />
-                </label>
+                </div>
                 <button className="form-button" onClick={props.handleTags}>Add</button>
             </div>
             <Fragment>

@@ -96,6 +96,12 @@
     .tag-label {
         width: 150px;
     }
+
+    .form-step-buttons {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
 }
 
 .form-button,
@@ -117,6 +123,14 @@
 
     &:focus {
         outline: none;
+    }
+}
+
+.add-step-button {
+    width: 32;
+
+    &:nth-of-type(2) {
+        margin-left: 10px;
     }
 }
 

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import DashboardFormCategory from './DashboardFormCategory';
 import DashboardFormDescription from './DashboardFormDescription';
+import DashboardFormStepButtons from './DashboardFormStepButtons';
 import DashboardFormSteps from './DashboardFormSteps';
+import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
 import axios from 'axios';
@@ -67,7 +69,7 @@ class PostArticle extends Component {
 
     }
 
-    handleStep = ( event ) => {
+    handleStepAdd = ( event ) => {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
@@ -154,6 +156,7 @@ class PostArticle extends Component {
 
     render() {
         const { category, description, steps, tagInput, tags, title } = this.state;
+        const { adminAction, stepAction } = this.props; 
 
         return (
             <div className="form-wrapper">
@@ -168,25 +171,16 @@ class PostArticle extends Component {
                     <DashboardFormDescription 
                         description={description} 
                         handleInputChange={this.handleInputChange} />
-                    <div className="tag-div">
-                        <label className="form-label tag-label">
-                            <div>Tags</div>
-                            <input name='tagInput' type='text' value={tagInput} onChange={this.handleInputChange} />
-                        </label>
-                        <button className="form-button" onClick={this.handleTags}>Add</button>
-                    </div>
-                    {tags.length !== 0 
-                    ?
-                        <Tags tags={tags} handleTagDelete={this.handleTagDelete}/>
-                    :
-                        ''
-                    }
-                    <div className="add-step-div">
-                        <label className="form-label">
-                            <div>Add Step</div>
-                        </label>
-                        <button className="add-step-button" onClick={this.handleStep}>&#x2795;</button>
-                    </div>
+                    <DashboardFormTags 
+                        handleInputChange={this.handleInputChange}
+                        handleTagDelete={this.handleTagDelete}
+                        handleTags={this.handleTags}
+                        tagInput={tagInput}
+                        tags={tags} />
+                    <DashboardFormStepButtons 
+                        adminAction={adminAction}
+                        handleStepAdd={this.handleStepAdd}
+                        stepAction={stepAction} />
                     {steps.length !== 0
                     ?
                         <DashboardFormSteps 

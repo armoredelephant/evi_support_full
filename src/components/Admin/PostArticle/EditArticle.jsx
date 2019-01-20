@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 
 import DashboardFormCategory from './DashboardFormCategory';
 import DashboardFormDescription from './DashboardFormDescription';
+import DashboardFormStepButtons from './DashboardFormStepButtons';
 import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
 import axios from 'axios';
 import DashboardFormArticleList from './DashboardFormArticleList';
-import { of } from 'rxjs';
 
 const API_HOST_URL = process.env.API_URL;
 
@@ -27,10 +27,11 @@ class EditArticle extends Component {
                 tags: [],
                 body: []
             },
+            updatedSteps: [],
             tagInput: '',
-            updatedTagsList: [],
             title: 'choose an article',
-            titleList: []
+            titleList: [],
+            updatedTagsList: []
         }
     }
 
@@ -50,7 +51,8 @@ class EditArticle extends Component {
                 .then(response => {
                     this.setState({
                         selectedArticle: response.data.article,
-                        updatedTagsList: response.data.article.tags // [0] if routing the whole article
+                        updatedTagsList: response.data.article.tags,
+                        updatedSteps: response.data.article.body // [0] if routing the whole article
                     })
                 })
         }
@@ -80,6 +82,21 @@ class EditArticle extends Component {
         this.setState({ category: target.value })
     }
 
+    handleImage = ( event, files ) => {
+        const target = event.target
+        const { updsatedSteps } = this.state;
+
+        let oldSteps = Array.from(updatedSteps);
+        oldSteps[target.name].imgName = files[0].name
+        oldSteps[target.name].imgData = files[0] 
+        
+        const newSteps = oldSteps
+
+        this.setState({
+            updatedSteps: newSteps
+        })
+    }
+
     handleInputChange = ( event ) => {
         const target = event.target;
         const value = target.value;
@@ -89,6 +106,34 @@ class EditArticle extends Component {
             selectedArticle: { [name]: value }
         });
 
+    }
+
+    handleStepAdd = ( event ) => {
+        event.preventDefault();
+        const { updatedSteps } = this.state
+        const arrayOfSteps = Array.from(updatedSteps)
+        const nextStep = { step: '', imgName: null, imgData: '' }
+        const newSteps = [...arrayOfSteps, nextStep];
+
+        this.setState({
+            updatedSteps: newSteps
+        })
+    }
+
+    handleStepInput = ( event ) => {
+        const target = event.target;
+        const value = target.value;
+        const { updatedSteps } = this.state;
+
+        let oldSteps = Array.from(updatedSteps);
+
+        oldSteps[target.name].step = value;
+
+        const newSteps = oldSteps;
+
+        this.setState({
+            updatedSteps: newSteps
+        })
     }
 
     handleTagDelete = ( event ) => {
@@ -134,8 +179,10 @@ class EditArticle extends Component {
         })
     }
 
+    // Can be refactored to have switch statements to determine which props get passed down.
     render() {
-        const { articleChosen, category, selectedArticle, tagInput, title, titleList, updatedTagsList } = this.state;
+        const { articleChosen, category, selectedArticle, tagInput, title, titleList, updatedSteps, updatedTagsList } = this.state;
+        const { adminAction, stepAction } = this.props;
 
         return (
             <div className="form-wrapper">
@@ -164,6 +211,19 @@ class EditArticle extends Component {
                                 handleInputChange={this.handleTagInput}
                                 tagInput={tagInput}
                                 tags={updatedTagsList} />
+                                {/** need a component to generate the steps. Will have an Add AND Subtract stepp button.
+                                    Imaged will need to be loaded with the step. May need to ensure image is working. */}
+                            <DashboardFormStepButtons 
+                                adminAction={adminAction}
+                                handleStepAdd={this.handleStepAdd}
+                                stepAction={stepAction} />
+                            {selectedArticle.body.length !== 0 
+                            ? <DashboardFormSteps  
+                                handleImage={this.handleImage}
+                                handleStepInput={this.handleStepInput}
+                                steps={updatedSteps} />
+                            : null
+                            }
                         </Fragment>
                         : null }
                     </Fragment>
