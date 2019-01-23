@@ -22,7 +22,7 @@ class PostArticle extends Component {
         this.state = {
             category: 'choose a category',
             description: '',
-            steps: [{step: '', imgName: null, imgData: ''}],
+            steps: [{step: '', imgName: null, stepIndex: '' }],
             title: '',
             tagInput: '',
             tags: []
@@ -73,7 +73,7 @@ class PostArticle extends Component {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
-        const nextStep = { step: '', imgName: null, imgData: '' }
+        const nextStep = { step: '', imgName: null, stepIndex: '' }
         const updatedSteps = [...arrayOfSteps, nextStep];
 
         this.setState({
@@ -101,14 +101,30 @@ class PostArticle extends Component {
         const target = event.target
         const { steps } = this.state;
 
+        const fileName = files[0].name
+
         let oldSteps = Array.from(steps);
         oldSteps[target.name].imgName = files[0].name
-        oldSteps[target.name].imgData = files[0] 
+        oldSteps[target.name].stepIndex = target.name
         
+        const { category, title } = this.state;
+        const options = {
+            category: category,
+            file: files[0],
+            fileName: fileName,
+            title: title
+        }
+
         const newSteps = oldSteps
 
-        this.setState({
-            steps: newSteps
+        // this.setState({
+        //     steps: newSteps
+        // })
+
+        axios.post(`${API_HOST_URL}/api/dashboard/post-image`, options).then(response => {
+            this.setState({
+                steps: newSteps
+            });
         })
     }
 
@@ -122,7 +138,7 @@ class PostArticle extends Component {
 
         axios.get(`${API_HOST_URL}/api/dashboard/`, options)
             .then(response => {
-                const { category, description, steps, tags, title } = this.state;
+                const { category, description, fileList, steps, tags, title } = this.state;
                 
                 const nextAvailableIndex = Object.keys(response.data).length
 
@@ -132,12 +148,13 @@ class PostArticle extends Component {
                     category: category,
                     categoryItemIndex: nextAvailableIndex,
                     description: description,
+                    fileList: fileList,
                     itemId: itemIdIncrement,
                     steps: steps,
                     tags: tags,
                     title: title
                 }
-
+                console.log(fileList)
                 if (category !== 'choose a category') {
                     axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
                     .then(response => {
