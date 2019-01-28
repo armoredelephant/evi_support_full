@@ -8,6 +8,7 @@ import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
 import Tags from './Tags';
 import axios from 'axios';
+import ImageUploader from '../../elements/ImageUploader';
 
 const API_HOST_URL = process.env.API_URL;
 
@@ -117,15 +118,11 @@ class PostArticle extends Component {
 
         const newSteps = oldSteps
 
-        // this.setState({
-        //     steps: newSteps
-        // })
+        ImageUploader(options);
 
-        axios.post(`${API_HOST_URL}/api/dashboard/post-image`, options).then(response => {
-            this.setState({
-                steps: newSteps
-            });
-        })
+        this.setState({
+            steps: newSteps
+        });
     }
 
     handleSubmit = () => {
