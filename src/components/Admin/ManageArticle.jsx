@@ -17,7 +17,13 @@ class ManageArticle extends Component {
     }
 
     componentWillMount() {
-        axios.get(`${API_HOST_URL}/api/articles/category-list`).then(
+        const options = {
+            params: {
+                requiresCategory: true
+            }
+        }
+
+        axios.get(`${API_HOST_URL}/api/articles`, options).then(
             response =>  {
                 const categoryList = response.data.categoryList
                 this.setState({ categoryList: categoryList })

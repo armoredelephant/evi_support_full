@@ -98,27 +98,60 @@ class PostArticle extends Component {
         })
     }
 
-    handleImage = ( event, files ) => {
+    handleImage = ( event ) => {
         const target = event.target
+        const files = target.files
+        console.dir(target)
         const { steps } = this.state;
 
+        const file = files[0]
         const fileName = files[0].name
 
         let oldSteps = Array.from(steps);
         oldSteps[target.name].imgName = files[0].name
         oldSteps[target.name].stepIndex = target.name
+
+        const blob = new Blob(files, { type: "image/jpeg" })
         
         const { category, title } = this.state;
+
+        const data = new FormData();
+        data.append('file', file, file.name)
+
+        console.log(data)
+
+        // const options = JSON.stringify({
+        //     category: category,
+        //     file: data,
+        //     fileName: fileName,
+        //     title: title
+        // })
+
         const options = {
-            category: category,
-            file: files[0],
-            fileName: fileName,
-            title: title
+            data,
+            method: 'POST',
+            config: {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            },
+            url: `${API_HOST_URL}/api/dashboard/post-image`
         }
 
-        const newSteps = oldSteps
+        axios(options)
 
-        ImageUploader(options);
+        // const config = {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     },
+        //     method: 'POST',
+        // }
+
+        console.log(options)
+        
+        const newSteps = oldSteps
+        
+        // axios.post(`${API_HOST_URL}/api/dashboard/post-image`, options, config)
 
         this.setState({
             steps: newSteps
