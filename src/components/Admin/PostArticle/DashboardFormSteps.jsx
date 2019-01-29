@@ -19,7 +19,7 @@ const DashboardFormSteps = ( props ) => {
                             className="file-input" 
                             id={`file-input-${index}`} 
                             name={index} 
-                            onChange={(e) => props.handleImage(e, e.target.files)}
+                            onChange={props.handleImage}
                             src="#" 
                             type="file" 
                             value={field.imgUrl} />
