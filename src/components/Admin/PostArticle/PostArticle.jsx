@@ -7,7 +7,6 @@ import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
 import axios from 'axios';
-import ImageUploader from '../../elements/ImageUploader';
 
 const API_HOST_URL = process.env.API_URL;
 
@@ -22,12 +21,13 @@ class PostArticle extends Component {
         this.state = {
             category: 'choose a category',
             description: '',
+            isPosting: false,
             postMessage: '',
-            postStatus: false,
             steps: [{step: '', imgName: null, stepIndex: '', file: null}],
             title: '',
             tagInput: '',
-            tags: []
+            tags: [],
+            uploadComplete: false
         }
     }
     
@@ -136,49 +136,53 @@ class PostArticle extends Component {
                     category: category,
                     categoryItemIndex: nextAvailableIndex,
                     description: description,
-                    // fileList: fileList,
                     itemId: itemIdIncrement,
                     steps: steps,
                     tags: tags,
                     title: title
                 }
                 if (category !== 'choose a category') {
-                    // loop through the steps and upload any images
-                    steps.map(step => {
-                        if (step.file !== null) {
-                            const data = new FormData();
-                            data.append('file', step.file, step.file.name)
-                            data.append('title', title)
-                            data.append('index', step.stepIndex)
-                    
-                            const options = {
-                                data,
-                                method: 'POST',
-                                config: {
-                                    headers: {
-                                        'Content-Type': 'multipart/form-data'
+                    this.setState({ isPosting: true }, () =>{
+                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                        .then(response => {
+                            steps.map(step => {
+                                if (step.file !== null) {
+                                    const data = new FormData();
+                                    data.append('file', step.file, step.file.name)
+                                    data.append('title', title)
+                                    data.append('index', step.stepIndex)
+                            
+                                    const options = {
+                                        data,
+                                        method: 'POST',
+                                        config: {
+                                            headers: {
+                                                'Content-Type': 'multipart/form-data'
+                                            }
+                                        },
+                                        url: `${API_HOST_URL}/api/dashboard/post-image`
                                     }
-                                },
-                                url: `${API_HOST_URL}/api/dashboard/post-image`
-                            }
-                    
-                            axios(options)
-                        } 
-                    })
-
-                    // posts the article
-                    axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
-                    .then(response => {
-                        if (response.data.message === 'success') {
-                            this.setState({ 
-                                postStatus: true, 
-                                postMessage: 'Article has successfully posted!' 
+                                    axios(options)
+                                }
+                                if (response.data.message === 'success') {
+                                    this.setState({
+                                        category: 'choose a category',
+                                        description: '',
+                                        isPosting: false, 
+                                        postMessage: 'Article has successfully posted!',
+                                        steps: [{step: '', imgName: null, stepIndex: '', file: null}],
+                                        title: '',
+                                        tagInput: '',
+                                        tags: [],
+                                        uploadComplete: true
+                                    }) 
+                                }
                             })
-                        }
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        });
                     })
-                    .catch(error => {
-                        console.log(error)
-                    });
                 } else {
                     alert('Please select a valid category.')
                 }
@@ -188,7 +192,7 @@ class PostArticle extends Component {
     // can refactor each section of the form into it's own component?
 
     render() {
-        const { category, description, steps, tagInput, tags, title } = this.state;
+        const { category, description, isLoading, steps, tagInput, tags, title, uploadComplete } = this.state;
         const { adminAction, stepAction } = this.props; 
 
         return (
@@ -219,7 +223,9 @@ class PostArticle extends Component {
                         <DashboardFormSteps 
                             handleImage={this.handleImage} 
                             handleStepInput={this.handleStepInput} 
-                            steps={steps} />
+                            isLoading={isLoading}
+                            steps={steps}
+                            uploadComplete={uploadComplete} />
                     :
                         ''
                     }

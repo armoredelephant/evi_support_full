@@ -1,6 +1,8 @@
 import React from 'react';
+import ImageButtonDisplay from '../../elements/ImageButtonDisplay';
 
 const DashboardFormSteps = ( props ) => {
+    console.log(props.uploadComplete)
     return (
         <ul className="steps-list">
             {props.steps.map((field, index) => {
@@ -26,12 +28,10 @@ const DashboardFormSteps = ( props ) => {
                         <label className="image-upload-label" 
                             htmlFor={`file-input-${index}`}
                             id="image-upload-label">
-                        {field.imgName
-                        ?
-                            `${field.imgName}`
-                        :
-                            'Add Image'
-                        }
+                        <ImageButtonDisplay 
+                            uploadComplete={props.uploadComplete}
+                            isLoading={props.isLoading}
+                            imgName={field.imgName} />
                         </label>
                     </div>
                     </li>
