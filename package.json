@@ -19,6 +19,7 @@
     "fontawesome": "^4.7.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-loading": "^2.0.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "webpack": "^4.21.0",
