@@ -22,7 +22,9 @@ class PostArticle extends Component {
         this.state = {
             category: 'choose a category',
             description: '',
-            steps: [{step: '', imgName: null, stepIndex: '' }],
+            postMessage: '',
+            postStatus: false,
+            steps: [{step: '', imgName: null, stepIndex: '', file: null}],
             title: '',
             tagInput: '',
             tags: []
@@ -73,7 +75,7 @@ class PostArticle extends Component {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
-        const nextStep = { step: '', imgName: null, stepIndex: '' }
+        const nextStep = { step: '', imgName: null, stepIndex: '', file: null }
         const updatedSteps = [...arrayOfSteps, nextStep];
 
         this.setState({
@@ -100,32 +102,12 @@ class PostArticle extends Component {
     handleImage = ( event ) => {
         const target = event.target
         const files = target.files
-        console.dir(target, files)
         const { steps } = this.state;
 
         let oldSteps = Array.from(steps);
         oldSteps[target.name].imgName = files[0].name
         oldSteps[target.name].stepIndex = target.name
-        
-        const { category, title } = this.state;
-
-        console.log(files[0])
-
-        const data = new FormData();
-        data.append('file', files[0], files[0].name)
-
-        const options = {
-            data,
-            method: 'POST',
-            config: {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            },
-            url: `${API_HOST_URL}/api/dashboard/post-image`
-        }
-
-        axios(options)
+        oldSteps[target.name].file = files[0]
 
         const newSteps = oldSteps
 
@@ -144,7 +126,7 @@ class PostArticle extends Component {
 
         axios.get(`${API_HOST_URL}/api/dashboard/`, options)
             .then(response => {
-                const { category, description, fileList, steps, tags, title } = this.state;
+                const { category, description, steps, tags, title } = this.state;
                 
                 const nextAvailableIndex = Object.keys(response.data).length
 
@@ -154,17 +136,45 @@ class PostArticle extends Component {
                     category: category,
                     categoryItemIndex: nextAvailableIndex,
                     description: description,
-                    fileList: fileList,
+                    // fileList: fileList,
                     itemId: itemIdIncrement,
                     steps: steps,
                     tags: tags,
                     title: title
                 }
-                console.log(fileList)
                 if (category !== 'choose a category') {
+                    // loop through the steps and upload any images
+                    steps.map(step => {
+                        if (step.file !== null) {
+                            const data = new FormData();
+                            data.append('file', step.file, step.file.name)
+                            data.append('title', title)
+                            data.append('index', step.stepIndex)
+                    
+                            const options = {
+                                data,
+                                method: 'POST',
+                                config: {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data'
+                                    }
+                                },
+                                url: `${API_HOST_URL}/api/dashboard/post-image`
+                            }
+                    
+                            axios(options)
+                        } 
+                    })
+
+                    // posts the article
                     axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
                     .then(response => {
-                        alert(response.data)
+                        if (response.data.message === 'success') {
+                            this.setState({ 
+                                postStatus: true, 
+                                postMessage: 'Article has successfully posted!' 
+                            })
+                        }
                     })
                     .catch(error => {
                         console.log(error)
@@ -217,6 +227,9 @@ class PostArticle extends Component {
                         <button type="button" className="form-button submit-button" onClick={this.handleSubmit}>
                         Submit
                         </button>
+                    </div>
+                    <div className="post-message">
+                    {this.state.postMessage}
                     </div>
                 </form>
             </div>
