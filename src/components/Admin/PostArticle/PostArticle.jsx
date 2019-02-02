@@ -6,8 +6,6 @@ import DashboardFormStepButtons from './DashboardFormStepButtons';
 import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
-import encodeImageFileAsUrl from '../../elements/encodeImageFileAsURL';
-import Tags from './Tags';
 import axios from 'axios';
 import ImageUploader from '../../elements/ImageUploader';
 
@@ -111,43 +109,24 @@ class PostArticle extends Component {
         
         const { category, title } = this.state;
 
-        // const encodedFile = Base64.btoa(files[0])
-        // console.log(encodedFile)
+        console.log(files[0])
 
-        // const options = {
-        //     category: category,
-        //     file: encodedFile,
-        //     fileName: files[0].name,
-        //     title: title
-        // }
+        const data = new FormData();
+        data.append('file', files[0], files[0].name)
 
-        // axios.post(`${process.env.API_URL}/api/dashboard/post-image`, options)
-
-        if (files.length > 0) {
-            const fileToLoad = files[0];
-    
-            const fileReader = new FileReader();
-    
-            fileReader.onload = event => {
-                const srcData = event.target.result; // data: base64
-                console.log(srcData)
-                // let newImage = srcData.split(/,(.+)/)[1];
-                let newImage = srcData
-    
-                const options = {
-                    category: category,
-                    file: newImage,
-                    fileName: fileToLoad.name,
-                    title: title
+        const options = {
+            data,
+            method: 'POST',
+            config: {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
                 }
+            },
+            url: `${API_HOST_URL}/api/dashboard/post-image`
+        }
 
-                console.log(typeof(newImage))
-    
-                axios.post(`${process.env.API_URL}/api/dashboard/post-image`, options)
-            }
-            fileReader.readAsDataURL(fileToLoad)
-        } 
-        
+        axios(options)
+
         const newSteps = oldSteps
 
         this.setState({
