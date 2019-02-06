@@ -5,6 +5,12 @@ import ModalConductor from '../elements/ModalConductor';
 const ActualArticle = ( props ) => {
     const currentModal = 'IMAGE_LOADER';
 
+    // const currentTitle = props.currentItemId.title
+    // const currentImage = props.currentItemId.body[props.currentStepIndex].imgName || null
+    // const stepArray = props.currentItemId.body
+    // const currentImage = stepArray[props.currentStepIndex].imgName
+    // console.log(currentImage)
+
     return (
         <main role="main" className="article-view-main" id="article-view-main">
             <div className="article-view-wrapper">
@@ -12,19 +18,20 @@ const ActualArticle = ( props ) => {
                 <hr/>
                 <h3 className="article-into">{props.currentItemId.description}</h3>
                 <ol>
-                    {props.currentItemId.body.map(currentStep => (
-                    currentStep.hasImage 
+                    {props.currentItemId.body.map((currentStep, index) => ( 
+                    // ('imgName' in props.currentItemId.body[index])
+                    currentStep.imgName
                     ? 
-                        <li key={currentStep.stepId} className="article-step__image">
-                            <button key={currentStep.stepId} 
+                        <li key={index} className="article-step__image">
+                            <button key={currentStep.stepIndex} 
                                 className="article-step-button"
-                                currentstep={currentStep.stepId}
-                                onClick={(event) => props.click(event, currentStep.stepId)} >
+                                currentstep={currentStep.stepIndex}
+                                onClick={(event) => props.click(event, currentStep.stepIndex)} >
                                     {currentStep.step}
                             </button>
                         </li> 
                     :
-                        <li key={currentStep.stepId} className="article-step">
+                        <li key={index} className="article-step">
                             {currentStep.step}
                         </li>
                     ))}
@@ -35,8 +42,9 @@ const ActualArticle = ( props ) => {
                 <ModalConductor 
                     currentModal={currentModal} 
                     currentCategory={props.currentCategory}
-                    currentStepId={props.currentStepId}
+                    currentStepIndex={props.currentStepIndex}
                     itemIdMatch={props.itemIdMatch}
+                    imgURL={props.imgURL}
                     hideModal={props.hideModal} /> 
             : 
                 ''}
