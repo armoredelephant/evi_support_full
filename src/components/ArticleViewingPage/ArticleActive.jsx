@@ -2,8 +2,10 @@ import React from 'react';
 
 import ActualArticle from './ActualArticle';
 import { axiosGet } from '../Shared/AxiosFetch';
+import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar';
 
+const API_HOST_URL = process.env.API_URL;
 
 class ArticleActive extends React.Component {
     constructor(props) {
@@ -11,8 +13,9 @@ class ArticleActive extends React.Component {
         this.state = {
             activeItemLink: null,
             allData: null,
-            currentStepId: null,
-            displayModal: false
+            currentStepIndex: 0,
+            displayModal: false,
+            imageURL: ''
         }
     }
 
@@ -27,11 +30,36 @@ class ArticleActive extends React.Component {
     };
 
     changeDisplayImage = ( event, value ) => {
-        const currentStepId = value
-        this.setState(prevState => ({
-            displayModal: !prevState.displayModal,
-            currentStepId: currentStepId
-        }));
+        const currentStep = value
+
+        const { allData, currentStepIndex } = this.state
+
+        const currentItemList = allData[this.props.match.params.category].categoryItems,
+             currentItemId = currentItemList.find(
+            item => {             
+                return item.id == this.props.match.params.itemId;
+            }
+        );
+
+        const title = currentItemId.title,
+            stepArray = currentItemId.body,
+            imgName = stepArray[currentStepIndex].imgName
+
+        const options = {
+            params: {
+                title: title,
+                imgName: imgName,
+                stepIndex: currentStepIndex
+            }
+        }
+
+        axios.get(`${API_HOST_URL}/api/articles/fetch-image`, options).then(response => {
+            this.setState(prevState => ({
+                imgURL: response.data.downloadURL,
+                displayModal: !prevState.displayModal,
+                currentStepIndex: currentStep
+            }));
+        })
     };
 
     hideModal = () => {
@@ -47,8 +75,9 @@ class ArticleActive extends React.Component {
 
         const { 
                 allData, 
-                currentStepId, 
-                displayModal
+                currentStepIndex, 
+                displayModal,
+                imgURL
             } = this.state
 
         const categoryNames = Object.keys(allData);
@@ -77,10 +106,11 @@ class ArticleActive extends React.Component {
                 <ActualArticle 
                     currentItemId={currentItemId}
                     itemIdMatch={this.props.match.params.itemId}
+                    imgURL={imgURL}
                     hideModal={this.hideModal}
                     click={this.changeDisplayImage}
                     currentCategory={this.props.match.params.category}
-                    currentStepId={currentStepId}
+                    currentStepIndex={currentStepIndex}
                     displayModal={displayModal}
                 />
             </div>

@@ -4,7 +4,7 @@ const ModalWrapper = ( props ) => {
     const handleBackgroundClick = e  => {
         if (e.target === e.currentTarget) props.hideModal();
     };
-
+    
     const modalLayout = props.needsLayout 
         ? (
             <div className="modal-wrapper">
