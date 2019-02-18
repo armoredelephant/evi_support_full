@@ -8,9 +8,9 @@ const DashboardFormStepButtons = ( props ) => {
             </div>
             <div className="form-step-buttons">
                 <button name='addStep'className="add-step-button" onClick={props.handleStepAdd}>&#x2795;</button>
-                {props.adminAction === 'edit'
+                {/* {props.adminAction === 'edit'
                 ? <button name='deleteStep' className='add-step-button' onClick={props.handleStepAdd}>&#8722;</button>
-                : null }
+                : null } */}
             </div>
         </div>
     )
