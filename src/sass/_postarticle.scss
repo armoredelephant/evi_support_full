@@ -106,7 +106,8 @@
 
 .form-button,
 .add-step-button,
-.image-upload-label {
+.image-upload-label,
+.image-remove-button {
     height: 30px;
     background-color: color(dashboard-lightest);
     border: 1px solid color(form-border);
@@ -225,9 +226,19 @@
     z-index: -1;
 }
 
-.upload-image-div {
+.upload-image-div,
+.upload-image-div-remove {
     height: 62px;
     align-self: flex-start;
+}
+
+.upload-image-div-remove { 
+    margin-left: auto;
+}
+
+.image-upload-wrapper { 
+    display: flex;
+    flex-flow: row;
 }
 
 .image-upload-label {
@@ -236,6 +247,10 @@
     font-size: 11px;
     min-width: 72px;
     padding: 8px;
+}
+
+.image-remove-button {
+    margin-top: 26px;
 }
 
 /**********************************************************
