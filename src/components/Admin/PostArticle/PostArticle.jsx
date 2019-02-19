@@ -23,7 +23,7 @@ class PostArticle extends Component {
             description: '',
             isPosting: false,
             postMessage: '',
-            steps: [{step: '', imgName: null, stepIndex: '', file: null}],
+            steps: [{step: '', imgName: null, imgIndex: '', file: null}],
             title: '',
             tagInput: '',
             tags: [],
@@ -75,7 +75,7 @@ class PostArticle extends Component {
         event.preventDefault();
         const { steps } = this.state
         const arrayOfSteps = Array.from(steps)
-        const nextStep = { step: '', imgName: null, stepIndex: '', file: null }
+        const nextStep = { step: '', imgName: null, imgIndex: '', file: null }
         const updatedSteps = [...arrayOfSteps, nextStep];
 
         this.setState({
@@ -106,7 +106,7 @@ class PostArticle extends Component {
 
         let oldSteps = Array.from(steps);
         oldSteps[target.name].imgName = files[0].name
-        oldSteps[target.name].stepIndex = target.name
+        oldSteps[target.name].imgIndex = target.name
         oldSteps[target.name].file = files[0]
 
         const newSteps = oldSteps
@@ -150,7 +150,7 @@ class PostArticle extends Component {
                                     const data = new FormData();
                                     data.append('file', step.file, step.file.name)
                                     data.append('title', title)
-                                    data.append('index', step.stepIndex)
+                                    data.append('index', step.imgIndex)
                             
                                     const options = {
                                         data,
@@ -170,7 +170,7 @@ class PostArticle extends Component {
                                         description: '',
                                         isPosting: false, 
                                         postMessage: 'Article has successfully posted!',
-                                        steps: [{step: '', imgName: null, stepIndex: '', file: null}],
+                                        steps: [{step: '', imgName: null, imgIndex: '', file: null}],
                                         title: '',
                                         tagInput: '',
                                         tags: [],

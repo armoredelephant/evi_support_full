@@ -21,6 +21,8 @@ class EditArticle extends Component {
             articleList: [],
             category: 'choose a category',
             description: '',
+            isPosting: false,
+            postMessage: '',
             selectedArticle: {
                 title: '',
                 description: '',
@@ -91,7 +93,7 @@ class EditArticle extends Component {
 
         let oldSteps = Array.from(updatedSteps);
         oldSteps[target.name].imgName = files[0].name
-        oldSteps[target.name].stepIndex = target.name
+        oldSteps[target.name].imgIndex = target.name
         oldSteps[target.name].file = files[0]
 
         const newSteps = oldSteps
@@ -119,7 +121,7 @@ class EditArticle extends Component {
         event.preventDefault();
         const { updatedSteps, selectedArticle } = this.state
         const arrayOfSteps = Array.from(updatedSteps)
-        const nextStep = { step: '', imgName: null, imgData: '', file: null }
+        const nextStep = { step: '', imgName: null, imgIndex: '', file: null }
         const newSteps = [...arrayOfSteps, nextStep];
 
         const oldState = selectedArticle
@@ -139,7 +141,7 @@ class EditArticle extends Component {
         const arrayOfSteps = selectedArticle.body
         console.log(arrayOfSteps)
         if (arrayOfSteps.length === 1) {
-            const newSteps = [{ step: '', imgName: null, imgData: '', file: null }]
+            const newSteps = [{ step: '', imgName: null, imgIndex: '', file: null }]
             const oldState = selectedArticle
             oldState.body = newSteps
 
@@ -242,72 +244,74 @@ class EditArticle extends Component {
     // Can remove the axios.get altogether as we already have the article
     // Index that the article is to be "set" at is in this.state.articleIndex
     handleSubmit = () => {
-        const { category } = this.state;
+        const { articleIndex, category, selectedArticle, title } = this.state;
+
         const options = {
-            params: {
-                category: category
-            }
+            category: category,
+            categoryItemIndex: articleIndex,
+            description: selectedArticle.description,
+            itemId: selectedArticle.id,
+            steps: selectedArticle.body,
+            tags: selectedArticle.tags,
+            title: selectedArticle.title
         }
+        
+        console.log(options)
 
-        axios.get(`${API_HOST_URL}/api/dashboard/`, options)
-            .then(response => {
-                const { category, description, steps, tags, title } = this.state;
+        if (title !== 'choose an article') {
+            this.setState({ isPosting: true }, () => {
+                axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options) // needs to be edited
+                    .then(response => {
+                        selectedArticle.body.map(step => {
+                            if (step.file !== null) {
+                                const data = new FormData();
+                                data.append('file', step.file, step.file.name)
+                                data.append('title', title)
+                                data.append('index', step.imgIndex)
 
-                const options = {
-                    category: category,
-                    categoryItemIndex: nextAvailableIndex,
-                    description: description,
-                    itemId: itemIdIncrement,
-                    steps: steps,
-                    tags: tags,
-                    title: title
-                }
-                if (category !== 'choose a category') {
-                    this.setState({ isPosting: true }, () =>{
-                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
-                        .then(response => {
-                            steps.map(step => {
-                                if (step.file !== null) {
-                                    const data = new FormData();
-                                    data.append('file', step.file, step.file.name)
-                                    data.append('title', title)
-                                    data.append('index', step.stepIndex)
-                            
-                                    const options = {
-                                        data,
-                                        method: 'POST',
-                                        config: {
-                                            headers: {
-                                                'Content-Type': 'multipart/form-data'
-                                            }
-                                        },
-                                        url: `${API_HOST_URL}/api/dashboard/post-image`
-                                    }
-                                    axios(options)
+                                const options = {
+                                    data,
+                                    method: 'POST',
+                                    config: {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    },
+                                    url: `${API_HOST_URL}/api/dashboard/post-image`
                                 }
-                                if (response.data.message === 'success') {
-                                    this.setState({
-                                        category: 'choose a category',
-                                        description: '',
-                                        isPosting: false, 
-                                        postMessage: 'Article has successfully posted!',
-                                        steps: [{step: '', imgName: null, stepIndex: '', file: null}],
+                                axios(options)
+                            }
+                            if (response.data.message === 'success') {
+                                this.setState({
+                                    articleIndex: 0,
+                                    articleChosen: false,
+                                    articleList: [],
+                                    category: 'choose a category',
+                                    description: '',
+                                    isPosting: false,
+                                    selectedArticle: {
                                         title: '',
-                                        tagInput: '',
+                                        description: '',
+                                        id: null,
                                         tags: [],
-                                        uploadComplete: true
-                                    }) 
-                                }
-                            })
+                                        body: []
+                                    },
+                                    updatedSteps: [],
+                                    tagInput: '',
+                                    title: 'choose an article',
+                                    titleList: [],
+                                    updatedTagsList: []
+                                })
+                            }
                         })
-                        .catch(error => {
-                            console.log(error)
-                        });
                     })
-                } else {
-                    alert('Please select a valid category.')
-                }
+                    .catch(error => {
+                        console.log(error)
+                    })
             })
+        } else {
+            alert('Please select an article.')
+        }
     }
 
     // Can be refactored to have switch statements to determine which props get passed down.
