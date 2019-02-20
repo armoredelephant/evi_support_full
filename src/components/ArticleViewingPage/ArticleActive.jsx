@@ -30,6 +30,7 @@ class ArticleActive extends React.Component {
     };
 
     changeDisplayImage = ( event, value ) => {
+        console.log(value)
         const currentStep = value
 
         const { allData, currentStepIndex } = this.state
@@ -49,7 +50,7 @@ class ArticleActive extends React.Component {
             params: {
                 title: title,
                 imgName: imgName,
-                stepIndex: currentStepIndex
+                imgIndex: currentStep
             }
         }
 
