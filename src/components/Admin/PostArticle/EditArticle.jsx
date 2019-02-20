@@ -133,6 +133,11 @@ class EditArticle extends Component {
         })
     }
 
+    // step delete should check if the step had an image and then delete from db if it does.
+    // When deleting a step, how will that effect other step's images when being loaded ?
+    // MAy need to refactor to not number the images but instead just do articleTitle_imagename.
+    // Imagename would need to be available to the frontend when grabbing article.
+    // Would need a test to check if name is duplicate, and notify the image will have to be renamed.
     handleStepDelete = ( event ) => {
         event.preventDefault();
         const target = event.target;
@@ -243,6 +248,9 @@ class EditArticle extends Component {
     // steps will need to be renamed to selectedArticle.steps.map()
     // Can remove the axios.get altogether as we already have the article
     // Index that the article is to be "set" at is in this.state.articleIndex
+
+    // Editing an article title also breaks image fetching.
+    // Need to find a way to store image names that will be retrievable if article is edited.
     handleSubmit = () => {
         const { articleIndex, category, selectedArticle, title } = this.state;
 

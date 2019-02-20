@@ -23,10 +23,11 @@ const ActualArticle = ( props ) => {
                     currentStep.imgName
                     ? 
                         <li key={index} className="article-step__image">
-                            <button key={currentStep.stepIndex} 
+                            <button key={currentStep.imgIndex} 
                                 className="article-step-button"
-                                currentstep={currentStep.stepIndex}
-                                onClick={(event) => props.click(event, currentStep.stepIndex)} >
+                                currentstep={currentStep.imgIndex}
+                                onClick={(event) => props.click(event, currentStep.imgIndex)}
+                                value={currentStep} >
                                     {currentStep.step}
                             </button>
                         </li> 
