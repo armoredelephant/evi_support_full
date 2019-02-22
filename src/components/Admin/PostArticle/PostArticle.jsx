@@ -116,6 +116,7 @@ class PostArticle extends Component {
         });
     }
 
+    // Should post images first and then the article?
     handleSubmit = () => {
         const { category } = this.state;
         const options = {
@@ -151,7 +152,8 @@ class PostArticle extends Component {
                                     data.append('file', step.file, step.file.name)
                                     data.append('title', title)
                                     data.append('index', step.imgIndex)
-                            
+                                    data.append('uniqueId', response.data.uniqueId )
+                                    
                                     const options = {
                                         data,
                                         method: 'POST',

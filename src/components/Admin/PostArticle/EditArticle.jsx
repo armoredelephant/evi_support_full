@@ -28,7 +28,8 @@ class EditArticle extends Component {
                 description: '',
                 id: null,
                 tags: [],
-                body: []
+                body: [],
+                uniqueId: ''
             },
             updatedSteps: [],
             tagInput: '',
@@ -261,7 +262,8 @@ class EditArticle extends Component {
             itemId: selectedArticle.id,
             steps: selectedArticle.body,
             tags: selectedArticle.tags,
-            title: selectedArticle.title
+            title: selectedArticle.title,
+            uniqueId: selectedArticle.uniqueId
         }
         
         console.log(options)
