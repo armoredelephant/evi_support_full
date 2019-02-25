@@ -278,6 +278,7 @@ class EditArticle extends Component {
                                 data.append('file', step.file, step.file.name)
                                 data.append('title', title)
                                 data.append('index', step.imgIndex)
+                                data.append('uniqueId', selectedArticle.uniqueId )
 
                                 const options = {
                                     data,
