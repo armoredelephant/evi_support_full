@@ -30,7 +30,6 @@ class ArticleActive extends React.Component {
     };
 
     changeDisplayImage = ( event, value ) => {
-        console.log(value)
         const currentStep = value
 
         const { allData, currentStepIndex } = this.state
@@ -41,16 +40,16 @@ class ArticleActive extends React.Component {
                 return item.id == this.props.match.params.itemId;
             }
         );
-
-        const title = currentItemId.title,
-            stepArray = currentItemId.body,
-            imgName = stepArray[currentStepIndex].imgName
+            // needs uniqueId and imgName
+        const stepArray = currentItemId.body,
+            imgName = stepArray[currentStepIndex].imgName,
+            uniqueId = currentItemId.uniqueId 
 
         const options = {
             params: {
-                title: title,
                 imgName: imgName,
-                imgIndex: currentStep
+                imgIndex: currentStep,
+                uniqueId: uniqueId
             }
         }
 
