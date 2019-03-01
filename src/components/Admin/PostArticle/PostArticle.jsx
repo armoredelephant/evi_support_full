@@ -21,6 +21,7 @@ class PostArticle extends Component {
         this.state = {
             category: 'choose a category',
             description: '',
+            imagesToUploadCount: 0,
             isPosting: false,
             postMessage: '',
             steps: [{step: '', imgName: null, imgIndex: '', file: null}],
@@ -102,17 +103,21 @@ class PostArticle extends Component {
     handleImage = ( event ) => {
         const target = event.target
         const files = target.files
-        const { steps } = this.state;
+        const { imagesToUploadCount, steps } = this.state;
 
         let oldSteps = Array.from(steps);
         oldSteps[target.name].imgName = files[0].name
         oldSteps[target.name].imgIndex = target.name
         oldSteps[target.name].file = files[0]
+        oldSteps[target.name].needToPost = true
+
+        const newImagesToUploadCount = imagesToUploadCount + 1
 
         const newSteps = oldSteps
 
         this.setState({
-            steps: newSteps
+            steps: newSteps,
+            imagesToUploadCount: newImagesToUploadCount
         });
     }
 
@@ -127,7 +132,7 @@ class PostArticle extends Component {
 
     //     axios.get(`${API_HOST_URL}/api/dashboard/`, options)
     //         .then(response => {
-    //             const { category, description, steps, tags, title } = this.state;
+    //             const { category, description, imagesToUploadCount, steps, tags, title } = this.state;
                 
     //             const nextAvailableIndex = Object.keys(response.data).length
 
@@ -147,7 +152,7 @@ class PostArticle extends Component {
     //                     axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
     //                     .then(response => {
     //                         steps.map(step => {
-    //                             if (step.file !== null) {
+    //                             if (step.needToPost) {
     //                                 const data = new FormData();
     //                                 data.append('file', step.file, step.file.name)
     //                                 data.append('title', title)
@@ -164,7 +169,14 @@ class PostArticle extends Component {
     //                                     },
     //                                     url: `${API_HOST_URL}/api/dashboard/post-image`
     //                                 }
-    //                                 axios(options)
+    //                                 axios(options).then(response => {
+    //                                     if (response.data.status === 'success') {
+    //                                         step.needToPost = false
+    //                                         // let newImagesToUploadCount = imagesToUploadCount - 1
+        
+    //                                         // this.setState({ imagesToUploadCount: newImagesToUploadCount })
+    //                                     }
+    //                                 })
     //                             }
     //                             if (response.data.message === 'success') {
     //                                 this.setState({
@@ -195,74 +207,83 @@ class PostArticle extends Component {
         const { category } = this.state;
         const options = {
             params: {
-                category: category
+                category: category,
+                needsUniqueId: true
             }
         }
-    
+    // the uniqueID needs to be gvien sooner, possibly in this call, that way the image and article can both us it.
         axios.get(`${API_HOST_URL}/api/dashboard`, options)
             .then(response => {
                 const { category, description, steps, tags, title } = this.state;
     
-                const nextAvailableIndex = Object.keys(response.data).length
+                const nextAvailableIndex = response.data.nextIndex
     
                 const itemIdIncrement = nextAvailableIndex + 1
-    
-                if (category !== 'choose a category') {
-                    try {
-                        steps.map(step => {
-                            if (step.file !== null) {
-                                const data = new FormData();
-                                data.append('file', step.file, step.file.name)
-                                data.append('title', title)
-                                data.append('index', step.imgIndex)
-                                data.append('uniqueId', response.data.uniqueId)
-        
-                                const options = {
-                                    data,
-                                    method: 'POST',
-                                    config: {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data'
-                                        }
-                                    },
-                                    url: `${API_HOST_URL}/api/dashboard/post-image`
-                                }
-                                axios(options)
-                            }
-                        })
-                    } catch (error) {
-                        console.log(error)
-                    } finally {
-                        const options = {
-                            category: category,
-                            categoryItemIndex: nextAvailableIndex,
-                            description: description,
-                            itemId: itemIdIncrement,
-                            steps: steps,
-                            tags: tags,
-                            title: title
-                        }
+                const uniqueId = response.data.uniqueId 
+                console.log(uniqueId)
 
-                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
-                        .then(response => {
-                            if (response.data.message === 'success') {
-                                this.setState({
-                                    category: 'choose a category',
-                                    description: '',
-                                    isPosting: false, 
-                                    postMessage: 'Article has successfully posted!',
-                                    steps: [{step: '', imgName: null, imgIndex: '', file: null}],
-                                    title: '',
-                                    tagInput: '',
-                                    tags: [],
-                                    uploadComplete: true
-                                })
+                if (category !== 'choose a category') {
+                    steps.map((step, index) => {
+                        if (step.needToPost) {
+                            const data = new FormData();
+                            data.append('file', step.file, step.file.name)
+                            data.append('title', title)
+                            data.append('index', step.imgIndex)
+                            data.append('uniqueId', uniqueId)
+    
+                            const options = {
+                                data,
+                                method: 'POST',
+                                config: {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data'
+                                    }
+                                },
+                                url: `${API_HOST_URL}/api/dashboard/post-image`
                             }
-                        })
-                        .catch(error => {
-                            console.log(error)
-                        })
-                    }
+                            axios(options).then(response => {
+                                const { imagesToUploadCount } = this.state
+                                const count = imagesToUploadCount 
+                                const prevSteps = steps
+                                const tempImagesToUploadCount = count - 1
+                                prevSteps[index].needToPost = false
+                                this.setState({ imagesToUploadCount: tempImagesToUploadCount, steps: prevSteps }, () => {
+                                    if (tempImagesToUploadCount === 0) {
+                                        const options = {
+                                            category: category,
+                                            categoryItemIndex: nextAvailableIndex,
+                                            description: description,
+                                            itemId: itemIdIncrement,
+                                            steps: steps,
+                                            tags: tags,
+                                            title: title,
+                                            uniqueId: uniqueId
+                                        }
+
+                                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                                        .then(response => {
+                                            if (response.data.message === 'success') {
+                                                this.setState({
+                                                    category: 'choose a category',
+                                                    description: '',
+                                                    isPosting: false, 
+                                                    postMessage: 'Article has successfully posted!',
+                                                    steps: [{step: '', imgName: null, imgIndex: '', file: null}],
+                                                    title: '',
+                                                    tagInput: '',
+                                                    tags: [],
+                                                    uploadComplete: true
+                                                })
+                                            } else { return }
+                                        }) 
+                                        .catch(error => {
+                                            console.log(error)
+                                        })
+                                    }
+                                })
+                            })
+                        }
+                    })
                 } else {
                     alert('Please select a valid category.')
                 }
