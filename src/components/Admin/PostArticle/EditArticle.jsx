@@ -6,7 +6,6 @@ import DashboardFormStepButtons from './DashboardFormStepButtons';
 import DashboardFormSteps from './DashboardFormSteps';
 import DashboardFormTags from './DashboardFormTags';
 import DashboardFormTitle from './DashboardFormTitle';
-import Tags from './Tags';
 import axios from 'axios';
 import DashboardFormArticleList from './DashboardFormArticleList';
 
@@ -21,6 +20,7 @@ class EditArticle extends Component {
             articleList: [],
             category: 'choose a category',
             description: '',
+            imagesToUploadCount: 0,
             isPosting: false,
             postMessage: '',
             selectedArticle: {
@@ -79,6 +79,7 @@ class EditArticle extends Component {
             axios.get(`${API_HOST_URL}/api/dashboard/article-titles`, options)
             .then(response => {
                 this.setState({
+                    postMessage: '',
                     titleList: response.data.titles
                 })
             })
@@ -90,16 +91,20 @@ class EditArticle extends Component {
     handleImage = ( event ) => {
         const target = event.target
         const files = target.files
-        const { updatedSteps } = this.state;
+        const { imagesToUploadCount, updatedSteps } = this.state;
 
         let oldSteps = Array.from(updatedSteps);
         oldSteps[target.name].imgName = files[0].name
         oldSteps[target.name].imgIndex = target.name
         oldSteps[target.name].file = files[0]
+        oldSteps[target.name].needToPost = true
+
+        const newImagesToUploadCount = imagesToUploadCount + 1
 
         const newSteps = oldSteps
 
         this.setState({
+            imagesToUploadCount: newImagesToUploadCount,
             updatedSteps: newSteps
         });
     }
@@ -252,74 +257,129 @@ class EditArticle extends Component {
 
     // Editing an article title also breaks image fetching.
     // Need to find a way to store image names that will be retrievable if article is edited.
-    handleSubmit = () => {
-        const { articleIndex, category, selectedArticle, title } = this.state;
 
-        const options = {
-            category: category,
-            categoryItemIndex: articleIndex,
-            description: selectedArticle.description,
-            itemId: selectedArticle.id,
-            steps: selectedArticle.body,
-            tags: selectedArticle.tags,
-            title: selectedArticle.title,
-            uniqueId: selectedArticle.uniqueId
-        }
-        
-        console.log(options)
+    // This needs to be fixed to alert if successful since it resets the state.
+    handleSubmit = () => {
+        const { articleIndex, category, imagesToUploadCount, selectedArticle, title } = this.state;
 
         if (title !== 'choose an article') {
-            this.setState({ isPosting: true }, () => {
-                axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options) // needs to be edited
-                    .then(response => {
-                        selectedArticle.body.map(step => {
-                            if (step.file !== null) {
-                                const data = new FormData();
-                                data.append('file', step.file, step.file.name)
-                                data.append('title', title)
-                                data.append('index', step.imgIndex)
-                                data.append('uniqueId', selectedArticle.uniqueId )
+            if (imagesToUploadCount === 0) {
+                const options = {
+                    category: category,
+                    categoryItemIndex: articleIndex,
+                    description: selectedArticle.description,
+                    itemId: selectedArticle.id,
+                    steps: selectedArticle.body,
+                    tags: selectedArticle.tags,
+                    title: selectedArticle.title,
+                    uniqueId: selectedArticle.uniqueId
+                }
 
-                                const options = {
-                                    data,
-                                    method: 'POST',
-                                    config: {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data'
-                                        }
-                                    },
-                                    url: `${API_HOST_URL}/api/dashboard/post-image`
-                                }
-                                axios(options)
-                            }
-                            if (response.data.message === 'success') {
-                                this.setState({
-                                    articleIndex: 0,
-                                    articleChosen: false,
-                                    articleList: [],
-                                    category: 'choose a category',
+                axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                    .then(response => {
+                        if (response.data.message === 'success') {
+                            this.setState({
+                                articleIndex: 0,
+                                articleChosen: false,
+                                articleList: [],
+                                category: 'choose a category',
+                                description: '',
+                                isPosting: false,
+                                postMessage: 'Article has successfully posted!',
+                                selectedArticle: {
+                                    title: '',
                                     description: '',
-                                    isPosting: false,
-                                    selectedArticle: {
-                                        title: '',
-                                        description: '',
-                                        id: null,
-                                        tags: [],
-                                        body: []
-                                    },
-                                    updatedSteps: [],
-                                    tagInput: '',
-                                    title: 'choose an article',
-                                    titleList: [],
-                                    updatedTagsList: []
-                                })
-                            }
-                        })
-                    })
+                                    id: null,
+                                    tags: [],
+                                    body: []
+                                },
+                                updatedSteps: [],
+                                tagInput: '',
+                                title: 'choose an article',
+                                titleList: [],
+                                updatedTagsList: []
+                            })
+                        } else { return }
+                    }) 
                     .catch(error => {
                         console.log(error)
                     })
-            })
+            } else {
+                selectedArticle.body.map((step, index) => {
+                    if (step.needToPost) {
+                        const data = new FormData();
+                        data.append('file', step.file, step.file.name)
+                        data.append('title', title)
+                        data.append('index', step.imgIndex)
+                        data.append('uniqueId', selectedArticle.uniqueId )
+
+                        const options = {
+                            data,
+                            method: 'POST',
+                            config: {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            },
+                            url: `${API_HOST_URL}/api/dashboard/post-image`
+                        }
+                        axios(options).then(response => {
+                            const { imagesToUploadCount } = this.state;
+                            const count = imagesToUploadCount
+                            const prevArticleState = selectedArticle
+                            const tempImagesToUploadCount = count - 1
+                            prevArticleState.body[index].needToPost = false
+
+                            this.setState({ 
+                                imagesToUploadCount: tempImagesToUploadCount,
+                                selectedArticle: prevArticleState 
+                            }, () => {
+                                if (tempImagesToUploadCount === 0) {
+                                    const options = {
+                                        category: category,
+                                        categoryItemIndex: articleIndex,
+                                        description: selectedArticle.description,
+                                        itemId: selectedArticle.id,
+                                        steps: selectedArticle.body,
+                                        tags: selectedArticle.tags,
+                                        title: selectedArticle.title,
+                                        uniqueId: selectedArticle.uniqueId
+                                    }
+                                    axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                                        .then(response => {
+                                            if (response.data.message === 'success') {
+                                                this.setState({
+                                                    articleIndex: 0,
+                                                    articleChosen: false,
+                                                    articleList: [],
+                                                    category: 'choose a category',
+                                                    description: '',
+                                                    isPosting: false,
+                                                    postMessage: 'Article has successfully posted!',
+                                                    selectedArticle: {
+                                                        title: '',
+                                                        description: '',
+                                                        id: null,
+                                                        tags: [],
+                                                        body: []
+                                                    },
+                                                    updatedSteps: [],
+                                                    tagInput: '',
+                                                    title: 'choose an article',
+                                                    titleList: [],
+                                                    updatedTagsList: []
+                                                })
+                                            } else { return }
+                                        }) 
+                                        .catch(error => {
+                                            console.log(error)
+                                        })
+                                }
+                            })
+                        })
+                    }
+                })
+            }
         } else {
             alert('Please select an article.')
         }
@@ -384,6 +444,9 @@ class EditArticle extends Component {
                         </Fragment>
                         : null }
                     </Fragment>
+                    <div className="post-message">
+                    {this.state.postMessage}
+                    </div>
                 </form>
             </div>
         )

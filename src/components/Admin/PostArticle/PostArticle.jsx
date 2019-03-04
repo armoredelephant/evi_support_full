@@ -121,88 +121,6 @@ class PostArticle extends Component {
         });
     }
 
-    // Should post images first and then the article?
-    // handleSubmit = () => {
-    //     const { category } = this.state;
-    //     const options = {
-    //         params: {
-    //             category: category
-    //         }
-    //     }
-
-    //     axios.get(`${API_HOST_URL}/api/dashboard/`, options)
-    //         .then(response => {
-    //             const { category, description, imagesToUploadCount, steps, tags, title } = this.state;
-                
-    //             const nextAvailableIndex = Object.keys(response.data).length
-
-    //             const itemIdIncrement = nextAvailableIndex + 1
-
-    //             const options = {
-    //                 category: category,
-    //                 categoryItemIndex: nextAvailableIndex,
-    //                 description: description,
-    //                 itemId: itemIdIncrement,
-    //                 steps: steps,
-    //                 tags: tags,
-    //                 title: title
-    //             }
-    //             if (category !== 'choose a category') {
-    //                 this.setState({ isPosting: true }, () =>{
-    //                     axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
-    //                     .then(response => {
-    //                         steps.map(step => {
-    //                             if (step.needToPost) {
-    //                                 const data = new FormData();
-    //                                 data.append('file', step.file, step.file.name)
-    //                                 data.append('title', title)
-    //                                 data.append('index', step.imgIndex)
-    //                                 data.append('uniqueId', response.data.uniqueId )
-                                    
-    //                                 const options = {
-    //                                     data,
-    //                                     method: 'POST',
-    //                                     config: {
-    //                                         headers: {
-    //                                             'Content-Type': 'multipart/form-data'
-    //                                         }
-    //                                     },
-    //                                     url: `${API_HOST_URL}/api/dashboard/post-image`
-    //                                 }
-    //                                 axios(options).then(response => {
-    //                                     if (response.data.status === 'success') {
-    //                                         step.needToPost = false
-    //                                         // let newImagesToUploadCount = imagesToUploadCount - 1
-        
-    //                                         // this.setState({ imagesToUploadCount: newImagesToUploadCount })
-    //                                     }
-    //                                 })
-    //                             }
-    //                             if (response.data.message === 'success') {
-    //                                 this.setState({
-    //                                     category: 'choose a category',
-    //                                     description: '',
-    //                                     isPosting: false, 
-    //                                     postMessage: 'Article has successfully posted!',
-    //                                     steps: [{step: '', imgName: null, imgIndex: '', file: null}],
-    //                                     title: '',
-    //                                     tagInput: '',
-    //                                     tags: [],
-    //                                     uploadComplete: true
-    //                                 }) 
-    //                             }
-    //                         })
-    //                     })
-    //                     .catch(error => {
-    //                         console.log(error)
-    //                     });
-    //                 })
-    //             } else {
-    //                 alert('Please select a valid category.')
-    //             }
-    //         })
-    // }
-
     handleSubmit = () => {
         const { category } = this.state;
         const options = {
@@ -214,76 +132,108 @@ class PostArticle extends Component {
     // the uniqueID needs to be gvien sooner, possibly in this call, that way the image and article can both us it.
         axios.get(`${API_HOST_URL}/api/dashboard`, options)
             .then(response => {
-                const { category, description, steps, tags, title } = this.state;
+                const { category, description, imagesToUploadCount, steps, tags, title } = this.state;
     
                 const nextAvailableIndex = response.data.nextIndex
     
                 const itemIdIncrement = nextAvailableIndex + 1
                 const uniqueId = response.data.uniqueId 
-                console.log(uniqueId)
 
                 if (category !== 'choose a category') {
-                    steps.map((step, index) => {
-                        if (step.needToPost) {
-                            const data = new FormData();
-                            data.append('file', step.file, step.file.name)
-                            data.append('title', title)
-                            data.append('index', step.imgIndex)
-                            data.append('uniqueId', uniqueId)
-    
-                            const options = {
-                                data,
-                                method: 'POST',
-                                config: {
-                                    headers: {
-                                        'Content-Type': 'multipart/form-data'
-                                    }
-                                },
-                                url: `${API_HOST_URL}/api/dashboard/post-image`
-                            }
-                            axios(options).then(response => {
-                                const { imagesToUploadCount } = this.state
-                                const count = imagesToUploadCount 
-                                const prevSteps = steps
-                                const tempImagesToUploadCount = count - 1
-                                prevSteps[index].needToPost = false
-                                this.setState({ imagesToUploadCount: tempImagesToUploadCount, steps: prevSteps }, () => {
-                                    if (tempImagesToUploadCount === 0) {
-                                        const options = {
-                                            category: category,
-                                            categoryItemIndex: nextAvailableIndex,
-                                            description: description,
-                                            itemId: itemIdIncrement,
-                                            steps: steps,
-                                            tags: tags,
-                                            title: title,
-                                            uniqueId: uniqueId
-                                        }
-
-                                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
-                                        .then(response => {
-                                            if (response.data.message === 'success') {
-                                                this.setState({
-                                                    category: 'choose a category',
-                                                    description: '',
-                                                    isPosting: false, 
-                                                    postMessage: 'Article has successfully posted!',
-                                                    steps: [{step: '', imgName: null, imgIndex: '', file: null}],
-                                                    title: '',
-                                                    tagInput: '',
-                                                    tags: [],
-                                                    uploadComplete: true
-                                                })
-                                            } else { return }
-                                        }) 
-                                        .catch(error => {
-                                            console.log(error)
-                                        })
-                                    }
-                                })
-                            })
+                    if (imagesToUploadCount === 0) {
+                        const options = {
+                            category: category,
+                            categoryItemIndex: nextAvailableIndex,
+                            description: description,
+                            itemId: itemIdIncrement,
+                            steps: steps,
+                            tags: tags,
+                            title: title,
+                            uniqueId: uniqueId
                         }
-                    })
+
+                        axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                        .then(response => {
+                            if (response.data.message === 'success') {
+                                this.setState({
+                                    category: 'choose a category',
+                                    description: '',
+                                    isPosting: false, 
+                                    postMessage: 'Article has successfully posted!',
+                                    steps: [{step: '', imgName: null, imgIndex: '', file: null}],
+                                    title: '',
+                                    tagInput: '',
+                                    tags: [],
+                                    uploadComplete: true
+                                })
+                            } else { return }
+                        }) 
+                        .catch(error => {
+                            console.log(error)
+                        })
+                    } else {
+                        steps.map((step, index) => {
+                            if (step.needToPost) {
+                                const data = new FormData();
+                                data.append('file', step.file, step.file.name)
+                                data.append('title', title)
+                                data.append('index', step.imgIndex)
+                                data.append('uniqueId', uniqueId)
+        
+                                const options = {
+                                    data,
+                                    method: 'POST',
+                                    config: {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    },
+                                    url: `${API_HOST_URL}/api/dashboard/post-image`
+                                }
+                                axios(options).then(response => {
+                                    const { imagesToUploadCount } = this.state
+                                    const count = imagesToUploadCount 
+                                    const prevSteps = steps
+                                    const tempImagesToUploadCount = count - 1
+                                    prevSteps[index].needToPost = false
+                                    this.setState({ imagesToUploadCount: tempImagesToUploadCount, steps: prevSteps }, () => {
+                                        if (tempImagesToUploadCount === 0) {
+                                            const options = {
+                                                category: category,
+                                                categoryItemIndex: nextAvailableIndex,
+                                                description: description,
+                                                itemId: itemIdIncrement,
+                                                steps: steps,
+                                                tags: tags,
+                                                title: title,
+                                                uniqueId: uniqueId
+                                            }
+    
+                                            axios.post(`${API_HOST_URL}/api/dashboard/post-article`, options)
+                                            .then(response => {
+                                                if (response.data.message === 'success') {
+                                                    this.setState({
+                                                        category: 'choose a category',
+                                                        description: '',
+                                                        isPosting: false, 
+                                                        postMessage: 'Article has successfully posted!',
+                                                        steps: [{step: '', imgName: null, imgIndex: '', file: null}],
+                                                        title: '',
+                                                        tagInput: '',
+                                                        tags: [],
+                                                        uploadComplete: true
+                                                    })
+                                                } else { return }
+                                            }) 
+                                            .catch(error => {
+                                                console.log(error)
+                                            })
+                                        }
+                                    })
+                                })
+                            }
+                        })
+                    }
                 } else {
                     alert('Please select a valid category.')
                 }
