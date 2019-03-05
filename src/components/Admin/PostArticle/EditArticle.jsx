@@ -17,6 +17,7 @@ class EditArticle extends Component {
         this.state = {
             articleIndex: 0,
             articleChosen: false,
+            articleFileNames: [],
             articleList: [],
             category: 'choose a category',
             description: '',
@@ -39,6 +40,9 @@ class EditArticle extends Component {
         }
     }
 
+    // This needs to be updated to store an array of all image names from each step.
+    // Map through body and grab each image name. 
+    // Edit the handleImage to check if imageArray contains that selected file.name. If it doesn, then throw an error. 
     handleArticle = ( event ) => {
         const target = event.target
         const { category } = this.state;
@@ -53,11 +57,17 @@ class EditArticle extends Component {
 
             axios.get(`${API_HOST_URL}/api/articles/single-article`, options)
                 .then(response => {
+                    const data = response.data;
+                    const fileNames = data.article.body.map(step => {
+                        return step.imgName
+                    })
+
                     this.setState({
-                        articleIndex: response.data.articleIndex,
-                        selectedArticle: response.data.article,
-                        updatedTagsList: response.data.article.tags,
-                        updatedSteps: response.data.article.body // [0] if routing the whole article
+                        articleIndex: data.articleIndex,
+                        articleFileNames: fileNames,
+                        selectedArticle: data.article,
+                        updatedTagsList: data.article.tags,
+                        updatedSteps: data.article.body // [0] if routing the whole article
                     })
                 })
         }
@@ -88,10 +98,24 @@ class EditArticle extends Component {
         this.setState({ category: target.value })
     }
 
+    arrayContains  = (array, obj) => {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === obj) {
+                return true
+            }
+        }
+        return false
+    }
+
     handleImage = ( event ) => {
         const target = event.target
         const files = target.files
-        const { imagesToUploadCount, updatedSteps } = this.state;
+        const { articleFileNames, imagesToUploadCount, updatedSteps } = this.state;
+
+        if (this.arrayContains(articleFileNames, files[0].name)) {
+            alert('This is a duplicate file name. Please rename the file and try again.')
+            return
+        }
 
         let oldSteps = Array.from(updatedSteps);
         oldSteps[target.name].imgName = files[0].name
@@ -281,6 +305,7 @@ class EditArticle extends Component {
                             this.setState({
                                 articleIndex: 0,
                                 articleChosen: false,
+                                articleFileNames: [],
                                 articleList: [],
                                 category: 'choose a category',
                                 description: '',
@@ -351,6 +376,7 @@ class EditArticle extends Component {
                                                 this.setState({
                                                     articleIndex: 0,
                                                     articleChosen: false,
+                                                    articleFileNames: [],
                                                     articleList: [],
                                                     category: 'choose a category',
                                                     description: '',

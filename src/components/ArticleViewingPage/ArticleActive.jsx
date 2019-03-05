@@ -15,7 +15,7 @@ class ArticleActive extends React.Component {
             allData: null,
             currentStepIndex: 0,
             displayModal: false,
-            imageURL: ''
+            imgURL: ''
         }
     }
 
@@ -42,7 +42,7 @@ class ArticleActive extends React.Component {
         );
             // needs uniqueId and imgName
         const stepArray = currentItemId.body,
-            imgName = stepArray[currentStepIndex].imgName,
+            imgName = stepArray[currentStep].imgName,
             uniqueId = currentItemId.uniqueId 
 
         const options = {
@@ -54,9 +54,10 @@ class ArticleActive extends React.Component {
         }
 
         axios.get(`${API_HOST_URL}/api/articles/fetch-image`, options).then(response => {
-            this.setState(prevState => ({
+            const prevDisplayModal = this.state.displayModal
+            this.setState(() => ({
                 imgURL: response.data.downloadURL,
-                displayModal: !prevState.displayModal,
+                displayModal: !prevDisplayModal,
                 currentStepIndex: currentStep
             }));
         })
@@ -64,7 +65,8 @@ class ArticleActive extends React.Component {
 
     hideModal = () => {
         this.setState({
-            displayModal: false
+            displayModal: false,
+            imgUrl: ''
         });
     };
 
