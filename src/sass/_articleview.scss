@@ -2,10 +2,15 @@
     ARTICLE VIEW
 ***********************************************************/
 
+.view-article-container {
+    flex: 3;
+}
+
 .article-view-wrapper{
     justify-self: flex-start;
     align-self: flex-start;
     align-items: flex-start;
+    margin-left: 50px;
 
     hr {
         margin: 6px 0 12px;

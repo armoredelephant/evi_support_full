@@ -49,10 +49,7 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                // margin-bottom: 50px;
-                margin-bottom: -50px;
-                padding-bottom: 50px;
-                min-height: 100%;
+                flex: 3;
 
                 #most-viewed-articles {
                     margin-top: 0;
@@ -75,11 +72,10 @@ li {
 // changed from fixed : left: 0, right:0 to relative.
 
 footer {
+    flex:1 ;
     display: flex;
     align-items: center;
     position: relative;
-    // left: 0;
-    // bottom: 0;
     z-index: 100;
     width: 100%;
     justify-content: center;
@@ -104,10 +100,6 @@ footer {
 }
 
 @media (max-width: 1040px) {
-    #article-view-main {
-        margin: 10px 30px;
-    }
-
     .image-container {
         left: 30vw;
     }
